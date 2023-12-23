@@ -1,4 +1,6 @@
 ﻿using Emgu.CV;
+using Emgu.CV.CvEnum;
+using Emgu.CV.Structure;
 using Emgu.CV.Util;
 
 using System;
@@ -41,8 +43,28 @@ namespace WinFormsApp1
             Otsu = 8,
             Triangle = 16
         }
-
-
+        public enum ContourType
+        { 
+            Basic,
+            Bounded,
+            ChainApprox,
+        }
+        public enum BoundTypes
+        {
+            Rectangle,
+            MinimumArea,
+            MinumumCircle,
+            ConvexHull, 
+        }
+        public enum ChainApproxMethod
+        {
+            ChainCode = 0,
+            ChainApproxNone = 1,
+            ChainApproxSimple = 2,
+            ChainApproxTc89L1 = 3,
+            ChainApproxTc89Kcos = 4,
+            LinkRuns = 5,
+        }
         public Form1()
         {
             InitializeComponent();
@@ -53,14 +75,22 @@ namespace WinFormsApp1
         Dictionary<string, BitwiseOperators> bitwiseOperations = new Dictionary<string, BitwiseOperators>();
         Dictionary<string, ColorShiftOperators> colorshiftOperations = new Dictionary<string, ColorShiftOperators>();
         Dictionary<string, ThresholdType> thresholdOperations = new Dictionary<string, ThresholdType>(); 
+        Dictionary<string, ChainApproxMethod> ChainApproxMethods = new Dictionary<string, ChainApproxMethod>(); 
+        Dictionary<string, BoundTypes> BoundedTypes = new Dictionary<string, BoundTypes>(); 
+        Dictionary<string, ContourType> ContourTypes = new Dictionary<string, ContourType>(); 
         BitwiseOperators currentBitwise;
         ThresholdType currentThreshold; 
-        ColorShiftOperators currentColorShift; 
+        ColorShiftOperators currentColorShift;
+        ContourType currentContourType;
+        ChainApproxMethod currentChainApprox;
+        BoundTypes currentBounds; 
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
             #region setup
+            ChainApproxSelect.Hide();
+            BoundedShapeSelect.Hide();
             alphaTextBox.Hide();
             betaTextBox.Hide();
             GammaTextBox.Hide();
@@ -92,7 +122,19 @@ namespace WinFormsApp1
             thresholdOperations.Add("ToZeroInv", ThresholdType.ToZeroInv);
             thresholdOperations.Add("Otsu", ThresholdType.Otsu);
             thresholdOperations.Add("Triangle", ThresholdType.Triangle);
-
+            ContourTypes.Add("Basic", ContourType.Basic);
+            ContourTypes.Add("Bounded", ContourType.Bounded);
+            ContourTypes.Add("ChainApprox", ContourType.ChainApprox);
+            ChainApproxMethods.Add("None", ChainApproxMethod.ChainApproxNone);
+            ChainApproxMethods.Add("Simple", ChainApproxMethod.ChainApproxSimple);
+            ChainApproxMethods.Add("Tc89Kcos", ChainApproxMethod.ChainApproxTc89Kcos);
+            ChainApproxMethods.Add("Tc89L1", ChainApproxMethod.ChainApproxTc89L1);
+            ChainApproxMethods.Add("ChainCode", ChainApproxMethod.ChainCode);
+            ChainApproxMethods.Add("LinkRuns", ChainApproxMethod.LinkRuns);
+            BoundedTypes.Add("ConvexHull", BoundTypes.ConvexHull);
+            BoundedTypes.Add("MinumumArea", BoundTypes.MinimumArea);
+            BoundedTypes.Add("MinumumCircle", BoundTypes.MinumumCircle);
+            BoundedTypes.Add("Rectangle", BoundTypes.Rectangle);
             #endregion 
             #region designs 
             Mat fullCircle = CvInvoke.Imread("Images/triangle2.png"); 
@@ -172,6 +214,18 @@ namespace WinFormsApp1
             images.Add("gradient", output6);
             #endregion
             #region comboBoxSetup
+            foreach (var item in ChainApproxMethods.Keys)
+            {
+                ChainApproxSelect.Items.Add(item);
+            }
+            foreach (var item in BoundedTypes.Keys)
+            {
+                BoundedShapeSelect.Items.Add(item); 
+            }
+            foreach (var item in ContourTypes.Keys)
+            {
+                comboBox11.Items.Add(item); 
+            }
             foreach (var item in bitwiseOperations.Keys)
             {
                 comboBox3.Items.Add(item);
@@ -190,7 +244,9 @@ namespace WinFormsApp1
                 comboBox2.Items.Add(item);
                 comboBox4.Items.Add(item); 
                 comboBox6.Items.Add(item);
-                comboBox8.Items.Add(item); 
+                comboBox10.Items.Add(item);
+                comboBox8.Items.Add(item);
+                comboBox12.Items.Add(item); 
             }
             image.AsReadOnly();
             #endregion  
@@ -513,6 +569,107 @@ namespace WinFormsApp1
             textBox2.Clear();
             imageBox7.Image = default;
         }
-        #endregion 
+
+
+        #endregion
+        #region blurring
+        private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            imageBox10.Image = images[comboBox10.SelectedItem.ToString()];
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comboBox9_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+        #region Contours
+        private void comboBox12_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            imageBox12.Image = images[comboBox12.SelectedItem.ToString()];
+        }
+        private void button8_Click(object sender, EventArgs e)
+        {
+            images.Add(textBox7.Text, imageBox11.Image);
+            comboBox1.Items.Add(textBox7.Text);
+            comboBox2.Items.Add(textBox7.Text);
+            comboBox6.Items.Add(textBox7.Text);
+            textBox7.Clear();
+            imageBox11.Image = default;
+        }
+
+        private void comboBox11_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentContourType = ContourTypes[comboBox11.SelectedItem.ToString()];
+            if(comboBox11.SelectedItem.ToString() == "ChainApprox")
+            {
+                ChainApproxSelect.Show();
+                BoundedShapeSelect.Hide(); 
+            }
+            else if(comboBox11.SelectedItem.ToString() == "Bounded")
+            {
+                ChainApproxSelect.Hide();
+                BoundedShapeSelect.Show();
+            }
+            else
+            {
+                ChainApproxSelect.Hide();
+                BoundedShapeSelect.Hide();
+            }
+        }
+        private void button9_Click(object sender, EventArgs e)
+        {
+            switch (currentContourType)
+            {
+                case ContourType.Basic:
+                    Mat grayScaledImage = new Mat();
+                    Mat original = imageBox12.Image as Mat;
+                    CvInvoke.CvtColor(original, grayScaledImage, ColorConversion.Bgr2Gray);
+                    VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+                    Mat nextLayer = new Mat();
+                    CvInvoke.FindContours(grayScaledImage, contours, nextLayer, RetrType.External, (Emgu.CV.CvEnum.ChainApproxMethod)ChainApproxMethod.ChainApproxNone);
+                    CvInvoke.DrawContours(original, contours, -1, new MCvScalar(255, 0, 0), 3);
+                    imageBox11.Image = original;
+                    break;
+                case ContourType.Bounded:
+                    switch (currentBounds)
+                    { 
+                    
+                    
+                    }
+                    break;
+                case ContourType.ChainApprox:
+                    switch (currentChainApprox)
+                    { 
+                        
+                    }
+                    break;
+
+
+
+            }
+
+        }
+
+        private void ChainApproxSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentChainApprox = ChainApproxMethods[ChainApproxSelect.SelectedItem.ToString()];
+        }
+        private void BoundedShapeSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentBounds = BoundedTypes[BoundedShapeSelect.SelectedItem.ToString()];
+        }
+
+
+
+
+
+        #endregion
+
     }
 }

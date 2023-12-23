@@ -107,6 +107,26 @@ namespace WinFormsApp1
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.imageBox9 = new Emgu.CV.UI.ImageBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.imageBox10 = new Emgu.CV.UI.ImageBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.BoundedShapeSelect = new System.Windows.Forms.ComboBox();
+            this.ChainApproxSelect = new System.Windows.Forms.ComboBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.comboBox11 = new System.Windows.Forms.ComboBox();
+            this.imageBox11 = new Emgu.CV.UI.ImageBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.imageBox12 = new Emgu.CV.UI.ImageBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.comboBox12 = new System.Windows.Forms.ComboBox();
             this.tabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox7)).BeginInit();
@@ -139,6 +159,14 @@ namespace WinFormsApp1
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox6)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox10)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox12)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -624,6 +652,7 @@ namespace WinFormsApp1
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -883,13 +912,210 @@ namespace WinFormsApp1
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.panel6);
             this.tabPage5.Location = new System.Drawing.Point(4, 24);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(864, 438);
             this.tabPage5.TabIndex = 6;
-            this.tabPage5.Text = "tabPage5";
+            this.tabPage5.Text = "Blurring Operations";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel6.Controls.Add(this.comboBox9);
+            this.panel6.Controls.Add(this.imageBox9);
+            this.panel6.Controls.Add(this.textBox6);
+            this.panel6.Controls.Add(this.imageBox10);
+            this.panel6.Controls.Add(this.button7);
+            this.panel6.Controls.Add(this.label13);
+            this.panel6.Controls.Add(this.comboBox10);
+            this.panel6.Location = new System.Drawing.Point(20, 6);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(776, 197);
+            this.panel6.TabIndex = 19;
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.FormattingEnabled = true;
+            this.comboBox9.Location = new System.Drawing.Point(188, 57);
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.Size = new System.Drawing.Size(281, 23);
+            this.comboBox9.TabIndex = 26;
+            this.comboBox9.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged);
+            // 
+            // imageBox9
+            // 
+            this.imageBox9.Location = new System.Drawing.Point(516, 36);
+            this.imageBox9.Name = "imageBox9";
+            this.imageBox9.Size = new System.Drawing.Size(150, 150);
+            this.imageBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageBox9.TabIndex = 25;
+            this.imageBox9.TabStop = false;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(516, 8);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 23);
+            this.textBox6.TabIndex = 23;
+            // 
+            // imageBox10
+            // 
+            this.imageBox10.Location = new System.Drawing.Point(3, 36);
+            this.imageBox10.Name = "imageBox10";
+            this.imageBox10.Size = new System.Drawing.Size(150, 150);
+            this.imageBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageBox10.TabIndex = 2;
+            this.imageBox10.TabStop = false;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(647, 9);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(19, 23);
+            this.button7.TabIndex = 16;
+            this.button7.Text = "Save";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(694, 171);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(44, 15);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "label13";
+            // 
+            // comboBox10
+            // 
+            this.comboBox10.FormattingEnabled = true;
+            this.comboBox10.Location = new System.Drawing.Point(3, 8);
+            this.comboBox10.Name = "comboBox10";
+            this.comboBox10.Size = new System.Drawing.Size(121, 23);
+            this.comboBox10.TabIndex = 12;
+            this.comboBox10.SelectedIndexChanged += new System.EventHandler(this.comboBox10_SelectedIndexChanged);
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.panel7);
+            this.tabPage6.Location = new System.Drawing.Point(4, 24);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(864, 438);
+            this.tabPage6.TabIndex = 7;
+            this.tabPage6.Text = "Contours";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel7.Controls.Add(this.BoundedShapeSelect);
+            this.panel7.Controls.Add(this.ChainApproxSelect);
+            this.panel7.Controls.Add(this.button9);
+            this.panel7.Controls.Add(this.comboBox11);
+            this.panel7.Controls.Add(this.imageBox11);
+            this.panel7.Controls.Add(this.textBox7);
+            this.panel7.Controls.Add(this.imageBox12);
+            this.panel7.Controls.Add(this.button8);
+            this.panel7.Controls.Add(this.label14);
+            this.panel7.Controls.Add(this.comboBox12);
+            this.panel7.Location = new System.Drawing.Point(6, 6);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(776, 197);
+            this.panel7.TabIndex = 20;
+            // 
+            // BoundedShapeSelect
+            // 
+            this.BoundedShapeSelect.FormattingEnabled = true;
+            this.BoundedShapeSelect.Location = new System.Drawing.Point(181, 94);
+            this.BoundedShapeSelect.Name = "BoundedShapeSelect";
+            this.BoundedShapeSelect.Size = new System.Drawing.Size(281, 23);
+            this.BoundedShapeSelect.TabIndex = 29;
+            this.BoundedShapeSelect.SelectedIndexChanged += new System.EventHandler(this.BoundedShapeSelect_SelectedIndexChanged);
+            // 
+            // ChainApproxSelect
+            // 
+            this.ChainApproxSelect.FormattingEnabled = true;
+            this.ChainApproxSelect.Location = new System.Drawing.Point(181, 65);
+            this.ChainApproxSelect.Name = "ChainApproxSelect";
+            this.ChainApproxSelect.Size = new System.Drawing.Size(281, 23);
+            this.ChainApproxSelect.TabIndex = 28;
+            this.ChainApproxSelect.SelectedIndexChanged += new System.EventHandler(this.ChainApproxSelect_SelectedIndexChanged);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(286, 163);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 27;
+            this.button9.Text = "button9";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // comboBox11
+            // 
+            this.comboBox11.FormattingEnabled = true;
+            this.comboBox11.Location = new System.Drawing.Point(181, 36);
+            this.comboBox11.Name = "comboBox11";
+            this.comboBox11.Size = new System.Drawing.Size(281, 23);
+            this.comboBox11.TabIndex = 26;
+            this.comboBox11.SelectedIndexChanged += new System.EventHandler(this.comboBox11_SelectedIndexChanged);
+            // 
+            // imageBox11
+            // 
+            this.imageBox11.Location = new System.Drawing.Point(516, 36);
+            this.imageBox11.Name = "imageBox11";
+            this.imageBox11.Size = new System.Drawing.Size(150, 150);
+            this.imageBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageBox11.TabIndex = 25;
+            this.imageBox11.TabStop = false;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(516, 8);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 23);
+            this.textBox7.TabIndex = 23;
+            // 
+            // imageBox12
+            // 
+            this.imageBox12.Location = new System.Drawing.Point(3, 36);
+            this.imageBox12.Name = "imageBox12";
+            this.imageBox12.Size = new System.Drawing.Size(150, 150);
+            this.imageBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageBox12.TabIndex = 2;
+            this.imageBox12.TabStop = false;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(647, 9);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(19, 23);
+            this.button8.TabIndex = 16;
+            this.button8.Text = "Save";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(694, 171);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(44, 15);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "label14";
+            // 
+            // comboBox12
+            // 
+            this.comboBox12.FormattingEnabled = true;
+            this.comboBox12.Location = new System.Drawing.Point(3, 8);
+            this.comboBox12.Name = "comboBox12";
+            this.comboBox12.Size = new System.Drawing.Size(121, 23);
+            this.comboBox12.TabIndex = 12;
+            this.comboBox12.SelectedIndexChanged += new System.EventHandler(this.comboBox12_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -940,6 +1166,16 @@ namespace WinFormsApp1
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox6)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox10)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox12)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1023,6 +1259,26 @@ namespace WinFormsApp1
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.ComboBox comboBox9;
+        private Emgu.CV.UI.ImageBox imageBox9;
+        private System.Windows.Forms.TextBox textBox6;
+        private Emgu.CV.UI.ImageBox imageBox10;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboBox10;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.ComboBox comboBox11;
+        private Emgu.CV.UI.ImageBox imageBox11;
+        private System.Windows.Forms.TextBox textBox7;
+        private Emgu.CV.UI.ImageBox imageBox12;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox comboBox12;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.ComboBox BoundedShapeSelect;
+        private System.Windows.Forms.ComboBox ChainApproxSelect;
     }
 }
 
