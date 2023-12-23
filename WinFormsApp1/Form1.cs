@@ -85,6 +85,13 @@ namespace WinFormsApp1
             colorshiftOperations.Add("BGR ------> HSV", ColorShiftOperators.BGR_HSV);
             colorshiftOperations.Add("BGR ------> Grayscale", ColorShiftOperators.BGR_GRAY);
             colorshiftOperations.Add("HSV ------> BGR", ColorShiftOperators.HSV_BGR);
+            thresholdOperations.Add("Binary", ThresholdType.Binary);
+            thresholdOperations.Add("BinaryInv", ThresholdType.BinaryInv);
+            thresholdOperations.Add("Trunc", ThresholdType.Trunc);
+            thresholdOperations.Add("ToZero", ThresholdType.ToZero);
+            thresholdOperations.Add("ToZeroInv", ThresholdType.ToZeroInv);
+            thresholdOperations.Add("Otsu", ThresholdType.Otsu);
+            thresholdOperations.Add("Triangle", ThresholdType.Triangle);
 
             #endregion 
             #region designs 
@@ -164,7 +171,6 @@ namespace WinFormsApp1
             images.Add("rocket", output5);
             images.Add("gradient", output6);
             #endregion
-
             #region comboBoxSetup
             foreach (var item in bitwiseOperations.Keys)
             {
@@ -174,16 +180,22 @@ namespace WinFormsApp1
             {
                 comboBox5.Items.Add(item); 
             }
+            foreach(var item in thresholdOperations.Keys)
+            {
+                comboBox7.Items.Add(item); 
+            }
             foreach (var item in images.Keys)
             {
                 comboBox1.Items.Add(item); 
                 comboBox2.Items.Add(item);
                 comboBox4.Items.Add(item); 
                 comboBox6.Items.Add(item);
+                comboBox8.Items.Add(item); 
             }
             image.AsReadOnly();
             #endregion  
         }
+        #region Bitwise Operations
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             imageBox3.Image = images[comboBox1.SelectedItem.ToString()] ;
@@ -372,6 +384,8 @@ namespace WinFormsApp1
         {
 
         }
+        #endregion
+        #region ColorSplit
         private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
         {
             imageBox4.Image = images[comboBox6.SelectedItem.ToString()];
@@ -409,6 +423,8 @@ namespace WinFormsApp1
             BlueTextBox.Clear();
             imageBox1.Image = default;
         }
+        #endregion
+        #region InRange UNFINISHED
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentColorShift = colorshiftOperations[comboBox5.SelectedItem.ToString()]; 
@@ -432,10 +448,71 @@ namespace WinFormsApp1
         {
 
         }
-
+        #endregion
+        #region Threshold Operations
         private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentThreshold = thresholdOperations[comboBox7.SelectedItem.ToString()]; 
         }
+        private void comboBox8_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            imageBox8.Image = images[comboBox8.SelectedItem.ToString()];
+        }
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+                Stopwatch clock = Stopwatch.StartNew();
+            switch (currentThreshold)
+            {
+                case ThresholdType.Binary:
+                    Mat output = new Mat();
+                    CvInvoke.Threshold(imageBox8.Image, output, int.Parse(textBox4.Text), int.Parse(textBox5.Text), Emgu.CV.CvEnum.ThresholdType.Binary);
+                    imageBox7.Image = output; 
+                    break;
+                case ThresholdType.BinaryInv:
+                    Mat output2 = new Mat();
+                    CvInvoke.Threshold(imageBox8.Image, output2, int.Parse(textBox4.Text), int.Parse(textBox5.Text), Emgu.CV.CvEnum.ThresholdType.Binary);
+                    CvInvoke.BitwiseNot(output2, output2);
+                    imageBox7.Image = output2;
+                    break;
+                case ThresholdType.Trunc:
+                    Mat output3 = new Mat();
+                    CvInvoke.Threshold(imageBox8.Image, output3, int.Parse(textBox4.Text), int.Parse(textBox5.Text), Emgu.CV.CvEnum.ThresholdType.Trunc);
+                    imageBox7.Image = output3;
+                    break;
+                case ThresholdType.ToZero:
+                    Mat output4 = new Mat();
+                    CvInvoke.Threshold(imageBox8.Image, output4, int.Parse(textBox4.Text), int.Parse(textBox5.Text), Emgu.CV.CvEnum.ThresholdType.ToZero);
+                    imageBox7.Image = output4;
+                    break;
+                case ThresholdType.ToZeroInv:
+                    Mat output5 = new Mat();
+                    CvInvoke.Threshold(imageBox8.Image, output5, int.Parse(textBox4.Text), int.Parse(textBox5.Text), Emgu.CV.CvEnum.ThresholdType.ToZeroInv);
+                    CvInvoke.BitwiseNot(output5, output5);
+                    imageBox7.Image = output5;
+                    break;
+                case ThresholdType.Triangle:
+                case ThresholdType.Otsu:
+                    throw new NotImplementedException();
+                    break; 
+            }
+            clock.Stop();
+            label10.Text = $"{clock.ElapsedMilliseconds} ms"; 
+            textBox4.Clear();
+            textBox5.Clear();
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            images.Add(textBox2.Text, imageBox7.Image);
+            comboBox1.Items.Add(textBox2.Text);
+            comboBox2.Items.Add(textBox2.Text);
+            comboBox6.Items.Add(textBox2.Text);
+            textBox2.Clear();
+            imageBox7.Image = default;
+        }
+        #endregion 
     }
 }
