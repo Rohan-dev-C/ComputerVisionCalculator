@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace WinFormsApp1
@@ -45,7 +46,6 @@ namespace WinFormsApp1
         }
         public enum ContourType
         { 
-            Basic,
             Bounded,
             ChainApprox,
         }
@@ -103,6 +103,8 @@ namespace WinFormsApp1
             images.Add("diagram", CvInvoke.Imread("Images/rgb.png"));
             images.Add("greenSquare", CvInvoke.Imread("Images/greenSquare.png"));
             images.Add("blueAndWhite", CvInvoke.Imread("Images/blueAndWhite.jpg"));
+            images.Add("prompt", CvInvoke.Imread("Images/prompt.png"));
+            images.Add("SHApez", CvInvoke.Imread("Images/cont2.png"));
             bitwiseOperations.Add("Add", BitwiseOperators.Add);
             bitwiseOperations.Add("And", BitwiseOperators.And);
             bitwiseOperations.Add("Or", BitwiseOperators.Or);
@@ -122,15 +124,13 @@ namespace WinFormsApp1
             thresholdOperations.Add("ToZeroInv", ThresholdType.ToZeroInv);
             thresholdOperations.Add("Otsu", ThresholdType.Otsu);
             thresholdOperations.Add("Triangle", ThresholdType.Triangle);
-            ContourTypes.Add("Basic", ContourType.Basic);
             ContourTypes.Add("Bounded", ContourType.Bounded);
             ContourTypes.Add("ChainApprox", ContourType.ChainApprox);
-            ChainApproxMethods.Add("None", ChainApproxMethod.ChainApproxNone);
             ChainApproxMethods.Add("Simple", ChainApproxMethod.ChainApproxSimple);
+            ChainApproxMethods.Add("NoApprox", ChainApproxMethod.ChainApproxNone);
             ChainApproxMethods.Add("Tc89Kcos", ChainApproxMethod.ChainApproxTc89Kcos);
             ChainApproxMethods.Add("Tc89L1", ChainApproxMethod.ChainApproxTc89L1);
             ChainApproxMethods.Add("ChainCode", ChainApproxMethod.ChainCode);
-            ChainApproxMethods.Add("LinkRuns", ChainApproxMethod.LinkRuns);
             BoundedTypes.Add("ConvexHull", BoundTypes.ConvexHull);
             BoundedTypes.Add("MinumumArea", BoundTypes.MinimumArea);
             BoundedTypes.Add("MinumumCircle", BoundTypes.MinumumCircle);
@@ -458,6 +458,10 @@ namespace WinFormsApp1
             comboBox1.Items.Add(RedTextBox.Text);
             comboBox2.Items.Add(RedTextBox.Text);
             comboBox6.Items.Add(RedTextBox.Text);
+            comboBox10.Items.Add(RedTextBox.Text);
+            comboBox12.Items.Add(RedTextBox.Text);
+            comboBox8.Items.Add(RedTextBox.Text);
+            comboBox4.Items.Add(RedTextBox.Text);
             RedTextBox.Clear();
             imageBox1.Image = default;
         }
@@ -467,6 +471,10 @@ namespace WinFormsApp1
             comboBox1.Items.Add(GreenTextBox.Text);
             comboBox2.Items.Add(GreenTextBox.Text);
             comboBox6.Items.Add(GreenTextBox.Text);
+            comboBox10.Items.Add(GreenTextBox.Text);
+            comboBox12.Items.Add(GreenTextBox.Text);
+            comboBox8.Items.Add(GreenTextBox.Text);
+            comboBox4.Items.Add(GreenTextBox.Text);
             GreenTextBox.Clear();
             imageBox1.Image = default;
         }
@@ -476,6 +484,10 @@ namespace WinFormsApp1
             comboBox1.Items.Add(BlueTextBox.Text);
             comboBox2.Items.Add(BlueTextBox.Text);
             comboBox6.Items.Add(BlueTextBox.Text);
+            comboBox10.Items.Add(BlueTextBox.Text);
+            comboBox12.Items.Add(BlueTextBox.Text);
+            comboBox8.Items.Add(BlueTextBox.Text);
+            comboBox4.Items.Add(BlueTextBox.Text);
             BlueTextBox.Clear();
             imageBox1.Image = default;
         }
@@ -496,6 +508,10 @@ namespace WinFormsApp1
             comboBox1.Items.Add(textBox3.Text);
             comboBox2.Items.Add(textBox3.Text);
             comboBox6.Items.Add(textBox3.Text);
+            comboBox10.Items.Add(textBox3.Text);
+            comboBox12.Items.Add(textBox3.Text);
+            comboBox8.Items.Add(textBox3.Text);
+            comboBox4.Items.Add(textBox3.Text);
             textBox3.Clear();
             imageBox5.Image = default;
         }
@@ -520,41 +536,10 @@ namespace WinFormsApp1
         }
         private void button5_Click(object sender, EventArgs e)
         {
-                Stopwatch clock = Stopwatch.StartNew();
-            switch (currentThreshold)
-            {
-                case ThresholdType.Binary:
-                    Mat output = new Mat();
-                    CvInvoke.Threshold(imageBox8.Image, output, int.Parse(textBox4.Text), int.Parse(textBox5.Text), Emgu.CV.CvEnum.ThresholdType.Binary);
-                    imageBox7.Image = output; 
-                    break;
-                case ThresholdType.BinaryInv:
-                    Mat output2 = new Mat();
-                    CvInvoke.Threshold(imageBox8.Image, output2, int.Parse(textBox4.Text), int.Parse(textBox5.Text), Emgu.CV.CvEnum.ThresholdType.Binary);
-                    CvInvoke.BitwiseNot(output2, output2);
-                    imageBox7.Image = output2;
-                    break;
-                case ThresholdType.Trunc:
-                    Mat output3 = new Mat();
-                    CvInvoke.Threshold(imageBox8.Image, output3, int.Parse(textBox4.Text), int.Parse(textBox5.Text), Emgu.CV.CvEnum.ThresholdType.Trunc);
-                    imageBox7.Image = output3;
-                    break;
-                case ThresholdType.ToZero:
-                    Mat output4 = new Mat();
-                    CvInvoke.Threshold(imageBox8.Image, output4, int.Parse(textBox4.Text), int.Parse(textBox5.Text), Emgu.CV.CvEnum.ThresholdType.ToZero);
-                    imageBox7.Image = output4;
-                    break;
-                case ThresholdType.ToZeroInv:
-                    Mat output5 = new Mat();
-                    CvInvoke.Threshold(imageBox8.Image, output5, int.Parse(textBox4.Text), int.Parse(textBox5.Text), Emgu.CV.CvEnum.ThresholdType.ToZeroInv);
-                    CvInvoke.BitwiseNot(output5, output5);
-                    imageBox7.Image = output5;
-                    break;
-                case ThresholdType.Triangle:
-                case ThresholdType.Otsu:
-                    throw new NotImplementedException();
-                    break; 
-            }
+            Stopwatch clock = Stopwatch.StartNew();
+            Mat output = new Mat();
+            CvInvoke.Threshold(imageBox8.Image, output, int.Parse(textBox4.Text), int.Parse(textBox5.Text), (Emgu.CV.CvEnum.ThresholdType)currentThreshold);
+            imageBox7.Image = output;
             clock.Stop();
             label10.Text = $"{clock.ElapsedMilliseconds} ms"; 
             textBox4.Clear();
@@ -566,6 +551,10 @@ namespace WinFormsApp1
             comboBox1.Items.Add(textBox2.Text);
             comboBox2.Items.Add(textBox2.Text);
             comboBox6.Items.Add(textBox2.Text);
+            comboBox10.Items.Add(textBox2.Text);
+            comboBox12.Items.Add(textBox2.Text);
+            comboBox8.Items.Add(textBox2.Text);
+            comboBox4.Items.Add(textBox2.Text);
             textBox2.Clear();
             imageBox7.Image = default;
         }
@@ -599,6 +588,10 @@ namespace WinFormsApp1
             comboBox1.Items.Add(textBox7.Text);
             comboBox2.Items.Add(textBox7.Text);
             comboBox6.Items.Add(textBox7.Text);
+            comboBox10.Items.Add(textBox7.Text);
+            comboBox12.Items.Add(textBox7.Text);
+            comboBox8.Items.Add(textBox7.Text);
+            comboBox4.Items.Add(textBox7.Text);
             textBox7.Clear();
             imageBox11.Image = default;
         }
@@ -624,34 +617,44 @@ namespace WinFormsApp1
         }
         private void button9_Click(object sender, EventArgs e)
         {
+            Mat first = imageBox12.Image as Mat; 
+        
             switch (currentContourType)
             {
-                case ContourType.Basic:
-                    Mat grayScaledImage = new Mat();
-                    Mat original = imageBox12.Image as Mat;
-                    CvInvoke.CvtColor(original, grayScaledImage, ColorConversion.Bgr2Gray);
-                    VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
-                    Mat nextLayer = new Mat();
-                    CvInvoke.FindContours(grayScaledImage, contours, nextLayer, RetrType.External, (Emgu.CV.CvEnum.ChainApproxMethod)ChainApproxMethod.ChainApproxNone);
-                    CvInvoke.DrawContours(original, contours, -1, new MCvScalar(255, 0, 0), 3);
-                    imageBox11.Image = original;
-                    break;
                 case ContourType.Bounded:
                     switch (currentBounds)
-                    { 
-                    
+                    {
+                        case BoundTypes.MinimumArea:
+                            Mat grayScaledImage = new Mat();
+                            var temp = imageBox12.Image as Mat;
+                            Mat original = temp;
+                            CvInvoke.CvtColor(original, grayScaledImage, ColorConversion.Bgr2Gray);
+                            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+                            Mat nextLayer = new Mat();
+                            CvInvoke.FindContours(grayScaledImage, contours, nextLayer, RetrType.External, (Emgu.CV.CvEnum.ChainApproxMethod)currentChainApprox);
+                            RotatedRect rect = CvInvoke.MinAreaRect(contours[0]);
+                            var verticies = rect.GetVertices().Select(pt => new Point((int)pt.X, (int)pt.Y)).ToArray();
+                            CvInvoke.Line(original, verticies[0], verticies[1], new MCvScalar(0, 255, 0), 2);
+                            CvInvoke.Line(original, verticies[1], verticies[2], new MCvScalar(0, 255, 0), 2);
+                            CvInvoke.Line(original, verticies[2], verticies[3], new MCvScalar(0, 255, 0), 2);
+                            CvInvoke.Line(original, verticies[3], verticies[0], new MCvScalar(0, 255, 0), 2);
+                            imageBox11.Image = original; 
+                            break; 
                     
                     }
                     break;
                 case ContourType.ChainApprox:
-                    switch (currentChainApprox)
-                    { 
-                        
-                    }
+                    Mat grayScaledImage2 = new Mat();
+                    var temp2 = imageBox12.Image as Mat;
+                    Mat original2 = temp2;
+                    CvInvoke.CvtColor(original2, grayScaledImage2, ColorConversion.Bgr2Gray);
+                    VectorOfVectorOfPoint contours2 = new VectorOfVectorOfPoint();
+                    Mat nextLayer2 = new Mat();
+                    CvInvoke.FindContours(grayScaledImage2, contours2, nextLayer2, RetrType.External, (Emgu.CV.CvEnum.ChainApproxMethod)currentChainApprox);
+                    CvInvoke.DrawContours(original2, contours2, -1, new MCvScalar((double)BlueSelect.Value, (double)GreenSelect.Value, (double)RedSelect.Value), 3); 
+                    imageBox11.Image = original2;
                     break;
-
-
-
+                      
             }
 
         }
@@ -671,5 +674,19 @@ namespace WinFormsApp1
 
         #endregion
 
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -81,22 +81,16 @@ namespace WinFormsApp1
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.trackBar5 = new System.Windows.Forms.TrackBar();
             this.label9 = new System.Windows.Forms.Label();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
             this.trackBar6 = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
             this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.trackBar3 = new System.Windows.Forms.TrackBar();
             this.Channel3 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.panel4 = new System.Windows.Forms.Panel();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
@@ -116,6 +110,13 @@ namespace WinFormsApp1
             this.label13 = new System.Windows.Forms.Label();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.RedSelect = new System.Windows.Forms.NumericUpDown();
+            this.GreenSelect = new System.Windows.Forms.NumericUpDown();
+            this.BlueSelect = new System.Windows.Forms.NumericUpDown();
             this.panel7 = new System.Windows.Forms.Panel();
             this.BoundedShapeSelect = new System.Windows.Forms.ComboBox();
             this.ChainApproxSelect = new System.Windows.Forms.ComboBox();
@@ -144,17 +145,11 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.imageBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox5)).BeginInit();
@@ -164,6 +159,9 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.imageBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox10)).BeginInit();
             this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RedSelect)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GreenSelect)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BlueSelect)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox12)).BeginInit();
@@ -663,22 +661,16 @@ namespace WinFormsApp1
             // 
             this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.numericUpDown4);
             this.tabPage2.Controls.Add(this.trackBar2);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.numericUpDown5);
             this.tabPage2.Controls.Add(this.trackBar5);
             this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.numericUpDown6);
             this.tabPage2.Controls.Add(this.trackBar6);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.numericUpDown3);
             this.tabPage2.Controls.Add(this.trackBar4);
             this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.numericUpDown2);
             this.tabPage2.Controls.Add(this.trackBar3);
             this.tabPage2.Controls.Add(this.Channel3);
-            this.tabPage2.Controls.Add(this.numericUpDown1);
             this.tabPage2.Controls.Add(this.trackBar1);
             this.tabPage2.Controls.Add(this.panel4);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
@@ -687,6 +679,7 @@ namespace WinFormsApp1
             this.tabPage2.Size = new System.Drawing.Size(864, 438);
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "InRange Operation";
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // label7
             // 
@@ -697,16 +690,10 @@ namespace WinFormsApp1
             this.label7.TabIndex = 37;
             this.label7.Text = "Channel 3 Min";
             // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.Location = new System.Drawing.Point(677, 208);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(33, 23);
-            this.numericUpDown4.TabIndex = 36;
-            // 
             // trackBar2
             // 
             this.trackBar2.Location = new System.Drawing.Point(535, 236);
+            this.trackBar2.Maximum = 255;
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(175, 45);
             this.trackBar2.TabIndex = 35;
@@ -721,16 +708,10 @@ namespace WinFormsApp1
             this.label8.TabIndex = 34;
             this.label8.Text = "Channel 2 Min";
             // 
-            // numericUpDown5
-            // 
-            this.numericUpDown5.Location = new System.Drawing.Point(677, 284);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(33, 23);
-            this.numericUpDown5.TabIndex = 33;
-            // 
             // trackBar5
             // 
             this.trackBar5.Location = new System.Drawing.Point(535, 313);
+            this.trackBar5.Maximum = 255;
             this.trackBar5.Name = "trackBar5";
             this.trackBar5.Size = new System.Drawing.Size(175, 45);
             this.trackBar5.TabIndex = 32;
@@ -745,16 +726,10 @@ namespace WinFormsApp1
             this.label9.TabIndex = 31;
             this.label9.Text = "Channel 3 Min";
             // 
-            // numericUpDown6
-            // 
-            this.numericUpDown6.Location = new System.Drawing.Point(677, 363);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(33, 23);
-            this.numericUpDown6.TabIndex = 30;
-            // 
             // trackBar6
             // 
             this.trackBar6.Location = new System.Drawing.Point(535, 387);
+            this.trackBar6.Maximum = 255;
             this.trackBar6.Name = "trackBar6";
             this.trackBar6.Size = new System.Drawing.Size(175, 45);
             this.trackBar6.TabIndex = 29;
@@ -767,18 +742,12 @@ namespace WinFormsApp1
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 15);
             this.label6.TabIndex = 28;
-            this.label6.Text = "Channel 3 Min";
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Location = new System.Drawing.Point(176, 208);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(33, 23);
-            this.numericUpDown3.TabIndex = 27;
+            this.label6.Text = "Channel 1 Min";
             // 
             // trackBar4
             // 
             this.trackBar4.Location = new System.Drawing.Point(34, 236);
+            this.trackBar4.Maximum = 255;
             this.trackBar4.Name = "trackBar4";
             this.trackBar4.Size = new System.Drawing.Size(175, 45);
             this.trackBar4.TabIndex = 26;
@@ -793,16 +762,10 @@ namespace WinFormsApp1
             this.label5.TabIndex = 25;
             this.label5.Text = "Channel 2 Min";
             // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(176, 284);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(33, 23);
-            this.numericUpDown2.TabIndex = 24;
-            // 
             // trackBar3
             // 
             this.trackBar3.Location = new System.Drawing.Point(34, 313);
+            this.trackBar3.Maximum = 255;
             this.trackBar3.Name = "trackBar3";
             this.trackBar3.Size = new System.Drawing.Size(175, 45);
             this.trackBar3.TabIndex = 23;
@@ -817,16 +780,10 @@ namespace WinFormsApp1
             this.Channel3.TabIndex = 22;
             this.Channel3.Text = "Channel 3 Min";
             // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(176, 363);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(33, 23);
-            this.numericUpDown1.TabIndex = 21;
-            // 
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(34, 387);
+            this.trackBar1.Maximum = 255;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(175, 45);
             this.trackBar1.TabIndex = 19;
@@ -1000,6 +957,13 @@ namespace WinFormsApp1
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.label18);
+            this.tabPage6.Controls.Add(this.label17);
+            this.tabPage6.Controls.Add(this.label16);
+            this.tabPage6.Controls.Add(this.label15);
+            this.tabPage6.Controls.Add(this.RedSelect);
+            this.tabPage6.Controls.Add(this.GreenSelect);
+            this.tabPage6.Controls.Add(this.BlueSelect);
             this.tabPage6.Controls.Add(this.panel7);
             this.tabPage6.Location = new System.Drawing.Point(4, 24);
             this.tabPage6.Name = "tabPage6";
@@ -1008,6 +972,85 @@ namespace WinFormsApp1
             this.tabPage6.TabIndex = 7;
             this.tabPage6.Text = "Contours";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(169, 271);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(30, 15);
+            this.label18.TabIndex = 27;
+            this.label18.Text = "Blue";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(295, 271);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(38, 15);
+            this.label17.TabIndex = 26;
+            this.label17.Text = "Green";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(484, 271);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(27, 15);
+            this.label16.TabIndex = 25;
+            this.label16.Text = "Red";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(105, 210);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(83, 15);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "Contour Color";
+            // 
+            // RedSelect
+            // 
+            this.RedSelect.Location = new System.Drawing.Point(447, 232);
+            this.RedSelect.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.RedSelect.Name = "RedSelect";
+            this.RedSelect.Size = new System.Drawing.Size(120, 23);
+            this.RedSelect.TabIndex = 23;
+            // 
+            // GreenSelect
+            // 
+            this.GreenSelect.Location = new System.Drawing.Point(283, 232);
+            this.GreenSelect.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.GreenSelect.Name = "GreenSelect";
+            this.GreenSelect.Size = new System.Drawing.Size(120, 23);
+            this.GreenSelect.TabIndex = 22;
+            this.GreenSelect.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // BlueSelect
+            // 
+            this.BlueSelect.Location = new System.Drawing.Point(132, 232);
+            this.BlueSelect.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.BlueSelect.Name = "BlueSelect";
+            this.BlueSelect.Size = new System.Drawing.Size(120, 23);
+            this.BlueSelect.TabIndex = 21;
             // 
             // panel7
             // 
@@ -1047,11 +1090,11 @@ namespace WinFormsApp1
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(286, 163);
+            this.button9.Location = new System.Drawing.Point(275, 141);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 27;
-            this.button9.Text = "button9";
+            this.button9.Text = "Go";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
@@ -1150,17 +1193,11 @@ namespace WinFormsApp1
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -1172,6 +1209,10 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.imageBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox10)).EndInit();
             this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RedSelect)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GreenSelect)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BlueSelect)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox11)).EndInit();
@@ -1232,22 +1273,16 @@ namespace WinFormsApp1
         private System.Windows.Forms.ComboBox comboBox8;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
         private System.Windows.Forms.TrackBar trackBar5;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
         private System.Windows.Forms.TrackBar trackBar6;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.TrackBar trackBar4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.TrackBar trackBar3;
         private System.Windows.Forms.Label Channel3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox comboBox5;
@@ -1279,6 +1314,13 @@ namespace WinFormsApp1
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.ComboBox BoundedShapeSelect;
         private System.Windows.Forms.ComboBox ChainApproxSelect;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.NumericUpDown RedSelect;
+        private System.Windows.Forms.NumericUpDown GreenSelect;
+        private System.Windows.Forms.NumericUpDown BlueSelect;
     }
 }
 
