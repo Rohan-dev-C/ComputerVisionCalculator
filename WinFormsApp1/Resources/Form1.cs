@@ -65,6 +65,15 @@ namespace WinFormsApp1
             ChainApproxTc89Kcos = 4,
             LinkRuns = 5,
         }
+
+        public enum BlurTypes
+        { 
+            Simple, 
+            Gaussian,
+            Median,
+            Bilateral
+        }
+         
         public Form1()
         {
             InitializeComponent();
@@ -78,13 +87,14 @@ namespace WinFormsApp1
         Dictionary<string, ChainApproxMethod> ChainApproxMethods = new Dictionary<string, ChainApproxMethod>(); 
         Dictionary<string, BoundTypes> BoundedTypes = new Dictionary<string, BoundTypes>(); 
         Dictionary<string, ContourType> ContourTypes = new Dictionary<string, ContourType>(); 
+        Dictionary<string, BlurTypes> BlurType = new Dictionary<string, BlurTypes>(); 
         BitwiseOperators currentBitwise;
         ThresholdType currentThreshold; 
         ColorShiftOperators currentColorShift;
         ContourType currentContourType;
         ChainApproxMethod currentChainApprox;
-        BoundTypes currentBounds; 
-
+        BoundTypes currentBounds;
+        BlurTypes currentBlur;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -135,6 +145,10 @@ namespace WinFormsApp1
             BoundedTypes.Add("MinumumArea", BoundTypes.MinimumArea);
             BoundedTypes.Add("MinumumCircle", BoundTypes.MinumumCircle);
             BoundedTypes.Add("Rectangle", BoundTypes.Rectangle);
+            BlurType.Add("Simple", BlurTypes.Simple);
+            BlurType.Add("Gaussian", BlurTypes.Gaussian);
+            BlurType.Add("Median", BlurTypes.Median);
+            BlurType.Add("Bilaterial", BlurTypes.Bilateral);
             #endregion 
             #region designs 
             Mat fullCircle = CvInvoke.Imread("Images/triangle2.png"); 
@@ -214,6 +228,10 @@ namespace WinFormsApp1
             images.Add("gradient", output6);
             #endregion
             #region comboBoxSetup
+            foreach (var item in BlurType.Keys)
+            {
+                BlurTypeComboBox.Items.Add(item); 
+            }
             foreach (var item in ChainApproxMethods.Keys)
             {
                 ChainApproxSelect.Items.Add(item);
@@ -244,7 +262,7 @@ namespace WinFormsApp1
                 comboBox2.Items.Add(item);
                 comboBox4.Items.Add(item); 
                 comboBox6.Items.Add(item);
-                comboBox10.Items.Add(item);
+                BlurOperationImageSelect.Items.Add(item);
                 comboBox8.Items.Add(item);
                 comboBox12.Items.Add(item); 
             }
@@ -458,7 +476,7 @@ namespace WinFormsApp1
             comboBox1.Items.Add(RedTextBox.Text);
             comboBox2.Items.Add(RedTextBox.Text);
             comboBox6.Items.Add(RedTextBox.Text);
-            comboBox10.Items.Add(RedTextBox.Text);
+            BlurOperationImageSelect.Items.Add(RedTextBox.Text);
             comboBox12.Items.Add(RedTextBox.Text);
             comboBox8.Items.Add(RedTextBox.Text);
             comboBox4.Items.Add(RedTextBox.Text);
@@ -471,7 +489,7 @@ namespace WinFormsApp1
             comboBox1.Items.Add(GreenTextBox.Text);
             comboBox2.Items.Add(GreenTextBox.Text);
             comboBox6.Items.Add(GreenTextBox.Text);
-            comboBox10.Items.Add(GreenTextBox.Text);
+            BlurOperationImageSelect.Items.Add(GreenTextBox.Text);
             comboBox12.Items.Add(GreenTextBox.Text);
             comboBox8.Items.Add(GreenTextBox.Text);
             comboBox4.Items.Add(GreenTextBox.Text);
@@ -484,7 +502,7 @@ namespace WinFormsApp1
             comboBox1.Items.Add(BlueTextBox.Text);
             comboBox2.Items.Add(BlueTextBox.Text);
             comboBox6.Items.Add(BlueTextBox.Text);
-            comboBox10.Items.Add(BlueTextBox.Text);
+            BlurOperationImageSelect.Items.Add(BlueTextBox.Text);
             comboBox12.Items.Add(BlueTextBox.Text);
             comboBox8.Items.Add(BlueTextBox.Text);
             comboBox4.Items.Add(BlueTextBox.Text);
@@ -508,7 +526,7 @@ namespace WinFormsApp1
             comboBox1.Items.Add(textBox3.Text);
             comboBox2.Items.Add(textBox3.Text);
             comboBox6.Items.Add(textBox3.Text);
-            comboBox10.Items.Add(textBox3.Text);
+            BlurOperationImageSelect.Items.Add(textBox3.Text);
             comboBox12.Items.Add(textBox3.Text);
             comboBox8.Items.Add(textBox3.Text);
             comboBox4.Items.Add(textBox3.Text);
@@ -551,7 +569,7 @@ namespace WinFormsApp1
             comboBox1.Items.Add(textBox2.Text);
             comboBox2.Items.Add(textBox2.Text);
             comboBox6.Items.Add(textBox2.Text);
-            comboBox10.Items.Add(textBox2.Text);
+            BlurOperationImageSelect.Items.Add(textBox2.Text);
             comboBox12.Items.Add(textBox2.Text);
             comboBox8.Items.Add(textBox2.Text);
             comboBox4.Items.Add(textBox2.Text);
@@ -564,17 +582,45 @@ namespace WinFormsApp1
         #region blurring
         private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
         {
-            imageBox10.Image = images[comboBox10.SelectedItem.ToString()];
+            imageBox10.Image = images[BlurOperationImageSelect.SelectedItem.ToString()];
         }
-
         private void button7_Click(object sender, EventArgs e)
         {
-            
+            images.Add(BlurSaveText.Text, imageBox9.Image);
+            comboBox1.Items.Add(BlurSaveText.Text);
+            comboBox2.Items.Add(BlurSaveText.Text);
+            comboBox6.Items.Add(BlurSaveText.Text);
+            BlurOperationImageSelect.Items.Add(BlurSaveText.Text);
+            comboBox12.Items.Add(BlurSaveText.Text);
+            comboBox8.Items.Add(BlurSaveText.Text);
+            comboBox4.Items.Add(BlurSaveText.Text);
+            BlurSaveText.Clear();
+            imageBox9.Image = default;
         }
-
         private void comboBox9_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            currentBlur = BlurType[BlurTypeComboBox.SelectedItem.ToString()];
+        }
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Mat output = new Mat();
+            Size kSize = new Size(int.Parse(KernelSizeText.Text), int.Parse(KernelSizeText.Text));
+            switch (currentBlur)
+            {
+                case BlurTypes.Simple:
+                    CvInvoke.Blur(imageBox10.Image, output, kSize, new Point(-1, -1));
+                    break;
+                case BlurTypes.Gaussian:
+                    CvInvoke.GaussianBlur(imageBox10.Image, output, kSize, 0);
+                    break;
+                case BlurTypes.Median:
+                    CvInvoke.MedianBlur(imageBox10.Image, output, kSize.Width);
+                    break;
+                case BlurTypes.Bilateral:
+                    CvInvoke.BilateralFilter(imageBox10.Image, output, 0, 0, 0, BorderType.Reflect101);
+                    break;
+            }
+            imageBox9.Image = output; 
         }
         #endregion
         #region Contours
@@ -588,7 +634,7 @@ namespace WinFormsApp1
             comboBox1.Items.Add(textBox7.Text);
             comboBox2.Items.Add(textBox7.Text);
             comboBox6.Items.Add(textBox7.Text);
-            comboBox10.Items.Add(textBox7.Text);
+            BlurOperationImageSelect.Items.Add(textBox7.Text);
             comboBox12.Items.Add(textBox7.Text);
             comboBox8.Items.Add(textBox7.Text);
             comboBox4.Items.Add(textBox7.Text);
@@ -624,23 +670,38 @@ namespace WinFormsApp1
                 case ContourType.Bounded:
                     switch (currentBounds)
                     {
+                        case BoundTypes.ConvexHull:
+
+                            break;
+
+                        case BoundTypes.MinumumCircle:
+
+                            break;
+
+                        case BoundTypes.Rectangle:
+
+                            break;
                         case BoundTypes.MinimumArea:
                             Mat grayScaledImage = new Mat();
                             var temp = imageBox12.Image as Mat;
                             Mat original = temp;
                             CvInvoke.CvtColor(original, grayScaledImage, ColorConversion.Bgr2Gray);
+                            CvInvoke.InRange(grayScaledImage, (ScalarArray)new MCvScalar(60, 0, 0), (ScalarArray)new MCvScalar(255, 255, 255), grayScaledImage); 
                             VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
                             Mat nextLayer = new Mat();
-                            CvInvoke.FindContours(grayScaledImage, contours, nextLayer, RetrType.External, (Emgu.CV.CvEnum.ChainApproxMethod)currentChainApprox);
-                            RotatedRect rect = CvInvoke.MinAreaRect(contours[0]);
-                            var verticies = rect.GetVertices().Select(pt => new Point((int)pt.X, (int)pt.Y)).ToArray();
-                            CvInvoke.Line(original, verticies[0], verticies[1], new MCvScalar(0, 255, 0), 2);
-                            CvInvoke.Line(original, verticies[1], verticies[2], new MCvScalar(0, 255, 0), 2);
-                            CvInvoke.Line(original, verticies[2], verticies[3], new MCvScalar(0, 255, 0), 2);
-                            CvInvoke.Line(original, verticies[3], verticies[0], new MCvScalar(0, 255, 0), 2);
+                            //CvInvoke.FindContours(grayScaledImage, contours, nextLayer, RetrType.External,);
+                            for (int i = 0; i < contours.Size; i++)
+                            {
+                                RotatedRect rect = CvInvoke.MinAreaRect(contours[0]);
+                                var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+                                CvInvoke.Line(original, verticies[0], verticies[1], new MCvScalar(0, 255, 0), 2);
+                                CvInvoke.Line(original, verticies[1], verticies[2], new MCvScalar(0, 255, 0), 2);
+                                CvInvoke.Line(original, verticies[2], verticies[3], new MCvScalar(0, 255, 0), 2);
+                                CvInvoke.Line(original, verticies[3], verticies[0], new MCvScalar(0, 255, 0), 2);
+                            }
                             imageBox11.Image = original; 
+
                             break; 
-                    
                     }
                     break;
                 case ContourType.ChainApprox:
@@ -678,15 +739,14 @@ namespace WinFormsApp1
         {
 
         }
-
         private void label18_Click(object sender, EventArgs e)
         {
 
         }
-
         private void tabPage2_Click(object sender, EventArgs e)
         {
 
         }
+
     }
 }
