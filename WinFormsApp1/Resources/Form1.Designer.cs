@@ -120,6 +120,8 @@ namespace WinFormsApp1
             this.GreenSelect = new System.Windows.Forms.NumericUpDown();
             this.BlueSelect = new System.Windows.Forms.NumericUpDown();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.MaskSelect = new System.Windows.Forms.ComboBox();
+            this.MaskImage = new Emgu.CV.UI.ImageBox();
             this.BoundedShapeSelect = new System.Windows.Forms.ComboBox();
             this.ChainApproxSelect = new System.Windows.Forms.ComboBox();
             this.button9 = new System.Windows.Forms.Button();
@@ -139,8 +141,7 @@ namespace WinFormsApp1
             this.button7 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.ColorShiftImageSelect = new System.Windows.Forms.ComboBox();
-            this.MaskImage = new Emgu.CV.UI.ImageBox();
-            this.MaskSelect = new System.Windows.Forms.ComboBox();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox7)).BeginInit();
@@ -176,13 +177,13 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.GreenSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BlueSelect)).BeginInit();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaskImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox12)).BeginInit();
             this.tabPage7.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaskImage)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -670,6 +671,7 @@ namespace WinFormsApp1
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
+            this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1104,6 +1106,24 @@ namespace WinFormsApp1
             this.panel7.Size = new System.Drawing.Size(852, 300);
             this.panel7.TabIndex = 20;
             // 
+            // MaskSelect
+            // 
+            this.MaskSelect.FormattingEnabled = true;
+            this.MaskSelect.Location = new System.Drawing.Point(244, 142);
+            this.MaskSelect.Name = "MaskSelect";
+            this.MaskSelect.Size = new System.Drawing.Size(115, 23);
+            this.MaskSelect.TabIndex = 31;
+            this.MaskSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged_1);
+            // 
+            // MaskImage
+            // 
+            this.MaskImage.Location = new System.Drawing.Point(244, 171);
+            this.MaskImage.Name = "MaskImage";
+            this.MaskImage.Size = new System.Drawing.Size(115, 106);
+            this.MaskImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MaskImage.TabIndex = 30;
+            this.MaskImage.TabStop = false;
+            // 
             // BoundedShapeSelect
             // 
             this.BoundedShapeSelect.FormattingEnabled = true;
@@ -1282,23 +1302,15 @@ namespace WinFormsApp1
             this.ColorShiftImageSelect.TabIndex = 12;
             this.ColorShiftImageSelect.SelectedIndexChanged += new System.EventHandler(this.ColorShiftImageSelect_SelectedIndexChanged);
             // 
-            // MaskImage
+            // tabPage8
             // 
-            this.MaskImage.Location = new System.Drawing.Point(244, 171);
-            this.MaskImage.Name = "MaskImage";
-            this.MaskImage.Size = new System.Drawing.Size(115, 106);
-            this.MaskImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.MaskImage.TabIndex = 30;
-            this.MaskImage.TabStop = false;
-            // 
-            // MaskSelect
-            // 
-            this.MaskSelect.FormattingEnabled = true;
-            this.MaskSelect.Location = new System.Drawing.Point(244, 142);
-            this.MaskSelect.Name = "MaskSelect";
-            this.MaskSelect.Size = new System.Drawing.Size(115, 23);
-            this.MaskSelect.TabIndex = 31;
-            this.MaskSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged_1);
+            this.tabPage8.Location = new System.Drawing.Point(4, 24);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(864, 438);
+            this.tabPage8.TabIndex = 9;
+            this.tabPage8.Text = "Camera";
+            this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1355,6 +1367,7 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.BlueSelect)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaskImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox12)).EndInit();
             this.tabPage7.ResumeLayout(false);
@@ -1362,7 +1375,6 @@ namespace WinFormsApp1
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaskImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1480,6 +1492,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.ComboBox ColorShiftImageSelect;
         private System.Windows.Forms.ComboBox MaskSelect;
         private Emgu.CV.UI.ImageBox MaskImage;
+        private System.Windows.Forms.TabPage tabPage8;
     }
 }
 
