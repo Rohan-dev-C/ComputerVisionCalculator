@@ -108,9 +108,20 @@ namespace WinFormsApp1
         BlurTypes currentBlur;
         MaxLum currentColorSpace;
         Mat currentMaskContour;
-        bool notSelected = true; 
+        bool notSelected = true;
+        VideoCapture capture = new VideoCapture(0); 
+        
+        void GetFrame(object sender, EventArgs e)
+        {
+            using Mat currentFrame = capture.QueryFrame();
+            using Mat output = currentFrame.Clone();
+            CvInvoke.Flip(output, output, FlipType.Horizontal);
+            imageBox15.Image = output;
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            Application.Idle += new EventHandler(GetFrame);
             #region setup
             ChainApproxSelect.Hide();
             BoundedShapeSelect.Hide();
@@ -959,8 +970,21 @@ namespace WinFormsApp1
             textBox6.Clear();
             imageBox13.Image = default;
         }
+
+
         #endregion
 
-        
+        #region Camera
+        private void comboBox9_SelectedIndexChanged_2(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+
+            imageBox15.Image = capture.QueryFrame(); 
+        }
+        #endregion
     }
 }

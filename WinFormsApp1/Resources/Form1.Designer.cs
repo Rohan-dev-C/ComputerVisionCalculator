@@ -142,6 +142,10 @@ namespace WinFormsApp1
             this.label19 = new System.Windows.Forms.Label();
             this.ColorShiftImageSelect = new System.Windows.Forms.ComboBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.imageBox15 = new Emgu.CV.UI.ImageBox();
             this.tabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox7)).BeginInit();
@@ -184,6 +188,9 @@ namespace WinFormsApp1
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox14)).BeginInit();
+            this.tabPage8.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox15)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -883,6 +890,7 @@ namespace WinFormsApp1
             // 
             // tabPage5
             // 
+            this.tabPage5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabPage5.Controls.Add(this.panel6);
             this.tabPage5.Location = new System.Drawing.Point(4, 24);
             this.tabPage5.Name = "tabPage5";
@@ -890,7 +898,6 @@ namespace WinFormsApp1
             this.tabPage5.Size = new System.Drawing.Size(864, 438);
             this.tabPage5.TabIndex = 6;
             this.tabPage5.Text = "Blurring Operations";
-            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // panel6
             // 
@@ -991,6 +998,7 @@ namespace WinFormsApp1
             // 
             // tabPage6
             // 
+            this.tabPage6.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabPage6.Controls.Add(this.label18);
             this.tabPage6.Controls.Add(this.label17);
             this.tabPage6.Controls.Add(this.label16);
@@ -1005,7 +1013,6 @@ namespace WinFormsApp1
             this.tabPage6.Size = new System.Drawing.Size(864, 438);
             this.tabPage6.TabIndex = 7;
             this.tabPage6.Text = "Contours";
-            this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // label18
             // 
@@ -1216,6 +1223,7 @@ namespace WinFormsApp1
             // 
             // tabPage7
             // 
+            this.tabPage7.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabPage7.Controls.Add(this.panel8);
             this.tabPage7.Location = new System.Drawing.Point(4, 24);
             this.tabPage7.Name = "tabPage7";
@@ -1223,7 +1231,6 @@ namespace WinFormsApp1
             this.tabPage7.Size = new System.Drawing.Size(864, 438);
             this.tabPage7.TabIndex = 8;
             this.tabPage7.Text = "Color Converter";
-            this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // panel8
             // 
@@ -1304,13 +1311,52 @@ namespace WinFormsApp1
             // 
             // tabPage8
             // 
+            this.tabPage8.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage8.Controls.Add(this.panel9);
             this.tabPage8.Location = new System.Drawing.Point(4, 24);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage8.Size = new System.Drawing.Size(864, 438);
             this.tabPage8.TabIndex = 9;
             this.tabPage8.Text = "Camera";
-            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.button10);
+            this.panel9.Controls.Add(this.comboBox9);
+            this.panel9.Controls.Add(this.imageBox15);
+            this.panel9.Location = new System.Drawing.Point(6, 6);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(840, 418);
+            this.panel9.TabIndex = 3;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(219, 38);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(89, 23);
+            this.button10.TabIndex = 4;
+            this.button10.Text = "button10";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.FormattingEnabled = true;
+            this.comboBox9.Location = new System.Drawing.Point(12, 39);
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.Size = new System.Drawing.Size(200, 23);
+            this.comboBox9.TabIndex = 3;
+            this.comboBox9.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged_2);
+            // 
+            // imageBox15
+            // 
+            this.imageBox15.Location = new System.Drawing.Point(12, 68);
+            this.imageBox15.Name = "imageBox15";
+            this.imageBox15.Size = new System.Drawing.Size(811, 120);
+            this.imageBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageBox15.TabIndex = 2;
+            this.imageBox15.TabStop = false;
             // 
             // Form1
             // 
@@ -1375,6 +1421,9 @@ namespace WinFormsApp1
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox14)).EndInit();
+            this.tabPage8.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox15)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1493,6 +1542,10 @@ namespace WinFormsApp1
         private System.Windows.Forms.ComboBox MaskSelect;
         private Emgu.CV.UI.ImageBox MaskImage;
         private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.ComboBox comboBox9;
+        private Emgu.CV.UI.ImageBox imageBox15;
     }
 }
 
