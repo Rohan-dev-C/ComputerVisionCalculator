@@ -80,6 +80,12 @@ namespace WinFormsApp1
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -124,12 +130,17 @@ namespace WinFormsApp1
             this.button8 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox12 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.ColorShiftOperationSelect = new System.Windows.Forms.ComboBox();
+            this.imageBox13 = new Emgu.CV.UI.ImageBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.imageBox14 = new Emgu.CV.UI.ImageBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.ColorShiftImageSelect = new System.Windows.Forms.ComboBox();
+            this.MaskImage = new Emgu.CV.UI.ImageBox();
+            this.MaskSelect = new System.Windows.Forms.ComboBox();
             this.tabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox7)).BeginInit();
@@ -147,6 +158,12 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.imageBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox6)).BeginInit();
@@ -161,12 +178,11 @@ namespace WinFormsApp1
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+            this.tabPage7.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaskImage)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -653,6 +669,7 @@ namespace WinFormsApp1
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -682,6 +699,54 @@ namespace WinFormsApp1
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "InRange Operation";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.Location = new System.Drawing.Point(644, 374);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown4.TabIndex = 43;
+            this.numericUpDown4.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.Location = new System.Drawing.Point(645, 330);
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown5.TabIndex = 42;
+            this.numericUpDown5.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
+            // 
+            // numericUpDown6
+            // 
+            this.numericUpDown6.Location = new System.Drawing.Point(644, 284);
+            this.numericUpDown6.Name = "numericUpDown6";
+            this.numericUpDown6.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown6.TabIndex = 41;
+            this.numericUpDown6.ValueChanged += new System.EventHandler(this.numericUpDown6_ValueChanged);
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Location = new System.Drawing.Point(50, 381);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown3.TabIndex = 40;
+            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(50, 328);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown2.TabIndex = 39;
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(50, 284);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown1.TabIndex = 38;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label7
             // 
@@ -943,7 +1008,7 @@ namespace WinFormsApp1
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(206, 311);
+            this.label18.Location = new System.Drawing.Point(235, 370);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(30, 15);
             this.label18.TabIndex = 27;
@@ -953,7 +1018,7 @@ namespace WinFormsApp1
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(332, 311);
+            this.label17.Location = new System.Drawing.Point(361, 370);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(38, 15);
             this.label17.TabIndex = 26;
@@ -963,7 +1028,7 @@ namespace WinFormsApp1
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(521, 311);
+            this.label16.Location = new System.Drawing.Point(550, 370);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(27, 15);
             this.label16.TabIndex = 25;
@@ -972,7 +1037,7 @@ namespace WinFormsApp1
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(142, 250);
+            this.label15.Location = new System.Drawing.Point(171, 309);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(83, 15);
             this.label15.TabIndex = 24;
@@ -980,7 +1045,7 @@ namespace WinFormsApp1
             // 
             // RedSelect
             // 
-            this.RedSelect.Location = new System.Drawing.Point(484, 272);
+            this.RedSelect.Location = new System.Drawing.Point(513, 331);
             this.RedSelect.Maximum = new decimal(new int[] {
             255,
             0,
@@ -992,7 +1057,7 @@ namespace WinFormsApp1
             // 
             // GreenSelect
             // 
-            this.GreenSelect.Location = new System.Drawing.Point(320, 272);
+            this.GreenSelect.Location = new System.Drawing.Point(349, 331);
             this.GreenSelect.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1009,7 +1074,7 @@ namespace WinFormsApp1
             // 
             // BlueSelect
             // 
-            this.BlueSelect.Location = new System.Drawing.Point(169, 272);
+            this.BlueSelect.Location = new System.Drawing.Point(198, 331);
             this.BlueSelect.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1022,6 +1087,8 @@ namespace WinFormsApp1
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel7.Controls.Add(this.MaskSelect);
+            this.panel7.Controls.Add(this.MaskImage);
             this.panel7.Controls.Add(this.BoundedShapeSelect);
             this.panel7.Controls.Add(this.ChainApproxSelect);
             this.panel7.Controls.Add(this.button9);
@@ -1034,13 +1101,13 @@ namespace WinFormsApp1
             this.panel7.Controls.Add(this.comboBox12);
             this.panel7.Location = new System.Drawing.Point(6, 6);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(852, 241);
+            this.panel7.Size = new System.Drawing.Size(852, 300);
             this.panel7.TabIndex = 20;
             // 
             // BoundedShapeSelect
             // 
             this.BoundedShapeSelect.FormattingEnabled = true;
-            this.BoundedShapeSelect.Location = new System.Drawing.Point(259, 94);
+            this.BoundedShapeSelect.Location = new System.Drawing.Point(259, 66);
             this.BoundedShapeSelect.Name = "BoundedShapeSelect";
             this.BoundedShapeSelect.Size = new System.Drawing.Size(281, 23);
             this.BoundedShapeSelect.TabIndex = 29;
@@ -1049,7 +1116,7 @@ namespace WinFormsApp1
             // ChainApproxSelect
             // 
             this.ChainApproxSelect.FormattingEnabled = true;
-            this.ChainApproxSelect.Location = new System.Drawing.Point(259, 65);
+            this.ChainApproxSelect.Location = new System.Drawing.Point(259, 37);
             this.ChainApproxSelect.Name = "ChainApproxSelect";
             this.ChainApproxSelect.Size = new System.Drawing.Size(281, 23);
             this.ChainApproxSelect.TabIndex = 28;
@@ -1057,7 +1124,7 @@ namespace WinFormsApp1
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(275, 141);
+            this.button9.Location = new System.Drawing.Point(357, 95);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 27;
@@ -1068,7 +1135,7 @@ namespace WinFormsApp1
             // comboBox11
             // 
             this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Location = new System.Drawing.Point(259, 36);
+            this.comboBox11.Location = new System.Drawing.Point(259, 8);
             this.comboBox11.Name = "comboBox11";
             this.comboBox11.Size = new System.Drawing.Size(281, 23);
             this.comboBox11.TabIndex = 26;
@@ -1127,47 +1194,111 @@ namespace WinFormsApp1
             this.comboBox12.TabIndex = 12;
             this.comboBox12.SelectedIndexChanged += new System.EventHandler(this.comboBox12_SelectedIndexChanged);
             // 
-            // numericUpDown1
+            // tabPage7
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(50, 284);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown1.TabIndex = 38;
+            this.tabPage7.Controls.Add(this.panel8);
+            this.tabPage7.Location = new System.Drawing.Point(4, 24);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(864, 438);
+            this.tabPage7.TabIndex = 8;
+            this.tabPage7.Text = "Color Converter";
+            this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown2
+            // panel8
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(50, 328);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown2.TabIndex = 39;
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel8.Controls.Add(this.ColorShiftOperationSelect);
+            this.panel8.Controls.Add(this.imageBox13);
+            this.panel8.Controls.Add(this.textBox6);
+            this.panel8.Controls.Add(this.imageBox14);
+            this.panel8.Controls.Add(this.button7);
+            this.panel8.Controls.Add(this.label19);
+            this.panel8.Controls.Add(this.ColorShiftImageSelect);
+            this.panel8.Location = new System.Drawing.Point(6, 6);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(841, 231);
+            this.panel8.TabIndex = 19;
             // 
-            // numericUpDown3
+            // ColorShiftOperationSelect
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(50, 381);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown3.TabIndex = 40;
+            this.ColorShiftOperationSelect.FormattingEnabled = true;
+            this.ColorShiftOperationSelect.Location = new System.Drawing.Point(219, 58);
+            this.ColorShiftOperationSelect.Name = "ColorShiftOperationSelect";
+            this.ColorShiftOperationSelect.Size = new System.Drawing.Size(337, 23);
+            this.ColorShiftOperationSelect.TabIndex = 26;
+            this.ColorShiftOperationSelect.SelectedIndexChanged += new System.EventHandler(this.ColorShiftOperationSelect_SelectedIndexChanged);
             // 
-            // numericUpDown4
+            // imageBox13
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(644, 374);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown4.TabIndex = 43;
+            this.imageBox13.Location = new System.Drawing.Point(561, 38);
+            this.imageBox13.Name = "imageBox13";
+            this.imageBox13.Size = new System.Drawing.Size(191, 186);
+            this.imageBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageBox13.TabIndex = 25;
+            this.imageBox13.TabStop = false;
             // 
-            // numericUpDown5
+            // textBox6
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(645, 330);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown5.TabIndex = 42;
+            this.textBox6.Location = new System.Drawing.Point(561, 8);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 23);
+            this.textBox6.TabIndex = 23;
             // 
-            // numericUpDown6
+            // imageBox14
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(644, 284);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown6.TabIndex = 41;
+            this.imageBox14.Location = new System.Drawing.Point(15, 36);
+            this.imageBox14.Name = "imageBox14";
+            this.imageBox14.Size = new System.Drawing.Size(198, 188);
+            this.imageBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageBox14.TabIndex = 2;
+            this.imageBox14.TabStop = false;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(692, 9);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(19, 23);
+            this.button7.TabIndex = 16;
+            this.button7.Text = "Save";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(784, 171);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(44, 15);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "label19";
+            // 
+            // ColorShiftImageSelect
+            // 
+            this.ColorShiftImageSelect.FormattingEnabled = true;
+            this.ColorShiftImageSelect.Location = new System.Drawing.Point(14, 7);
+            this.ColorShiftImageSelect.Name = "ColorShiftImageSelect";
+            this.ColorShiftImageSelect.Size = new System.Drawing.Size(121, 23);
+            this.ColorShiftImageSelect.TabIndex = 12;
+            this.ColorShiftImageSelect.SelectedIndexChanged += new System.EventHandler(this.ColorShiftImageSelect_SelectedIndexChanged);
+            // 
+            // MaskImage
+            // 
+            this.MaskImage.Location = new System.Drawing.Point(244, 171);
+            this.MaskImage.Name = "MaskImage";
+            this.MaskImage.Size = new System.Drawing.Size(115, 106);
+            this.MaskImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MaskImage.TabIndex = 30;
+            this.MaskImage.TabStop = false;
+            // 
+            // MaskSelect
+            // 
+            this.MaskSelect.FormattingEnabled = true;
+            this.MaskSelect.Location = new System.Drawing.Point(244, 142);
+            this.MaskSelect.Name = "MaskSelect";
+            this.MaskSelect.Size = new System.Drawing.Size(115, 23);
+            this.MaskSelect.TabIndex = 31;
+            this.MaskSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged_1);
             // 
             // Form1
             // 
@@ -1202,6 +1333,12 @@ namespace WinFormsApp1
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox5)).EndInit();
@@ -1220,12 +1357,12 @@ namespace WinFormsApp1
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+            this.tabPage7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaskImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1332,6 +1469,17 @@ namespace WinFormsApp1
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.ComboBox ColorShiftOperationSelect;
+        private Emgu.CV.UI.ImageBox imageBox13;
+        private System.Windows.Forms.TextBox textBox6;
+        private Emgu.CV.UI.ImageBox imageBox14;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox ColorShiftImageSelect;
+        private System.Windows.Forms.ComboBox MaskSelect;
+        private Emgu.CV.UI.ImageBox MaskImage;
     }
 }
 

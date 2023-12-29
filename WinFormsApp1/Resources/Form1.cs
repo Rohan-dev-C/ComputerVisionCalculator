@@ -14,6 +14,7 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
+        #region enums
         enum BitwiseOperators
         { 
             And,
@@ -29,6 +30,7 @@ namespace WinFormsApp1
 
         enum ColorShiftOperators
         { 
+            None,
             BGR_HSV,
             BGR_GRAY,
             HSV_BGR,
@@ -73,7 +75,15 @@ namespace WinFormsApp1
             Median,
             Bilateral
         }
-         
+
+        public enum MaxLum
+        { 
+            HSV,
+            BGR,
+            GrayScale,
+        }
+
+        #endregion 
         public Form1()
         {
             InitializeComponent();
@@ -87,7 +97,8 @@ namespace WinFormsApp1
         Dictionary<string, ChainApproxMethod> ChainApproxMethods = new Dictionary<string, ChainApproxMethod>(); 
         Dictionary<string, BoundTypes> BoundedTypes = new Dictionary<string, BoundTypes>(); 
         Dictionary<string, ContourType> ContourTypes = new Dictionary<string, ContourType>(); 
-        Dictionary<string, BlurTypes> BlurType = new Dictionary<string, BlurTypes>(); 
+        Dictionary<string, BlurTypes> BlurType = new Dictionary<string, BlurTypes>();
+        Dictionary<string, MaxLum> MaximumValueColor = new Dictionary<string, MaxLum>();  
         BitwiseOperators currentBitwise;
         ThresholdType currentThreshold; 
         ColorShiftOperators currentColorShift;
@@ -95,7 +106,9 @@ namespace WinFormsApp1
         ChainApproxMethod currentChainApprox;
         BoundTypes currentBounds;
         BlurTypes currentBlur;
-
+        MaxLum currentColorSpace;
+        Mat currentMaskContour;
+        bool notSelected = true; 
         private void Form1_Load(object sender, EventArgs e)
         {
             #region setup
@@ -115,6 +128,8 @@ namespace WinFormsApp1
             images.Add("blueAndWhite", CvInvoke.Imread("Images/blueAndWhite.jpg"));
             images.Add("prompt", CvInvoke.Imread("Images/prompt.png"));
             images.Add("SHApez", CvInvoke.Imread("Images/cont2.png"));
+            images.Add("Rubiks", CvInvoke.Imread("Images/rubiks3.png"));
+            images.Add("BentRubix", CvInvoke.Imread("Images/rubiks2.png")); 
             bitwiseOperations.Add("Add", BitwiseOperators.Add);
             bitwiseOperations.Add("And", BitwiseOperators.And);
             bitwiseOperations.Add("Or", BitwiseOperators.Or);
@@ -124,6 +139,7 @@ namespace WinFormsApp1
             bitwiseOperations.Add("Multiply", BitwiseOperators.Multiply);
             bitwiseOperations.Add("Divide", BitwiseOperators.Divide);
             bitwiseOperations.Add("Add Weighted", BitwiseOperators.AddWeighted);
+            colorshiftOperations.Add("None", ColorShiftOperators.None); 
             colorshiftOperations.Add("BGR ------> HSV", ColorShiftOperators.BGR_HSV);
             colorshiftOperations.Add("BGR ------> Grayscale", ColorShiftOperators.BGR_GRAY);
             colorshiftOperations.Add("HSV ------> BGR", ColorShiftOperators.HSV_BGR);
@@ -149,8 +165,15 @@ namespace WinFormsApp1
             BlurType.Add("Gaussian", BlurTypes.Gaussian);
             BlurType.Add("Median", BlurTypes.Median);
             BlurType.Add("Bilaterial", BlurTypes.Bilateral);
-            #endregion 
+            MaximumValueColor.Add("BGR", MaxLum.BGR);
+            MaximumValueColor.Add("HSV", MaxLum.HSV);
+            MaximumValueColor.Add("GrayScale", MaxLum.GrayScale);
+            #endregion
             #region designs 
+
+            numericUpDown4.Maximum = 255;
+            numericUpDown5.Maximum = 255;
+            numericUpDown6.Maximum = 255;
             Mat fullCircle = CvInvoke.Imread("Images/triangle2.png"); 
                 Stopwatch clock = Stopwatch.StartNew();
             Mat topTriangle = new Mat();
@@ -250,11 +273,15 @@ namespace WinFormsApp1
             }
             foreach (var item in colorshiftOperations.Keys)
             {
-                comboBox5.Items.Add(item); 
+                ColorShiftOperationSelect.Items.Add(item); 
             }
             foreach(var item in thresholdOperations.Keys)
             {
                 comboBox7.Items.Add(item); 
+            }
+            foreach (var item in MaximumValueColor.Keys)
+            {
+                comboBox5.Items.Add(item); 
             }
             foreach (var item in images.Keys)
             {
@@ -263,8 +290,10 @@ namespace WinFormsApp1
                 comboBox4.Items.Add(item); 
                 comboBox6.Items.Add(item);
                 BlurOperationImageSelect.Items.Add(item);
+                MaskSelect.Items.Add(item);
                 comboBox8.Items.Add(item);
-                comboBox12.Items.Add(item); 
+                comboBox12.Items.Add(item);
+                ColorShiftImageSelect.Items.Add(item);
             }
             image.AsReadOnly();
             #endregion  
@@ -284,6 +313,12 @@ namespace WinFormsApp1
             comboBox1.Items.Add(textBox1.Text);
             comboBox2.Items.Add(textBox1.Text);
             comboBox6.Items.Add(textBox1.Text);
+            BlurOperationImageSelect.Items.Add(textBox1.Text);
+            ColorShiftImageSelect.Items.Add(textBox1.Text);
+            MaskSelect.Items.Add(textBox1.Text);
+            comboBox12.Items.Add(textBox1.Text); 
+            comboBox8.Items.Add(textBox1.Text); 
+            comboBox4.Items.Add(textBox1.Text); 
             textBox1.Clear();
             imageBox1.Image = default; 
         }
@@ -510,13 +545,38 @@ namespace WinFormsApp1
             imageBox1.Image = default;
         }
         #endregion
-        #region InRange UNFINISHED
+        #region InRange 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentColorShift = colorshiftOperations[comboBox5.SelectedItem.ToString()]; 
+            currentColorSpace = MaximumValueColor[comboBox5.SelectedItem.ToString()];
+
+            switch (currentColorSpace)
+            {
+                case MaxLum.BGR:
+                    numericUpDown4.Maximum = 255;
+                    numericUpDown5.Maximum = 255;
+                    numericUpDown6.Maximum = 255;
+                    break;
+                case MaxLum.HSV:
+                    numericUpDown4.Maximum = 100;
+                    numericUpDown5.Maximum = 100;
+                    numericUpDown6.Maximum = 180;
+                    break;
+                case MaxLum.GrayScale:
+                    numericUpDown4.Maximum = 255;
+                    numericUpDown5.Maximum = 255;
+                    numericUpDown6.Maximum = 255;
+                    break;
+            }
+            numericUpDown1.Maximum = numericUpDown6.Maximum;
+            numericUpDown2.Maximum = numericUpDown5.Maximum;
+            numericUpDown3.Maximum = numericUpDown4.Maximum;
         }
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
+            numericUpDown4.Value = numericUpDown4.Maximum; 
+            numericUpDown5.Value = numericUpDown5.Maximum; 
+            numericUpDown6.Value = numericUpDown6.Maximum; 
             imageBox6.Image = images[comboBox4.SelectedItem.ToString()];
         }
 
@@ -527,17 +587,79 @@ namespace WinFormsApp1
             comboBox2.Items.Add(textBox3.Text);
             comboBox6.Items.Add(textBox3.Text);
             BlurOperationImageSelect.Items.Add(textBox3.Text);
+            ColorShiftImageSelect.Items.Add(textBox3.Text);
+            MaskSelect.Items.Add(textBox3.Text);
             comboBox12.Items.Add(textBox3.Text);
             comboBox8.Items.Add(textBox3.Text);
             comboBox4.Items.Add(textBox3.Text);
             textBox3.Clear();
             imageBox5.Image = default;
         }
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
+            Mat output = new Mat();
+            Mat temp = imageBox6.Image as Mat;
+            if (temp == null) return;
 
+            CvInvoke.InRange(temp, (ScalarArray)new MCvScalar(int.Parse(numericUpDown1.Text), int.Parse(numericUpDown2.Text), int.Parse(numericUpDown3.Text)),
+                             (ScalarArray)new MCvScalar(int.Parse(numericUpDown6.Text), int.Parse(numericUpDown5.Text), int.Parse(numericUpDown4.Text)), output);
+            imageBox5.Image = output; 
         }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            Mat output = new Mat();
+            Mat temp = imageBox6.Image as Mat;
+            if (temp == null) return;
+
+            CvInvoke.InRange(temp, (ScalarArray)new MCvScalar(int.Parse(numericUpDown1.Text), int.Parse(numericUpDown2.Text), int.Parse(numericUpDown3.Text)),
+                             (ScalarArray)new MCvScalar(int.Parse(numericUpDown6.Text), int.Parse(numericUpDown5.Text), int.Parse(numericUpDown4.Text)), output);
+            imageBox5.Image = output;
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            Mat output = new Mat();
+            Mat temp = imageBox6.Image as Mat;
+            if (temp == null) return;
+
+            CvInvoke.InRange(temp, (ScalarArray)new MCvScalar(int.Parse(numericUpDown1.Text), int.Parse(numericUpDown2.Text), int.Parse(numericUpDown3.Text)),
+                             (ScalarArray)new MCvScalar(int.Parse(numericUpDown6.Text), int.Parse(numericUpDown5.Text), int.Parse(numericUpDown4.Text)), output);
+            imageBox5.Image = output;
+        }
+
+        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
+        {
+            Mat output = new Mat();
+            Mat temp = imageBox6.Image as Mat;
+            if (temp == null) return;
+            CvInvoke.InRange(temp, (ScalarArray)new MCvScalar(int.Parse(numericUpDown1.Text), int.Parse(numericUpDown2.Text), int.Parse(numericUpDown3.Text)),
+                             (ScalarArray)new MCvScalar(int.Parse(numericUpDown6.Text), int.Parse(numericUpDown5.Text), int.Parse(numericUpDown4.Text)), output);
+            imageBox5.Image = output;
+        }
+
+        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+            Mat output = new Mat();
+            Mat temp = imageBox6.Image as Mat;
+            if (temp == null) return;
+
+            CvInvoke.InRange(temp, (ScalarArray)new MCvScalar(int.Parse(numericUpDown1.Text), int.Parse(numericUpDown2.Text), int.Parse(numericUpDown3.Text)),
+                             (ScalarArray)new MCvScalar(int.Parse(numericUpDown6.Text), int.Parse(numericUpDown5.Text), int.Parse(numericUpDown4.Text)), output);
+            imageBox5.Image = output;
+        }
+
+        private void numericUpDown6_ValueChanged(object sender, EventArgs e)
+        {
+            Mat output = new Mat();
+            Mat temp = imageBox6.Image as Mat;
+            if (temp == null) return;
+
+            CvInvoke.InRange(temp, (ScalarArray)new MCvScalar(int.Parse(numericUpDown1.Text), int.Parse(numericUpDown2.Text), int.Parse(numericUpDown3.Text)),
+                             (ScalarArray)new MCvScalar(int.Parse(numericUpDown6.Text), int.Parse(numericUpDown5.Text), int.Parse(numericUpDown4.Text)), output);
+            imageBox5.Image = output;
+        }
+
         #endregion
         #region Threshold Operations
         private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
@@ -572,6 +694,7 @@ namespace WinFormsApp1
             BlurOperationImageSelect.Items.Add(textBox2.Text);
             comboBox12.Items.Add(textBox2.Text);
             comboBox8.Items.Add(textBox2.Text);
+            MaskSelect.Items.Add(textBox2.Text);
             comboBox4.Items.Add(textBox2.Text);
             textBox2.Clear();
             imageBox7.Image = default;
@@ -594,6 +717,7 @@ namespace WinFormsApp1
             comboBox12.Items.Add(BlurSaveText.Text);
             comboBox8.Items.Add(BlurSaveText.Text);
             comboBox4.Items.Add(BlurSaveText.Text);
+            MaskSelect.Items.Add(BlurSaveText.Text);
             BlurSaveText.Clear();
             imageBox9.Image = default;
         }
@@ -636,6 +760,7 @@ namespace WinFormsApp1
             comboBox6.Items.Add(textBox7.Text);
             BlurOperationImageSelect.Items.Add(textBox7.Text);
             comboBox12.Items.Add(textBox7.Text);
+            MaskSelect.Items.Add(textBox7.Text);
             comboBox8.Items.Add(textBox7.Text);
             comboBox4.Items.Add(textBox7.Text);
             textBox7.Clear();
@@ -660,14 +785,31 @@ namespace WinFormsApp1
                 ChainApproxSelect.Hide();
                 BoundedShapeSelect.Hide();
             }
+            notSelected = false; 
         }
         private void button9_Click(object sender, EventArgs e)
         {
-            Mat first = imageBox12.Image as Mat; 
-        
+            Mat first = imageBox12.Image as Mat;
+            Mat mask = new Mat();
+            if (currentMaskContour != null)
+            {
+                mask = currentMaskContour;
+            }
+            else
+            {
+                MessageBox.Show("CHOOSE A MASK");
+                return;
+            }
+
             switch (currentContourType)
             {
                 case ContourType.Bounded:
+                    Mat grayScaledImage = mask;
+                    var temp = imageBox12.Image as Mat;
+                    Mat original = temp.Clone();
+                    VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+                    Mat nextLayer = new Mat();
+                    CvInvoke.FindContours(grayScaledImage, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
                     switch (currentBounds)
                     {
                         case BoundTypes.ConvexHull:
@@ -676,32 +818,42 @@ namespace WinFormsApp1
 
                         case BoundTypes.MinumumCircle:
 
+                            for (int i = 0; i < contours.Size; i++)
+                            {
+                                CircleF circ = CvInvoke.MinEnclosingCircle(contours[i]);
+                                CvInvoke.Circle(original, new Point((int)circ.Center.X, (int)circ.Center.Y), (int)circ.Radius, new MCvScalar((double)BlueSelect.Value, (double)GreenSelect.Value, (double)RedSelect.Value), 2);
+                            }
+                            imageBox11.Image = original;
                             break;
 
                         case BoundTypes.Rectangle:
-
-                            break;
-                        case BoundTypes.MinimumArea:
-                            Mat grayScaledImage = new Mat();
-                            var temp = imageBox12.Image as Mat;
-                            Mat original = temp;
-                            CvInvoke.CvtColor(original, grayScaledImage, ColorConversion.Bgr2Gray);
-                            CvInvoke.InRange(grayScaledImage, (ScalarArray)new MCvScalar(60, 0, 0), (ScalarArray)new MCvScalar(255, 255, 255), grayScaledImage); 
-                            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
-                            Mat nextLayer = new Mat();
-                            //CvInvoke.FindContours(grayScaledImage, contours, nextLayer, RetrType.External,);
+                            if (notSelected)
+                            {
+                                MessageBox.Show("CHOOSE A METHOD");
+                                return;
+                            }
                             for (int i = 0; i < contours.Size; i++)
                             {
-                                RotatedRect rect = CvInvoke.MinAreaRect(contours[0]);
+                                Rectangle rect = CvInvoke.BoundingRectangle(contours[i]); 
+                                CvInvoke.Rectangle(original, rect, new MCvScalar((double)BlueSelect.Value, (double)GreenSelect.Value, (double)RedSelect.Value), 2);
+                            }
+                            imageBox11.Image = original;
+                            break;
+                        case BoundTypes.MinimumArea:
+                            for (int i = 0; i < contours.Size; i++)
+                            {
+                                RotatedRect rect = CvInvoke.MinAreaRect(contours[i]);
                                 var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
-                                CvInvoke.Line(original, verticies[0], verticies[1], new MCvScalar(0, 255, 0), 2);
-                                CvInvoke.Line(original, verticies[1], verticies[2], new MCvScalar(0, 255, 0), 2);
-                                CvInvoke.Line(original, verticies[2], verticies[3], new MCvScalar(0, 255, 0), 2);
-                                CvInvoke.Line(original, verticies[3], verticies[0], new MCvScalar(0, 255, 0), 2);
+                                CvInvoke.Line(original, verticies[0], verticies[1], new MCvScalar((double)BlueSelect.Value, (double)GreenSelect.Value, (double)RedSelect.Value), 2);
+                                CvInvoke.Line(original, verticies[1], verticies[2], new MCvScalar((double)BlueSelect.Value, (double)GreenSelect.Value, (double)RedSelect.Value), 2);
+                                CvInvoke.Line(original, verticies[2], verticies[3], new MCvScalar((double)BlueSelect.Value, (double)GreenSelect.Value, (double)RedSelect.Value), 2);
+                                CvInvoke.Line(original, verticies[3], verticies[0], new MCvScalar((double)BlueSelect.Value, (double)GreenSelect.Value, (double)RedSelect.Value), 2);
                             }
                             imageBox11.Image = original; 
-
-                            break; 
+                            break;
+                        default:
+                            MessageBox.Show("CHOOSE A METHOD");
+                            return; 
                     }
                     break;
                 case ContourType.ChainApprox:
@@ -719,7 +871,11 @@ namespace WinFormsApp1
             }
 
         }
-
+        private void comboBox9_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            currentMaskContour = images[MaskSelect.SelectedItem.ToString()] as Mat;
+            MaskImage.Image = currentMaskContour; 
+        }
         private void ChainApproxSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentChainApprox = ChainApproxMethods[ChainApproxSelect.SelectedItem.ToString()];
@@ -747,6 +903,64 @@ namespace WinFormsApp1
         {
 
         }
+       
+        #region Color Convert
+        private void ColorShiftImageSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            imageBox14.Image = images[ColorShiftImageSelect.SelectedItem.ToString()];
+        }
+        private void ColorShiftOperationSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentColorShift = colorshiftOperations[ColorShiftOperationSelect.SelectedItem.ToString()];
 
+            Mat output = new Mat();
+            Mat temp = imageBox14.Image as Mat;
+            Stopwatch clock = Stopwatch.StartNew();
+            switch (currentColorShift)
+            {
+                case ColorShiftOperators.BGR_GRAY:
+                    CvInvoke.CvtColor(temp, output, ColorConversion.Bgr2Gray);
+                    imageBox13.Image = output;
+                    break;
+                case ColorShiftOperators.BGR_HSV:
+                    if(temp.NumberOfChannels != 3)
+                    {
+                        MessageBox.Show("MUST HAVE 3 CHANNELSZ!!!!");
+                        return; 
+                    }
+                    CvInvoke.CvtColor(temp, output, ColorConversion.Bgr2Hsv);
+                    imageBox13.Image = output;
+                    break;
+                case ColorShiftOperators.HSV_BGR:
+                    if (temp.NumberOfChannels != 3)
+                    {
+                        MessageBox.Show("MUST HAVE 3 CHANNELSZ!!!!");
+                        return;
+                    }
+                    CvInvoke.CvtColor(temp, output, ColorConversion.Hsv2Bgr);
+                    imageBox13.Image = output;
+                    break;
+            }
+            clock.Stop();
+            label19.Text = $"{clock.ElapsedMilliseconds} ms";
+
+        }
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            images.Add(textBox6.Text, imageBox13.Image);
+            comboBox1.Items.Add(textBox6.Text);
+            comboBox2.Items.Add(textBox6.Text);
+            comboBox6.Items.Add(textBox6.Text);
+            BlurOperationImageSelect.Items.Add(textBox6.Text);
+            ColorShiftImageSelect.Items.Add(textBox6.Text);
+            comboBox12.Items.Add(textBox6.Text);
+            comboBox8.Items.Add(textBox6.Text);
+            comboBox4.Items.Add(textBox6.Text);
+            textBox6.Clear();
+            imageBox13.Image = default;
+        }
+        #endregion
+
+        
     }
 }
