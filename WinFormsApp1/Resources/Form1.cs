@@ -1,6 +1,7 @@
 ﻿using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
+using Emgu.CV.UI;
 using Emgu.CV.Util;
 
 using System;
@@ -88,7 +89,7 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
-
+        #region Globals
         List<IInputArray> image = new List<IInputArray>();
         Dictionary<string, IInputArray> images = new Dictionary<string, IInputArray>();
         Dictionary<string, BitwiseOperators> bitwiseOperations = new Dictionary<string, BitwiseOperators>();
@@ -109,15 +110,34 @@ namespace WinFormsApp1
         MaxLum currentColorSpace;
         Mat currentMaskContour;
         bool notSelected = true;
-        VideoCapture capture = new VideoCapture(0); 
-        
+        VideoCapture capture = new VideoCapture(0);
+        #endregion
         void GetFrame(object sender, EventArgs e)
         {
             using Mat currentFrame = capture.QueryFrame();
+            if (currentFrame == null) return; 
             using Mat output = currentFrame.Clone();
             CvInvoke.Flip(output, output, FlipType.Horizontal);
             imageBox15.Image = output;
         }
+
+        private void SaveInfo(TextBox textBox1, ImageBox imageBox1)
+        {
+            images.Add(textBox1.Text, imageBox1.Image);
+            comboBox1.Items.Add(textBox1.Text);
+            comboBox2.Items.Add(textBox1.Text);
+            comboBox6.Items.Add(textBox1.Text);
+            BlurOperationImageSelect.Items.Add(textBox1.Text);
+            ColorShiftImageSelect.Items.Add(textBox1.Text);
+            MaskSelect.Items.Add(textBox1.Text);
+            comboBox12.Items.Add(textBox1.Text);
+            comboBox8.Items.Add(textBox1.Text);
+            comboBox4.Items.Add(textBox1.Text);
+            comboBox13.Items.Add(textBox1.Text);
+            textBox1.Clear();
+            imageBox1.Image = default;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -140,7 +160,8 @@ namespace WinFormsApp1
             images.Add("prompt", CvInvoke.Imread("Images/prompt.png"));
             images.Add("SHApez", CvInvoke.Imread("Images/cont2.png"));
             images.Add("Rubiks", CvInvoke.Imread("Images/rubiks3.png"));
-            images.Add("BentRubix", CvInvoke.Imread("Images/rubiks2.png")); 
+            images.Add("BentRubix", CvInvoke.Imread("Images/rubiks2.png"));
+            images.Add("Cam", capture.QueryFrame());
             bitwiseOperations.Add("Add", BitwiseOperators.Add);
             bitwiseOperations.Add("And", BitwiseOperators.And);
             bitwiseOperations.Add("Or", BitwiseOperators.Or);
@@ -304,6 +325,7 @@ namespace WinFormsApp1
                 MaskSelect.Items.Add(item);
                 comboBox8.Items.Add(item);
                 comboBox12.Items.Add(item);
+                comboBox13.Items.Add(item); 
                 ColorShiftImageSelect.Items.Add(item);
             }
             image.AsReadOnly();
@@ -320,18 +342,7 @@ namespace WinFormsApp1
         }
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            images.Add(textBox1.Text, imageBox1.Image);
-            comboBox1.Items.Add(textBox1.Text);
-            comboBox2.Items.Add(textBox1.Text);
-            comboBox6.Items.Add(textBox1.Text);
-            BlurOperationImageSelect.Items.Add(textBox1.Text);
-            ColorShiftImageSelect.Items.Add(textBox1.Text);
-            MaskSelect.Items.Add(textBox1.Text);
-            comboBox12.Items.Add(textBox1.Text); 
-            comboBox8.Items.Add(textBox1.Text); 
-            comboBox4.Items.Add(textBox1.Text); 
-            textBox1.Clear();
-            imageBox1.Image = default; 
+            SaveInfo(textBox1, imageBox1); 
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -518,42 +529,16 @@ namespace WinFormsApp1
         }
         private void RedSave_Click(object sender, EventArgs e)
         {
-            images.Add(RedTextBox.Text, SplitRedImage.Image);
-            comboBox1.Items.Add(RedTextBox.Text);
-            comboBox2.Items.Add(RedTextBox.Text);
-            comboBox6.Items.Add(RedTextBox.Text);
-            BlurOperationImageSelect.Items.Add(RedTextBox.Text);
-            comboBox12.Items.Add(RedTextBox.Text);
-            comboBox8.Items.Add(RedTextBox.Text);
-            comboBox4.Items.Add(RedTextBox.Text);
-            RedTextBox.Clear();
-            imageBox1.Image = default;
+            SaveInfo(RedTextBox, SplitRedImage);
         }
         private void GreenSave_Click(object sender, EventArgs e)
         {
-            images.Add(GreenTextBox.Text, SplitGreenImage.Image);
-            comboBox1.Items.Add(GreenTextBox.Text);
-            comboBox2.Items.Add(GreenTextBox.Text);
-            comboBox6.Items.Add(GreenTextBox.Text);
-            BlurOperationImageSelect.Items.Add(GreenTextBox.Text);
-            comboBox12.Items.Add(GreenTextBox.Text);
-            comboBox8.Items.Add(GreenTextBox.Text);
-            comboBox4.Items.Add(GreenTextBox.Text);
-            GreenTextBox.Clear();
-            imageBox1.Image = default;
+            SaveInfo(GreenTextBox, SplitGreenImage);
         }
         private void BlueSave_Click(object sender, EventArgs e)
         {
-            images.Add(BlueTextBox.Text, SplitBlueImage.Image);
-            comboBox1.Items.Add(BlueTextBox.Text);
-            comboBox2.Items.Add(BlueTextBox.Text);
-            comboBox6.Items.Add(BlueTextBox.Text);
-            BlurOperationImageSelect.Items.Add(BlueTextBox.Text);
-            comboBox12.Items.Add(BlueTextBox.Text);
-            comboBox8.Items.Add(BlueTextBox.Text);
-            comboBox4.Items.Add(BlueTextBox.Text);
-            BlueTextBox.Clear();
-            imageBox1.Image = default;
+            SaveInfo(BlueTextBox, SplitBlueImage);
+
         }
         #endregion
         #region InRange 
@@ -569,8 +554,8 @@ namespace WinFormsApp1
                     numericUpDown6.Maximum = 255;
                     break;
                 case MaxLum.HSV:
-                    numericUpDown4.Maximum = 100;
-                    numericUpDown5.Maximum = 100;
+                    numericUpDown4.Maximum = 255;
+                    numericUpDown5.Maximum = 255;
                     numericUpDown6.Maximum = 180;
                     break;
                 case MaxLum.GrayScale:
@@ -593,18 +578,7 @@ namespace WinFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            images.Add(textBox3.Text, imageBox5.Image);
-            comboBox1.Items.Add(textBox3.Text);
-            comboBox2.Items.Add(textBox3.Text);
-            comboBox6.Items.Add(textBox3.Text);
-            BlurOperationImageSelect.Items.Add(textBox3.Text);
-            ColorShiftImageSelect.Items.Add(textBox3.Text);
-            MaskSelect.Items.Add(textBox3.Text);
-            comboBox12.Items.Add(textBox3.Text);
-            comboBox8.Items.Add(textBox3.Text);
-            comboBox4.Items.Add(textBox3.Text);
-            textBox3.Clear();
-            imageBox5.Image = default;
+            SaveInfo(textBox3, imageBox5);
         }
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
@@ -623,8 +597,8 @@ namespace WinFormsApp1
             Mat temp = imageBox6.Image as Mat;
             if (temp == null) return;
 
-            CvInvoke.InRange(temp, (ScalarArray)new MCvScalar(int.Parse(numericUpDown1.Text), int.Parse(numericUpDown2.Text), int.Parse(numericUpDown3.Text)),
-                             (ScalarArray)new MCvScalar(int.Parse(numericUpDown6.Text), int.Parse(numericUpDown5.Text), int.Parse(numericUpDown4.Text)), output);
+            CvInvoke.InRange(temp, (ScalarArray)new MCvScalar((double)numericUpDown1.Value, (double)numericUpDown2.Value, (double)numericUpDown3.Value),
+                             (ScalarArray)new MCvScalar((double)numericUpDown6.Value, (double)numericUpDown5.Value, (double)numericUpDown4.Value), output);
             imageBox5.Image = output;
         }
 
@@ -698,17 +672,8 @@ namespace WinFormsApp1
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            images.Add(textBox2.Text, imageBox7.Image);
-            comboBox1.Items.Add(textBox2.Text);
-            comboBox2.Items.Add(textBox2.Text);
-            comboBox6.Items.Add(textBox2.Text);
-            BlurOperationImageSelect.Items.Add(textBox2.Text);
-            comboBox12.Items.Add(textBox2.Text);
-            comboBox8.Items.Add(textBox2.Text);
-            MaskSelect.Items.Add(textBox2.Text);
-            comboBox4.Items.Add(textBox2.Text);
-            textBox2.Clear();
-            imageBox7.Image = default;
+            SaveInfo(textBox2, imageBox7);
+
         }
 
 
@@ -720,17 +685,7 @@ namespace WinFormsApp1
         }
         private void button7_Click(object sender, EventArgs e)
         {
-            images.Add(BlurSaveText.Text, imageBox9.Image);
-            comboBox1.Items.Add(BlurSaveText.Text);
-            comboBox2.Items.Add(BlurSaveText.Text);
-            comboBox6.Items.Add(BlurSaveText.Text);
-            BlurOperationImageSelect.Items.Add(BlurSaveText.Text);
-            comboBox12.Items.Add(BlurSaveText.Text);
-            comboBox8.Items.Add(BlurSaveText.Text);
-            comboBox4.Items.Add(BlurSaveText.Text);
-            MaskSelect.Items.Add(BlurSaveText.Text);
-            BlurSaveText.Clear();
-            imageBox9.Image = default;
+            SaveInfo(BlurSaveText, imageBox9); 
         }
         private void comboBox9_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -765,17 +720,7 @@ namespace WinFormsApp1
         }
         private void button8_Click(object sender, EventArgs e)
         {
-            images.Add(textBox7.Text, imageBox11.Image);
-            comboBox1.Items.Add(textBox7.Text);
-            comboBox2.Items.Add(textBox7.Text);
-            comboBox6.Items.Add(textBox7.Text);
-            BlurOperationImageSelect.Items.Add(textBox7.Text);
-            comboBox12.Items.Add(textBox7.Text);
-            MaskSelect.Items.Add(textBox7.Text);
-            comboBox8.Items.Add(textBox7.Text);
-            comboBox4.Items.Add(textBox7.Text);
-            textBox7.Clear();
-            imageBox11.Image = default;
+            SaveInfo(textBox7, imageBox11); 
         }
 
         private void comboBox11_SelectedIndexChanged(object sender, EventArgs e)
@@ -896,12 +841,6 @@ namespace WinFormsApp1
             currentBounds = BoundedTypes[BoundedShapeSelect.SelectedItem.ToString()];
         }
 
-
-
-
-
-        #endregion
-
         private void label17_Click(object sender, EventArgs e)
         {
 
@@ -914,6 +853,7 @@ namespace WinFormsApp1
         {
 
         }
+        #endregion
        
         #region Color Convert
         private void ColorShiftImageSelect_SelectedIndexChanged(object sender, EventArgs e)
@@ -973,7 +913,6 @@ namespace WinFormsApp1
 
 
         #endregion
-
         #region Camera
         private void comboBox9_SelectedIndexChanged_2(object sender, EventArgs e)
         {
@@ -981,10 +920,26 @@ namespace WinFormsApp1
         }
 
         private void button10_Click_1(object sender, EventArgs e)
-        {
-
+        { 
             imageBox15.Image = capture.QueryFrame(); 
         }
         #endregion
+
+        private void tabPage9_Click(object sender, EventArgs e)
+        {
+
+        }
+        #region Spot the difference
+        private void comboBox13_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            imageBox16.Image = images[comboBox13.SelectedItem.ToString()];
+        }
+        private void button11_Click(object sender, EventArgs e)
+        {
+           
+        }
+        #endregion
+
+       
     }
 }
