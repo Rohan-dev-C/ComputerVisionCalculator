@@ -111,14 +111,16 @@ namespace WinFormsApp1
         Mat currentMaskContour;
         bool notSelected = true;
         VideoCapture capture = new VideoCapture(0);
+        Mat currentFrame = new Mat();
         #endregion
         void GetFrame(object sender, EventArgs e)
         {
-            using Mat currentFrame = capture.QueryFrame();
+            currentFrame = capture.QueryFrame();
             if (currentFrame == null) return; 
             using Mat output = currentFrame.Clone();
             CvInvoke.Flip(output, output, FlipType.Horizontal);
             imageBox15.Image = output;
+            currentFrame = output; 
         }
 
         private void SaveInfo(TextBox textBox1, ImageBox imageBox1)
@@ -161,7 +163,11 @@ namespace WinFormsApp1
             images.Add("SHApez", CvInvoke.Imread("Images/cont2.png"));
             images.Add("Rubiks", CvInvoke.Imread("Images/rubiks3.png"));
             images.Add("BentRubix", CvInvoke.Imread("Images/rubiks2.png"));
-            images.Add("Cam", capture.QueryFrame());
+            images.Add("Cam", currentFrame);
+            images.Add("snowMan", CvInvoke.Imread("Images/snowman.png"));
+            images.Add("room", CvInvoke.Imread("Images/room.png"));
+            images.Add("kitchen", CvInvoke.Imread("Images/cooking.png"));
+            images.Add("restaurant", CvInvoke.Imread("Images/restaurant.png"));
             bitwiseOperations.Add("Add", BitwiseOperators.Add);
             bitwiseOperations.Add("And", BitwiseOperators.And);
             bitwiseOperations.Add("Or", BitwiseOperators.Or);
@@ -932,14 +938,54 @@ namespace WinFormsApp1
         #region Spot the difference
         private void comboBox13_SelectedIndexChanged(object sender, EventArgs e)
         {
-            imageBox16.Image = images[comboBox13.SelectedItem.ToString()];
+            imageBox17.Image = images[comboBox13.SelectedItem.ToString()];
         }
         private void button11_Click(object sender, EventArgs e)
         {
-           
+            SaveInfo(textBox5, imageBox20); 
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Mat original = new Mat();
+            CvInvoke.CvtColor(imageBox17.Image, original, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(original, original, 1, 255, (Emgu.CV.CvEnum.ThresholdType)ThresholdType.Binary);
+            VectorOfVectorOfPoint imageCounter = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.FindContours(original, imageCounter, nextLayer, RetrType.External, (Emgu.CV.CvEnum.ChainApproxMethod)ChainApproxMethod.ChainApproxNone);
+            Rectangle Rectangle1 = CvInvoke.BoundingRectangle(imageCounter[0]);
+            Rectangle Rectangle2 = CvInvoke.BoundingRectangle(imageCounter[1]);
+            Rectangle1.Size = Rectangle2.Size;
+            Mat topImage = new Mat((Mat)imageBox17.Image, Rectangle1);
+            Mat bottomImage = new Mat((Mat)imageBox17.Image, Rectangle2);
+            imageBox19.Image = topImage;
+            imageBox18.Image = bottomImage;
+            Mat ImageDifference = new Mat();
+            CvInvoke.AbsDiff(topImage, bottomImage, ImageDifference);
+            Mat GrayScaleDifference = new Mat();
+            CvInvoke.CvtColor(ImageDifference, GrayScaleDifference, ColorConversion.Bgr2Gray);
+            CvInvoke.MedianBlur(GrayScaleDifference, GrayScaleDifference, 5);
+            CvInvoke.Threshold(GrayScaleDifference, GrayScaleDifference, (double)numericUpDown7.Value, 255, (Emgu.CV.CvEnum.ThresholdType)ThresholdType.Binary);
+            VectorOfVectorOfPoint ContourDifferenceArray = new VectorOfVectorOfPoint();
+            CvInvoke.FindContours(GrayScaleDifference, ContourDifferenceArray, nextLayer, RetrType.External, (Emgu.CV.CvEnum.ChainApproxMethod)ChainApproxMethod.ChainApproxNone);
+            MCvScalar contourColor = new MCvScalar(255, 0, 0);
+            for (int i = 0; i < ContourDifferenceArray.Size; i++)
+            {
+                Rectangle bounds = CvInvoke.BoundingRectangle(ContourDifferenceArray[i]);
+                bounds = new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
+                CvInvoke.Rectangle(topImage, bounds, contourColor, 2);
+                CvInvoke.Rectangle(bottomImage, bounds, contourColor, 2);
+            }
+
+            imageBox20.Image = topImage; ;
+            imageBox16.Image = bottomImage; 
+
         }
         #endregion
 
-       
+        private void numericUpDown7_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
