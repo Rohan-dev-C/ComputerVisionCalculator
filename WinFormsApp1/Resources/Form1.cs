@@ -111,18 +111,27 @@ namespace WinFormsApp1
         Mat currentMaskContour;
         bool notSelected = true;
         VideoCapture capture = new VideoCapture(0);
-        Mat currentFrame = new Mat();
         #endregion
         void GetFrame(object sender, EventArgs e)
         {
-            currentFrame = capture.QueryFrame();
-            if (currentFrame == null) return; 
+            AffineTransformInputImage.Image?.Dispose(); 
+            Mat output = capture.QueryFrame();
+            if (output == null) return; 
+            //CvInvoke.Flip(output, output, FlipType.Horizontal);
+            imageBox15.Image = output;
+            AffineTransformInputImage.Image = output;
+            PerspectiveImageCamera.Image = output;
+        }
+        void GetFrame(ref ImageBox imageBOx)
+        {
+            Mat currentFrame = capture.QueryFrame();
+            if (currentFrame == null) return;
             using Mat output = currentFrame.Clone();
             CvInvoke.Flip(output, output, FlipType.Horizontal);
-            imageBox15.Image = output;
-            currentFrame = output; 
+            CvInvoke.Flip(output, output, FlipType.Vertical);
+            imageBOx.Image = output;
+            currentFrame = output;
         }
-
         private void SaveInfo(TextBox textBox1, ImageBox imageBox1)
         {
             images.Add(textBox1.Text, imageBox1.Image);
@@ -163,11 +172,12 @@ namespace WinFormsApp1
             images.Add("SHApez", CvInvoke.Imread("Images/cont2.png"));
             images.Add("Rubiks", CvInvoke.Imread("Images/rubiks3.png"));
             images.Add("BentRubix", CvInvoke.Imread("Images/rubiks2.png"));
-            images.Add("Cam", currentFrame);
+            images.Add("Cam", capture.QueryFrame());
             images.Add("snowMan", CvInvoke.Imread("Images/snowman.png"));
             images.Add("room", CvInvoke.Imread("Images/room.png"));
             images.Add("kitchen", CvInvoke.Imread("Images/cooking.png"));
             images.Add("restaurant", CvInvoke.Imread("Images/restaurant.png"));
+            images.Add("Affine", CvInvoke.Imread("Images/restaurant.png"));
             bitwiseOperations.Add("Add", BitwiseOperators.Add);
             bitwiseOperations.Add("And", BitwiseOperators.And);
             bitwiseOperations.Add("Or", BitwiseOperators.Or);
@@ -846,7 +856,6 @@ namespace WinFormsApp1
         {
             currentBounds = BoundedTypes[BoundedShapeSelect.SelectedItem.ToString()];
         }
-
         private void label17_Click(object sender, EventArgs e)
         {
 
@@ -860,7 +869,6 @@ namespace WinFormsApp1
 
         }
         #endregion
-       
         #region Color Convert
         private void ColorShiftImageSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -926,15 +934,15 @@ namespace WinFormsApp1
         }
 
         private void button10_Click_1(object sender, EventArgs e)
-        { 
-            imageBox15.Image = capture.QueryFrame(); 
+        {
+            SaveInfo(textBox9, imageBox15);  
         }
-        #endregion
-
         private void tabPage9_Click(object sender, EventArgs e)
         {
 
         }
+        #endregion
+
         #region Spot the difference
         private void comboBox13_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -981,11 +989,540 @@ namespace WinFormsApp1
             imageBox16.Image = bottomImage; 
 
         }
-        #endregion
-
         private void numericUpDown7_ValueChanged(object sender, EventArgs e)
         {
 
         }
+        #endregion
+
+        #region Affine
+        VectorOfPoint FindLargestContour(VectorOfVectorOfPoint contours)
+        {
+            VectorOfPoint largest = new VectorOfPoint();
+            largest = contours[0];
+            for (int i = 0; i < contours.Size; i++)
+            {
+                if (contours[i].Size > largest.Size)
+                {
+                    largest = contours[i];
+                }
+            }
+            return largest;
+        }
+        private void button14_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void numericUpDown8_ValueChanged(object sender, EventArgs e)
+        {
+            imageBox21.Image = AffineTransformInputImage.Image;
+            Mat temp = imageBox21.Image as Mat;
+            Mat mask = temp.Clone();
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown8.Value, (double)numericUpDown9.Value, (double)numericUpDown10.Value), (ScalarArray)new MCvScalar((double)numericUpDown13.Value, (double)numericUpDown12.Value, (double)numericUpDown11.Value), mask);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.MedianBlur(mask, mask, 5);
+
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            if (contours.Size == 0)
+            {
+                MessageBox.Show("no contours");
+                return;
+            }
+            VectorOfPoint contour = FindLargestContour(contours);
+            RotatedRect rect = CvInvoke.MinAreaRect(contour);
+            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+
+            PointF[] points1 = new PointF[3];
+            PointF[] outputPoints = new PointF[3];
+            points1[0] = verticies[1];
+            points1[1] = verticies[2];
+            points1[2] = verticies[0];
+            outputPoints[0] = new PointF(0, 0);
+            outputPoints[1] = new PointF(AffineTransformImageOutput.Size.Width, 0);
+            outputPoints[2] = new PointF(0, AffineTransformImageOutput.Size.Height);
+            Mat output = new Mat();
+            Mat transformMatrix = CvInvoke.GetAffineTransform(points1, outputPoints);
+            CvInvoke.WarpAffine(AffineTransformInputImage.Image, output, transformMatrix, AffineTransformImageOutput.Size);
+            imageBox22.Image = mask;
+            AffineTransformImageOutput.Image = output;
+        }
+
+        private void numericUpDown9_ValueChanged(object sender, EventArgs e)
+        {
+            imageBox21.Image = AffineTransformInputImage.Image;
+            Mat temp = imageBox21.Image as Mat;
+            Mat mask = temp.Clone();
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown8.Value, (double)numericUpDown9.Value, (double)numericUpDown10.Value), (ScalarArray)new MCvScalar((double)numericUpDown13.Value, (double)numericUpDown12.Value, (double)numericUpDown11.Value), mask);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.MedianBlur(mask, mask, 5);
+
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            if (contours.Size == 0)
+            {
+                MessageBox.Show("no contours");
+                return;
+            }
+            VectorOfPoint contour = FindLargestContour(contours);
+            RotatedRect rect = CvInvoke.MinAreaRect(contour);
+            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+
+            PointF[] points1 = new PointF[3];
+            PointF[] outputPoints = new PointF[3];
+            points1[0] = verticies[1];
+            points1[1] = verticies[2];
+            points1[2] = verticies[0];
+            outputPoints[0] = new PointF(0, 0);
+            outputPoints[1] = new PointF(AffineTransformImageOutput.Size.Width, 0);
+            outputPoints[2] = new PointF(0, AffineTransformImageOutput.Size.Height);
+            Mat output = new Mat();
+            Mat transformMatrix = CvInvoke.GetAffineTransform(points1, outputPoints);
+            CvInvoke.WarpAffine(AffineTransformInputImage.Image, output, transformMatrix, AffineTransformImageOutput.Size);
+            imageBox22.Image = mask;
+            AffineTransformImageOutput.Image = output;
+        }
+
+        private void numericUpDown10_ValueChanged(object sender, EventArgs e)
+        {
+            imageBox21.Image = AffineTransformInputImage.Image;
+            Mat temp = imageBox21.Image as Mat;
+            Mat mask = temp.Clone();
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown8.Value, (double)numericUpDown9.Value, (double)numericUpDown10.Value), (ScalarArray)new MCvScalar((double)numericUpDown13.Value, (double)numericUpDown12.Value, (double)numericUpDown11.Value), mask);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.MedianBlur(mask, mask, 5);
+
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            if (contours.Size == 0)
+            {
+                MessageBox.Show("no contours");
+                return;
+            }
+            VectorOfPoint contour = FindLargestContour(contours);
+            RotatedRect rect = CvInvoke.MinAreaRect(contour);
+            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+
+            PointF[] points1 = new PointF[3];
+            PointF[] outputPoints = new PointF[3];
+            points1[0] = verticies[1];
+            points1[1] = verticies[2];
+            points1[2] = verticies[0];
+            outputPoints[0] = new PointF(0, 0);
+            outputPoints[1] = new PointF(AffineTransformImageOutput.Size.Width, 0);
+            outputPoints[2] = new PointF(0, AffineTransformImageOutput.Size.Height);
+            Mat output = new Mat();
+            Mat transformMatrix = CvInvoke.GetAffineTransform(points1, outputPoints);
+            CvInvoke.WarpAffine(AffineTransformInputImage.Image, output, transformMatrix, AffineTransformImageOutput.Size);
+            imageBox22.Image = mask;
+            AffineTransformImageOutput.Image = output;
+        }
+
+
+        private void numericUpDown13_ValueChanged(object sender, EventArgs e)
+        {
+            imageBox21.Image = AffineTransformInputImage.Image;
+            Mat temp = imageBox21.Image as Mat;
+            Mat mask = temp.Clone();
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown8.Value, (double)numericUpDown9.Value, (double)numericUpDown10.Value), (ScalarArray)new MCvScalar((double)numericUpDown13.Value, (double)numericUpDown12.Value, (double)numericUpDown11.Value), mask);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.MedianBlur(mask, mask, 5);
+
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            if (contours.Size == 0)
+            {
+                MessageBox.Show("no contours");
+                return;
+            }
+            VectorOfPoint contour = FindLargestContour(contours);
+            RotatedRect rect = CvInvoke.MinAreaRect(contour);
+            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+
+            PointF[] points1 = new PointF[3];
+            PointF[] outputPoints = new PointF[3];
+            points1[0] = verticies[1];
+            points1[1] = verticies[2];
+            points1[2] = verticies[0];
+            outputPoints[0] = new PointF(0, 0);
+            outputPoints[1] = new PointF(AffineTransformImageOutput.Size.Width, 0);
+            outputPoints[2] = new PointF(0, AffineTransformImageOutput.Size.Height);
+            Mat output = new Mat();
+            Mat transformMatrix = CvInvoke.GetAffineTransform(points1, outputPoints);
+            CvInvoke.WarpAffine(AffineTransformInputImage.Image, output, transformMatrix, AffineTransformImageOutput.Size);
+            imageBox22.Image = mask;
+            AffineTransformImageOutput.Image = output;
+        }
+
+        private void numericUpDown12_ValueChanged(object sender, EventArgs e)
+        {
+            imageBox21.Image = AffineTransformInputImage.Image;
+            Mat temp = imageBox21.Image as Mat;
+            Mat mask = temp.Clone();
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown8.Value, (double)numericUpDown9.Value, (double)numericUpDown10.Value), (ScalarArray)new MCvScalar((double)numericUpDown13.Value, (double)numericUpDown12.Value, (double)numericUpDown11.Value), mask);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.MedianBlur(mask, mask, 5);
+
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            if (contours.Size == 0)
+            {
+                MessageBox.Show("no contours");
+                return;
+            }
+            VectorOfPoint contour = FindLargestContour(contours);
+            RotatedRect rect = CvInvoke.MinAreaRect(contour);
+            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+
+            PointF[] points1 = new PointF[3];
+            PointF[] outputPoints = new PointF[3];
+            points1[0] = verticies[1];
+            points1[1] = verticies[2];
+            points1[2] = verticies[0];
+            outputPoints[0] = new PointF(0, 0);
+            outputPoints[1] = new PointF(AffineTransformImageOutput.Size.Width, 0);
+            outputPoints[2] = new PointF(0, AffineTransformImageOutput.Size.Height);
+            Mat output = new Mat();
+            Mat transformMatrix = CvInvoke.GetAffineTransform(points1, outputPoints);
+            CvInvoke.WarpAffine(AffineTransformInputImage.Image, output, transformMatrix, AffineTransformImageOutput.Size);
+            imageBox22.Image = mask;
+            AffineTransformImageOutput.Image = output;
+        }
+        private void numericUpDown11_ValueChanged(object sender, EventArgs e)
+        {
+            imageBox21.Image = AffineTransformInputImage.Image;
+            Mat temp = imageBox21.Image as Mat;
+            Mat mask = temp.Clone();
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown8.Value, (double)numericUpDown9.Value, (double)numericUpDown10.Value), (ScalarArray)new MCvScalar((double)numericUpDown13.Value, (double)numericUpDown12.Value, (double)numericUpDown11.Value), mask);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.MedianBlur(mask, mask, 5);
+
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            if (contours.Size == 0)
+            {
+                MessageBox.Show("no contours");
+                return;
+            }
+            VectorOfPoint contour = FindLargestContour(contours);
+            RotatedRect rect = CvInvoke.MinAreaRect(contour);
+            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(imageBox21.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+
+            PointF[] points1 = new PointF[3];
+            PointF[] outputPoints = new PointF[3];
+            
+            points1[0] = verticies[1];
+            points1[1] = verticies[2];
+            points1[2] = verticies[0];
+            
+            outputPoints[0] = new PointF(0, 0);
+            outputPoints[1] = new PointF(AffineTransformImageOutput.Size.Width, 0);
+            outputPoints[2] = new PointF(0, AffineTransformImageOutput.Size.Height);
+            Mat output = new Mat();
+            Mat transformMatrix = CvInvoke.GetAffineTransform(points1, outputPoints);
+            CvInvoke.WarpAffine(AffineTransformInputImage.Image, output, transformMatrix, AffineTransformImageOutput.Size);
+            imageBox22.Image = mask;
+            AffineTransformImageOutput.Image = output;
+        }
+
+
+        #endregion
+        #region Perspective
+        private void numericUpDown19_ValueChanged(object sender, EventArgs e)
+        {
+            PerspectiveImageInput.Image = PerspectiveImageCamera.Image;
+            Mat temp = PerspectiveImageInput.Image as Mat;
+            Mat mask = temp.Clone();
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown19.Value, (double)numericUpDown18.Value, (double)numericUpDown17.Value), 
+                (ScalarArray)new MCvScalar((double)numericUpDown16.Value, (double)numericUpDown15.Value, (double)numericUpDown14.Value), mask);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.MedianBlur(mask, mask, 5);
+
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            if (contours.Size == 0)
+            {
+                MessageBox.Show("no contours");
+                return;
+            }
+            VectorOfPoint contour = FindLargestContour(contours);
+            RotatedRect rect = CvInvoke.MinAreaRect(contour);
+            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+
+            PointF[] points1 = new PointF[4];
+            PointF[] outputPoints = new PointF[4];
+            points1[0] = verticies[1];
+            points1[1] = verticies[2];
+            points1[2] = verticies[0];
+            points1[3] = verticies[3];
+            outputPoints[0] = new PointF(0, 0);
+            outputPoints[1] = new PointF(PerspectiveImageOutput.Size.Width, 0);
+            outputPoints[2] = new PointF(0, PerspectiveImageOutput.Size.Height);
+            outputPoints[3] = new PointF(PerspectiveImageOutput.Size.Width, PerspectiveImageOutput.Size.Height);
+            Mat output = new Mat();
+            Mat transformMatrix = CvInvoke.GetPerspectiveTransform(points1, outputPoints);
+            CvInvoke.WarpPerspective(PerspectiveImageInput.Image, output, transformMatrix, PerspectiveImageOutput.Size);
+            PerspectiveMask.Image = mask;
+            PerspectiveImageOutput.Image = output;
+        }
+        private void numericUpDown18_ValueChanged(object sender, EventArgs e)
+        {
+            PerspectiveImageInput.Image = PerspectiveImageCamera.Image;
+            Mat temp = PerspectiveImageInput.Image as Mat;
+            Mat mask = temp.Clone();
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown19.Value, (double)numericUpDown18.Value, (double)numericUpDown17.Value),
+                (ScalarArray)new MCvScalar((double)numericUpDown16.Value, (double)numericUpDown15.Value, (double)numericUpDown14.Value), mask);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.MedianBlur(mask, mask, 5);
+
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            if (contours.Size == 0)
+            {
+                MessageBox.Show("no contours");
+                return;
+            }
+            VectorOfPoint contour = FindLargestContour(contours);
+            RotatedRect rect = CvInvoke.MinAreaRect(contour);
+            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+
+            PointF[] points1 = new PointF[4];
+            PointF[] outputPoints = new PointF[4];
+            points1[0] = verticies[1];
+            points1[1] = verticies[2];
+            points1[2] = verticies[0];
+            points1[3] = verticies[3];
+            outputPoints[0] = new PointF(0, 0);
+            outputPoints[1] = new PointF(PerspectiveImageOutput.Size.Width, 0);
+            outputPoints[2] = new PointF(0, PerspectiveImageOutput.Size.Height);
+            outputPoints[3] = new PointF(PerspectiveImageOutput.Size.Width, PerspectiveImageOutput.Size.Height);
+            Mat output = new Mat();
+            Mat transformMatrix = CvInvoke.GetPerspectiveTransform(points1, outputPoints);
+            CvInvoke.WarpPerspective(PerspectiveImageInput.Image, output, transformMatrix, PerspectiveImageOutput.Size);
+            PerspectiveMask.Image = mask;
+            PerspectiveImageOutput.Image = output;
+        }
+        private void numericUpDown17_ValueChanged(object sender, EventArgs e)
+        {
+            PerspectiveImageInput.Image = PerspectiveImageCamera.Image;
+            Mat temp = PerspectiveImageInput.Image as Mat;
+            Mat mask = temp.Clone();
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown19.Value, (double)numericUpDown18.Value, (double)numericUpDown17.Value),
+                (ScalarArray)new MCvScalar((double)numericUpDown16.Value, (double)numericUpDown15.Value, (double)numericUpDown14.Value), mask);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.MedianBlur(mask, mask, 5);
+
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            if (contours.Size == 0)
+            {
+                MessageBox.Show("no contours");
+                return;
+            }
+            VectorOfPoint contour = FindLargestContour(contours);
+            RotatedRect rect = CvInvoke.MinAreaRect(contour);
+            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+
+            PointF[] points1 = new PointF[4];
+            PointF[] outputPoints = new PointF[4];
+            points1[0] = verticies[1];
+            points1[1] = verticies[2];
+            points1[2] = verticies[0];
+            points1[3] = verticies[3];
+            outputPoints[0] = new PointF(0, 0);
+            outputPoints[1] = new PointF(PerspectiveImageOutput.Size.Width, 0);
+            outputPoints[2] = new PointF(0, PerspectiveImageOutput.Size.Height);
+            outputPoints[3] = new PointF(PerspectiveImageOutput.Size.Width, PerspectiveImageOutput.Size.Height);
+            Mat output = new Mat();
+            Mat transformMatrix = CvInvoke.GetPerspectiveTransform(points1, outputPoints);
+            CvInvoke.WarpPerspective(PerspectiveImageInput.Image, output, transformMatrix, PerspectiveImageOutput.Size);
+            PerspectiveMask.Image = mask;
+            PerspectiveImageOutput.Image = output;
+        }
+        private void numericUpDown16_ValueChanged(object sender, EventArgs e)
+        {
+            PerspectiveImageInput.Image = PerspectiveImageCamera.Image;
+            Mat temp = PerspectiveImageInput.Image as Mat;
+            Mat mask = temp.Clone();
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown19.Value, (double)numericUpDown18.Value, (double)numericUpDown17.Value),
+                (ScalarArray)new MCvScalar((double)numericUpDown16.Value, (double)numericUpDown15.Value, (double)numericUpDown14.Value), mask);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.MedianBlur(mask, mask, 5);
+
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            if (contours.Size == 0)
+            {
+                MessageBox.Show("no contours");
+                return;
+            }
+            VectorOfPoint contour = FindLargestContour(contours);
+            RotatedRect rect = CvInvoke.MinAreaRect(contour);
+            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+
+            PointF[] points1 = new PointF[4];
+            PointF[] outputPoints = new PointF[4];
+            points1[0] = verticies[1];
+            points1[1] = verticies[2];
+            points1[2] = verticies[0];
+            points1[3] = verticies[3];
+            outputPoints[0] = new PointF(0, 0);
+            outputPoints[1] = new PointF(PerspectiveImageOutput.Size.Width, 0);
+            outputPoints[2] = new PointF(0, PerspectiveImageOutput.Size.Height);
+            outputPoints[3] = new PointF(PerspectiveImageOutput.Size.Width, PerspectiveImageOutput.Size.Height);
+            Mat output = new Mat();
+            Mat transformMatrix = CvInvoke.GetPerspectiveTransform(points1, outputPoints);
+            CvInvoke.WarpPerspective(PerspectiveImageInput.Image, output, transformMatrix, PerspectiveImageOutput.Size);
+            PerspectiveMask.Image = mask;
+            PerspectiveImageOutput.Image = output;
+        }
+        private void numericUpDown15_ValueChanged(object sender, EventArgs e)
+        {
+            PerspectiveImageInput.Image = PerspectiveImageCamera.Image;
+            Mat temp = PerspectiveImageInput.Image as Mat;
+            Mat mask = temp.Clone();
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown19.Value, (double)numericUpDown18.Value, (double)numericUpDown17.Value),
+                (ScalarArray)new MCvScalar((double)numericUpDown16.Value, (double)numericUpDown15.Value, (double)numericUpDown14.Value), mask);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.MedianBlur(mask, mask, 5);
+
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            if (contours.Size == 0)
+            {
+                MessageBox.Show("no contours");
+                return;
+            }
+            VectorOfPoint contour = FindLargestContour(contours);
+            RotatedRect rect = CvInvoke.MinAreaRect(contour);
+            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+
+            PointF[] points1 = new PointF[4];
+            PointF[] outputPoints = new PointF[4];
+            points1[0] = verticies[1];
+            points1[1] = verticies[2];
+            points1[2] = verticies[0];
+            points1[3] = verticies[3];
+            outputPoints[0] = new PointF(0, 0);
+            outputPoints[1] = new PointF(PerspectiveImageOutput.Size.Width, 0);
+            outputPoints[2] = new PointF(0, PerspectiveImageOutput.Size.Height);
+            outputPoints[3] = new PointF(PerspectiveImageOutput.Size.Width, PerspectiveImageOutput.Size.Height);
+            Mat output = new Mat();
+            Mat transformMatrix = CvInvoke.GetPerspectiveTransform(points1, outputPoints);
+            CvInvoke.WarpPerspective(PerspectiveImageInput.Image, output, transformMatrix, PerspectiveImageOutput.Size);
+            PerspectiveMask.Image = mask;
+            PerspectiveImageOutput.Image = output;
+        }
+        private void numericUpDown14_ValueChanged(object sender, EventArgs e)
+        {
+            PerspectiveImageInput.Image = PerspectiveImageCamera.Image;
+            Mat temp = PerspectiveImageInput.Image as Mat;
+            Mat mask = temp.Clone();
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown19.Value, (double)numericUpDown18.Value, (double)numericUpDown17.Value),
+                (ScalarArray)new MCvScalar((double)numericUpDown16.Value, (double)numericUpDown15.Value, (double)numericUpDown14.Value), mask);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.MedianBlur(mask, mask, 5);
+
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            if (contours.Size == 0)
+            {
+                MessageBox.Show("no contours");
+                return; 
+            }
+            VectorOfPoint contour = FindLargestContour(contours);
+            RotatedRect rect = CvInvoke.MinAreaRect(contour);
+            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+
+            PointF[] points1 = new PointF[4];
+            PointF[] outputPoints = new PointF[4];
+            points1[0] = verticies[1];
+            points1[1] = verticies[2];
+            points1[2] = verticies[0];
+            points1[3] = verticies[3];
+            outputPoints[0] = new PointF(0, 0);
+            outputPoints[1] = new PointF(PerspectiveImageOutput.Size.Width, 0);
+            outputPoints[2] = new PointF(0, PerspectiveImageOutput.Size.Height);
+            outputPoints[3] = new PointF(PerspectiveImageOutput.Size.Width, PerspectiveImageOutput.Size.Height);
+            Mat output = new Mat();
+            Mat transformMatrix = CvInvoke.GetPerspectiveTransform(points1, outputPoints);
+            CvInvoke.WarpPerspective(PerspectiveImageInput.Image, output, transformMatrix, PerspectiveImageOutput.Size);
+            PerspectiveMask.Image = mask;
+            PerspectiveImageOutput.Image = output;
+        }
+        #endregion
     }
 }

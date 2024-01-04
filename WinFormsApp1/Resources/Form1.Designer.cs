@@ -143,11 +143,13 @@ namespace WinFormsApp1
             this.ColorShiftImageSelect = new System.Windows.Forms.ComboBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.button10 = new System.Windows.Forms.Button();
             this.comboBox9 = new System.Windows.Forms.ComboBox();
             this.imageBox15 = new Emgu.CV.UI.ImageBox();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.imageBox16 = new Emgu.CV.UI.ImageBox();
             this.imageBox20 = new Emgu.CV.UI.ImageBox();
             this.button12 = new System.Windows.Forms.Button();
@@ -158,7 +160,39 @@ namespace WinFormsApp1
             this.button11 = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.comboBox13 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.AffineTransform = new System.Windows.Forms.TabPage();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.imageBox22 = new Emgu.CV.UI.ImageBox();
+            this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.imageBox21 = new Emgu.CV.UI.ImageBox();
+            this.button14 = new System.Windows.Forms.Button();
+            this.AffineTransformImageOutput = new Emgu.CV.UI.ImageBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.AffineTransformInputImage = new Emgu.CV.UI.ImageBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.PerspectiveMask = new Emgu.CV.UI.ImageBox();
+            this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown15 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown16 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown17 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown18 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown19 = new System.Windows.Forms.NumericUpDown();
+            this.PerspectiveImageInput = new Emgu.CV.UI.ImageBox();
+            this.button15 = new System.Windows.Forms.Button();
+            this.PerspectiveImageOutput = new Emgu.CV.UI.ImageBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.PerspectiveImageCamera = new Emgu.CV.UI.ImageBox();
+            this.button16 = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
             this.tabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox7)).BeginInit();
@@ -206,12 +240,36 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.imageBox15)).BeginInit();
             this.tabPage9.SuspendLayout();
             this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
+            this.AffineTransform.SuspendLayout();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AffineTransformImageOutput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AffineTransformInputImage)).BeginInit();
+            this.tabPage10.SuspendLayout();
+            this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PerspectiveMask)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PerspectiveImageInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PerspectiveImageOutput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PerspectiveImageCamera)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -221,7 +279,7 @@ namespace WinFormsApp1
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(864, 463);
+            this.tabPage4.Size = new System.Drawing.Size(1021, 566);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "ThresholdModifier";
             // 
@@ -362,7 +420,7 @@ namespace WinFormsApp1
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(864, 463);
+            this.tabPage3.Size = new System.Drawing.Size(1021, 566);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Color Splitter";
             // 
@@ -505,7 +563,7 @@ namespace WinFormsApp1
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(864, 463);
+            this.tabPage1.Size = new System.Drawing.Size(1021, 566);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Basic Operation";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
@@ -701,10 +759,12 @@ namespace WinFormsApp1
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
+            this.tabControl1.Controls.Add(this.AffineTransform);
+            this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(872, 491);
+            this.tabControl1.Size = new System.Drawing.Size(1029, 594);
             this.tabControl1.TabIndex = 20;
             // 
             // tabPage2
@@ -726,7 +786,7 @@ namespace WinFormsApp1
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(864, 463);
+            this.tabPage2.Size = new System.Drawing.Size(1021, 566);
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "InRange Operation";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
@@ -917,7 +977,7 @@ namespace WinFormsApp1
             this.tabPage5.Location = new System.Drawing.Point(4, 24);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(864, 463);
+            this.tabPage5.Size = new System.Drawing.Size(1021, 566);
             this.tabPage5.TabIndex = 6;
             this.tabPage5.Text = "Blurring Operations";
             // 
@@ -1032,7 +1092,7 @@ namespace WinFormsApp1
             this.tabPage6.Location = new System.Drawing.Point(4, 24);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(864, 463);
+            this.tabPage6.Size = new System.Drawing.Size(1021, 566);
             this.tabPage6.TabIndex = 7;
             this.tabPage6.Text = "Contours";
             // 
@@ -1250,7 +1310,7 @@ namespace WinFormsApp1
             this.tabPage7.Location = new System.Drawing.Point(4, 24);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(864, 463);
+            this.tabPage7.Size = new System.Drawing.Size(1021, 566);
             this.tabPage7.TabIndex = 8;
             this.tabPage7.Text = "Color Converter";
             // 
@@ -1338,12 +1398,13 @@ namespace WinFormsApp1
             this.tabPage8.Location = new System.Drawing.Point(4, 24);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(864, 463);
+            this.tabPage8.Size = new System.Drawing.Size(1021, 566);
             this.tabPage8.TabIndex = 9;
             this.tabPage8.Text = "Camera";
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.textBox9);
             this.panel9.Controls.Add(this.button10);
             this.panel9.Controls.Add(this.comboBox9);
             this.panel9.Controls.Add(this.imageBox15);
@@ -1351,6 +1412,13 @@ namespace WinFormsApp1
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(840, 418);
             this.panel9.TabIndex = 3;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(327, 39);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 23);
+            this.textBox9.TabIndex = 5;
             // 
             // button10
             // 
@@ -1386,9 +1454,9 @@ namespace WinFormsApp1
             this.tabPage9.Location = new System.Drawing.Point(4, 24);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(864, 463);
+            this.tabPage9.Size = new System.Drawing.Size(1021, 566);
             this.tabPage9.TabIndex = 10;
-            this.tabPage9.Text = "tabPage9";
+            this.tabPage9.Text = "Difference";
             this.tabPage9.UseVisualStyleBackColor = true;
             this.tabPage9.Click += new System.EventHandler(this.tabPage9_Click);
             // 
@@ -1410,6 +1478,14 @@ namespace WinFormsApp1
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(841, 451);
             this.panel10.TabIndex = 20;
+            // 
+            // numericUpDown7
+            // 
+            this.numericUpDown7.Location = new System.Drawing.Point(251, 377);
+            this.numericUpDown7.Name = "numericUpDown7";
+            this.numericUpDown7.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown7.TabIndex = 32;
+            this.numericUpDown7.ValueChanged += new System.EventHandler(this.numericUpDown7_ValueChanged);
             // 
             // imageBox16
             // 
@@ -1501,13 +1577,398 @@ namespace WinFormsApp1
             this.comboBox13.TabIndex = 12;
             this.comboBox13.SelectedIndexChanged += new System.EventHandler(this.comboBox13_SelectedIndexChanged);
             // 
-            // numericUpDown7
+            // AffineTransform
             // 
-            this.numericUpDown7.Location = new System.Drawing.Point(251, 377);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown7.TabIndex = 32;
-            this.numericUpDown7.ValueChanged += new System.EventHandler(this.numericUpDown7_ValueChanged);
+            this.AffineTransform.Controls.Add(this.panel11);
+            this.AffineTransform.Location = new System.Drawing.Point(4, 24);
+            this.AffineTransform.Name = "AffineTransform";
+            this.AffineTransform.Padding = new System.Windows.Forms.Padding(3);
+            this.AffineTransform.Size = new System.Drawing.Size(1021, 566);
+            this.AffineTransform.TabIndex = 11;
+            this.AffineTransform.Text = "Affine Transform";
+            this.AffineTransform.UseVisualStyleBackColor = true;
+            // 
+            // panel11
+            // 
+            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel11.Controls.Add(this.imageBox22);
+            this.panel11.Controls.Add(this.numericUpDown11);
+            this.panel11.Controls.Add(this.numericUpDown12);
+            this.panel11.Controls.Add(this.numericUpDown13);
+            this.panel11.Controls.Add(this.numericUpDown10);
+            this.panel11.Controls.Add(this.numericUpDown9);
+            this.panel11.Controls.Add(this.numericUpDown8);
+            this.panel11.Controls.Add(this.imageBox21);
+            this.panel11.Controls.Add(this.button14);
+            this.panel11.Controls.Add(this.AffineTransformImageOutput);
+            this.panel11.Controls.Add(this.textBox10);
+            this.panel11.Controls.Add(this.AffineTransformInputImage);
+            this.panel11.Controls.Add(this.button13);
+            this.panel11.Controls.Add(this.label21);
+            this.panel11.Location = new System.Drawing.Point(6, 25);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(841, 450);
+            this.panel11.TabIndex = 20;
+            // 
+            // imageBox22
+            // 
+            this.imageBox22.Location = new System.Drawing.Point(561, 230);
+            this.imageBox22.Name = "imageBox22";
+            this.imageBox22.Size = new System.Drawing.Size(191, 186);
+            this.imageBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageBox22.TabIndex = 34;
+            this.imageBox22.TabStop = false;
+            // 
+            // numericUpDown11
+            // 
+            this.numericUpDown11.Location = new System.Drawing.Point(393, 87);
+            this.numericUpDown11.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown11.Name = "numericUpDown11";
+            this.numericUpDown11.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown11.TabIndex = 33;
+            this.numericUpDown11.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown11.ValueChanged += new System.EventHandler(this.numericUpDown11_ValueChanged);
+            // 
+            // numericUpDown12
+            // 
+            this.numericUpDown12.Location = new System.Drawing.Point(393, 58);
+            this.numericUpDown12.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown12.Name = "numericUpDown12";
+            this.numericUpDown12.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown12.TabIndex = 32;
+            this.numericUpDown12.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown12.ValueChanged += new System.EventHandler(this.numericUpDown12_ValueChanged);
+            // 
+            // numericUpDown13
+            // 
+            this.numericUpDown13.Location = new System.Drawing.Point(393, 29);
+            this.numericUpDown13.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numericUpDown13.Name = "numericUpDown13";
+            this.numericUpDown13.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown13.TabIndex = 31;
+            this.numericUpDown13.Value = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numericUpDown13.ValueChanged += new System.EventHandler(this.numericUpDown13_ValueChanged);
+            // 
+            // numericUpDown10
+            // 
+            this.numericUpDown10.Location = new System.Drawing.Point(267, 87);
+            this.numericUpDown10.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown10.Name = "numericUpDown10";
+            this.numericUpDown10.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown10.TabIndex = 30;
+            this.numericUpDown10.ValueChanged += new System.EventHandler(this.numericUpDown10_ValueChanged);
+            // 
+            // numericUpDown9
+            // 
+            this.numericUpDown9.Location = new System.Drawing.Point(267, 58);
+            this.numericUpDown9.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown9.Name = "numericUpDown9";
+            this.numericUpDown9.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown9.TabIndex = 29;
+            this.numericUpDown9.ValueChanged += new System.EventHandler(this.numericUpDown9_ValueChanged);
+            // 
+            // numericUpDown8
+            // 
+            this.numericUpDown8.Location = new System.Drawing.Point(267, 29);
+            this.numericUpDown8.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numericUpDown8.Name = "numericUpDown8";
+            this.numericUpDown8.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown8.TabIndex = 28;
+            this.numericUpDown8.ValueChanged += new System.EventHandler(this.numericUpDown8_ValueChanged);
+            // 
+            // imageBox21
+            // 
+            this.imageBox21.Location = new System.Drawing.Point(15, 227);
+            this.imageBox21.Name = "imageBox21";
+            this.imageBox21.Size = new System.Drawing.Size(229, 216);
+            this.imageBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageBox21.TabIndex = 27;
+            this.imageBox21.TabStop = false;
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(250, 227);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(137, 52);
+            this.button14.TabIndex = 26;
+            this.button14.Text = "button14";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // AffineTransformImageOutput
+            // 
+            this.AffineTransformImageOutput.Location = new System.Drawing.Point(561, 38);
+            this.AffineTransformImageOutput.Name = "AffineTransformImageOutput";
+            this.AffineTransformImageOutput.Size = new System.Drawing.Size(191, 186);
+            this.AffineTransformImageOutput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.AffineTransformImageOutput.TabIndex = 25;
+            this.AffineTransformImageOutput.TabStop = false;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(561, 8);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(100, 23);
+            this.textBox10.TabIndex = 23;
+            // 
+            // AffineTransformInputImage
+            // 
+            this.AffineTransformInputImage.Location = new System.Drawing.Point(15, 8);
+            this.AffineTransformInputImage.Name = "AffineTransformInputImage";
+            this.AffineTransformInputImage.Size = new System.Drawing.Size(229, 216);
+            this.AffineTransformInputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.AffineTransformInputImage.TabIndex = 2;
+            this.AffineTransformInputImage.TabStop = false;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(692, 9);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(19, 23);
+            this.button13.TabIndex = 16;
+            this.button13.Text = "Save";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(784, 171);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(44, 15);
+            this.label21.TabIndex = 3;
+            this.label21.Text = "label21";
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.panel12);
+            this.tabPage10.Location = new System.Drawing.Point(4, 24);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(1021, 566);
+            this.tabPage10.TabIndex = 12;
+            this.tabPage10.Text = "Perspective TForm";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // panel12
+            // 
+            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel12.Controls.Add(this.PerspectiveMask);
+            this.panel12.Controls.Add(this.numericUpDown14);
+            this.panel12.Controls.Add(this.numericUpDown15);
+            this.panel12.Controls.Add(this.numericUpDown16);
+            this.panel12.Controls.Add(this.numericUpDown17);
+            this.panel12.Controls.Add(this.numericUpDown18);
+            this.panel12.Controls.Add(this.numericUpDown19);
+            this.panel12.Controls.Add(this.PerspectiveImageInput);
+            this.panel12.Controls.Add(this.button15);
+            this.panel12.Controls.Add(this.PerspectiveImageOutput);
+            this.panel12.Controls.Add(this.textBox11);
+            this.panel12.Controls.Add(this.PerspectiveImageCamera);
+            this.panel12.Controls.Add(this.button16);
+            this.panel12.Controls.Add(this.label22);
+            this.panel12.Location = new System.Drawing.Point(41, 24);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(841, 450);
+            this.panel12.TabIndex = 21;
+            // 
+            // PerspectiveMask
+            // 
+            this.PerspectiveMask.Location = new System.Drawing.Point(561, 230);
+            this.PerspectiveMask.Name = "PerspectiveMask";
+            this.PerspectiveMask.Size = new System.Drawing.Size(191, 186);
+            this.PerspectiveMask.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PerspectiveMask.TabIndex = 34;
+            this.PerspectiveMask.TabStop = false;
+            // 
+            // numericUpDown14
+            // 
+            this.numericUpDown14.Location = new System.Drawing.Point(393, 87);
+            this.numericUpDown14.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown14.Name = "numericUpDown14";
+            this.numericUpDown14.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown14.TabIndex = 33;
+            this.numericUpDown14.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown14.ValueChanged += new System.EventHandler(this.numericUpDown14_ValueChanged);
+            // 
+            // numericUpDown15
+            // 
+            this.numericUpDown15.Location = new System.Drawing.Point(393, 58);
+            this.numericUpDown15.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown15.Name = "numericUpDown15";
+            this.numericUpDown15.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown15.TabIndex = 32;
+            this.numericUpDown15.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown15.ValueChanged += new System.EventHandler(this.numericUpDown15_ValueChanged);
+            // 
+            // numericUpDown16
+            // 
+            this.numericUpDown16.Location = new System.Drawing.Point(393, 29);
+            this.numericUpDown16.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numericUpDown16.Name = "numericUpDown16";
+            this.numericUpDown16.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown16.TabIndex = 31;
+            this.numericUpDown16.Value = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numericUpDown16.ValueChanged += new System.EventHandler(this.numericUpDown16_ValueChanged);
+            // 
+            // numericUpDown17
+            // 
+            this.numericUpDown17.Location = new System.Drawing.Point(267, 87);
+            this.numericUpDown17.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown17.Name = "numericUpDown17";
+            this.numericUpDown17.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown17.TabIndex = 30;
+            this.numericUpDown17.ValueChanged += new System.EventHandler(this.numericUpDown17_ValueChanged);
+            // 
+            // numericUpDown18
+            // 
+            this.numericUpDown18.Location = new System.Drawing.Point(267, 58);
+            this.numericUpDown18.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown18.Name = "numericUpDown18";
+            this.numericUpDown18.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown18.TabIndex = 29;
+            this.numericUpDown18.ValueChanged += new System.EventHandler(this.numericUpDown18_ValueChanged);
+            // 
+            // numericUpDown19
+            // 
+            this.numericUpDown19.Location = new System.Drawing.Point(267, 29);
+            this.numericUpDown19.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numericUpDown19.Name = "numericUpDown19";
+            this.numericUpDown19.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown19.TabIndex = 28;
+            this.numericUpDown19.ValueChanged += new System.EventHandler(this.numericUpDown19_ValueChanged);
+            // 
+            // PerspectiveImageInput
+            // 
+            this.PerspectiveImageInput.Location = new System.Drawing.Point(15, 227);
+            this.PerspectiveImageInput.Name = "PerspectiveImageInput";
+            this.PerspectiveImageInput.Size = new System.Drawing.Size(229, 216);
+            this.PerspectiveImageInput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PerspectiveImageInput.TabIndex = 27;
+            this.PerspectiveImageInput.TabStop = false;
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(250, 227);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(137, 52);
+            this.button15.TabIndex = 26;
+            this.button15.Text = "button15";
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // PerspectiveImageOutput
+            // 
+            this.PerspectiveImageOutput.Location = new System.Drawing.Point(561, 38);
+            this.PerspectiveImageOutput.Name = "PerspectiveImageOutput";
+            this.PerspectiveImageOutput.Size = new System.Drawing.Size(191, 186);
+            this.PerspectiveImageOutput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PerspectiveImageOutput.TabIndex = 25;
+            this.PerspectiveImageOutput.TabStop = false;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(561, 8);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 23);
+            this.textBox11.TabIndex = 23;
+            // 
+            // PerspectiveImageCamera
+            // 
+            this.PerspectiveImageCamera.Location = new System.Drawing.Point(15, 8);
+            this.PerspectiveImageCamera.Name = "PerspectiveImageCamera";
+            this.PerspectiveImageCamera.Size = new System.Drawing.Size(229, 216);
+            this.PerspectiveImageCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PerspectiveImageCamera.TabIndex = 2;
+            this.PerspectiveImageCamera.TabStop = false;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(692, 9);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(19, 23);
+            this.button16.TabIndex = 16;
+            this.button16.Text = "Save";
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(784, 171);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(44, 15);
+            this.label22.TabIndex = 3;
+            this.label22.Text = "label22";
             // 
             // Form1
             // 
@@ -1516,7 +1977,7 @@ namespace WinFormsApp1
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImage = global::EmguCVIntro.Properties.Resources.hqdefault;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(912, 500);
+            this.ClientSize = new System.Drawing.Size(1053, 618);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -1574,16 +2035,43 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.imageBox14)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox15)).EndInit();
             this.tabPage9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
+            this.AffineTransform.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AffineTransformImageOutput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AffineTransformInputImage)).EndInit();
+            this.tabPage10.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PerspectiveMask)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PerspectiveImageInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PerspectiveImageOutput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PerspectiveImageCamera)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1719,6 +2207,40 @@ namespace WinFormsApp1
         private Emgu.CV.UI.ImageBox imageBox18;
         private Emgu.CV.UI.ImageBox imageBox16;
         private System.Windows.Forms.NumericUpDown numericUpDown7;
+        private System.Windows.Forms.TabPage AffineTransform;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Button button14;
+        private Emgu.CV.UI.ImageBox AffineTransformImageOutput;
+        private System.Windows.Forms.TextBox textBox10;
+        private Emgu.CV.UI.ImageBox AffineTransformInputImage;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Label label21;
+        private Emgu.CV.UI.ImageBox imageBox21;
+        private System.Windows.Forms.NumericUpDown numericUpDown11;
+        private System.Windows.Forms.NumericUpDown numericUpDown12;
+        private System.Windows.Forms.NumericUpDown numericUpDown13;
+        private System.Windows.Forms.NumericUpDown numericUpDown10;
+        private System.Windows.Forms.NumericUpDown numericUpDown9;
+        private System.Windows.Forms.NumericUpDown numericUpDown8;
+        private Emgu.CV.UI.ImageBox imageBox22;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.Panel panel12;
+        private Emgu.CV.UI.ImageBox PerspectiveMask;
+        private System.Windows.Forms.NumericUpDown numericUpDown14;
+        private System.Windows.Forms.NumericUpDown numericUpDown15;
+        private System.Windows.Forms.NumericUpDown numericUpDown16;
+        private System.Windows.Forms.NumericUpDown numericUpDown17;
+        private System.Windows.Forms.NumericUpDown numericUpDown18;
+        private System.Windows.Forms.NumericUpDown numericUpDown19;
+        private Emgu.CV.UI.ImageBox PerspectiveImageInput;
+        private System.Windows.Forms.Button button15;
+        private Emgu.CV.UI.ImageBox PerspectiveImageOutput;
+        private System.Windows.Forms.TextBox textBox11;
+        private Emgu.CV.UI.ImageBox PerspectiveImageCamera;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Label label22;
     }
 }
 

@@ -81,6 +81,10 @@ namespace PongIRL
         }
         VectorOfPoint FindLargestContour(VectorOfVectorOfPoint contours)
         {
+            if(contours.Size == 0)
+            {
+                return null; 
+            }
             VectorOfPoint largest = new VectorOfPoint();
             largest = contours[0];
             for (int i = 0; i < contours.Size; i++)
@@ -108,7 +112,8 @@ namespace PongIRL
             CvInvoke.MedianBlur(mask, mask, 5);
 
             CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
-            VectorOfPoint contour = FindLargestContour(contours); 
+            VectorOfPoint contour = FindLargestContour(contours);
+            if (contour == null) return; 
             Rectangle rect = CvInvoke.BoundingRectangle(contour);
             CvInvoke.Rectangle(cameraImage, rect, new MCvScalar(255, 0, 0), 5);
             if (currentTick >= 10)
