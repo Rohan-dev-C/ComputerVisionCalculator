@@ -45,7 +45,6 @@ namespace WinFormsApp1
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.RedSave = new System.Windows.Forms.Button();
             this.GreenSave = new System.Windows.Forms.Button();
@@ -143,6 +142,7 @@ namespace WinFormsApp1
             this.ColorShiftImageSelect = new System.Windows.Forms.ComboBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.CameraSaveBox = new Emgu.CV.UI.ImageBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.button10 = new System.Windows.Forms.Button();
             this.comboBox9 = new System.Windows.Forms.ComboBox();
@@ -176,7 +176,6 @@ namespace WinFormsApp1
             this.AffineTransformInputImage = new Emgu.CV.UI.ImageBox();
             this.button13 = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.panel12 = new System.Windows.Forms.Panel();
             this.PerspectiveMask = new Emgu.CV.UI.ImageBox();
@@ -193,6 +192,23 @@ namespace WinFormsApp1
             this.PerspectiveImageCamera = new Emgu.CV.UI.ImageBox();
             this.button16 = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.IntensityText = new System.Windows.Forms.TextBox();
+            this.button17 = new System.Windows.Forms.Button();
+            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.DilateErodeOutputImage = new Emgu.CV.UI.ImageBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.DilateErodeInputImage = new Emgu.CV.UI.ImageBox();
+            this.button18 = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.comboBox14 = new System.Windows.Forms.ComboBox();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.EyeTrackCameraInput = new Emgu.CV.UI.ImageBox();
+            this.EyeTrackMaskImage = new Emgu.CV.UI.ImageBox();
+            this.EyeTrackFinalImage = new Emgu.CV.UI.ImageBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox7)).BeginInit();
@@ -237,6 +253,7 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.imageBox14)).BeginInit();
             this.tabPage8.SuspendLayout();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraSaveBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox15)).BeginInit();
             this.tabPage9.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -270,6 +287,15 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.PerspectiveImageInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PerspectiveImageOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PerspectiveImageCamera)).BeginInit();
+            this.tabPage11.SuspendLayout();
+            this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DilateErodeOutputImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DilateErodeInputImage)).BeginInit();
+            this.tabPage12.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EyeTrackCameraInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EyeTrackMaskImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EyeTrackFinalImage)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -279,7 +305,7 @@ namespace WinFormsApp1
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1021, 566);
+            this.tabPage4.Size = new System.Drawing.Size(1214, 616);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "ThresholdModifier";
             // 
@@ -300,12 +326,12 @@ namespace WinFormsApp1
             this.panel5.Controls.Add(this.comboBox8);
             this.panel5.Location = new System.Drawing.Point(6, 19);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(776, 197);
+            this.panel5.Size = new System.Drawing.Size(1174, 411);
             this.panel5.TabIndex = 19;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(264, 155);
+            this.button5.Location = new System.Drawing.Point(509, 202);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 31;
@@ -317,7 +343,7 @@ namespace WinFormsApp1
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(176, 112);
+            this.label12.Location = new System.Drawing.Point(421, 159);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(178, 30);
             this.label12.TabIndex = 30;
@@ -327,7 +353,7 @@ namespace WinFormsApp1
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(176, 58);
+            this.label11.Location = new System.Drawing.Point(421, 105);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(183, 30);
             this.label11.TabIndex = 29;
@@ -335,7 +361,7 @@ namespace WinFormsApp1
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(365, 119);
+            this.textBox5.Location = new System.Drawing.Point(610, 166);
             this.textBox5.Name = "textBox5";
             this.textBox5.PlaceholderText = "maxVal";
             this.textBox5.Size = new System.Drawing.Size(100, 23);
@@ -343,7 +369,7 @@ namespace WinFormsApp1
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(365, 65);
+            this.textBox4.Location = new System.Drawing.Point(610, 112);
             this.textBox4.Name = "textBox4";
             this.textBox4.PlaceholderText = "threshold";
             this.textBox4.Size = new System.Drawing.Size(100, 23);
@@ -352,7 +378,7 @@ namespace WinFormsApp1
             // comboBox7
             // 
             this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(184, 10);
+            this.comboBox7.Location = new System.Drawing.Point(429, 57);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(281, 23);
             this.comboBox7.TabIndex = 26;
@@ -360,16 +386,16 @@ namespace WinFormsApp1
             // 
             // imageBox7
             // 
-            this.imageBox7.Location = new System.Drawing.Point(516, 36);
+            this.imageBox7.Location = new System.Drawing.Point(758, 40);
             this.imageBox7.Name = "imageBox7";
-            this.imageBox7.Size = new System.Drawing.Size(150, 150);
+            this.imageBox7.Size = new System.Drawing.Size(335, 291);
             this.imageBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox7.TabIndex = 25;
             this.imageBox7.TabStop = false;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(516, 8);
+            this.textBox2.Location = new System.Drawing.Point(758, 10);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 23);
             this.textBox2.TabIndex = 23;
@@ -377,16 +403,16 @@ namespace WinFormsApp1
             // 
             // imageBox8
             // 
-            this.imageBox8.Location = new System.Drawing.Point(3, 36);
+            this.imageBox8.Location = new System.Drawing.Point(24, 37);
             this.imageBox8.Name = "imageBox8";
-            this.imageBox8.Size = new System.Drawing.Size(150, 150);
+            this.imageBox8.Size = new System.Drawing.Size(322, 294);
             this.imageBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox8.TabIndex = 2;
             this.imageBox8.TabStop = false;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(647, 9);
+            this.button4.Location = new System.Drawing.Point(889, 11);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(19, 23);
             this.button4.TabIndex = 16;
@@ -397,7 +423,7 @@ namespace WinFormsApp1
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(694, 171);
+            this.label10.Location = new System.Drawing.Point(1110, 316);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(44, 15);
             this.label10.TabIndex = 3;
@@ -406,7 +432,7 @@ namespace WinFormsApp1
             // comboBox8
             // 
             this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(3, 8);
+            this.comboBox8.Location = new System.Drawing.Point(24, 8);
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(121, 23);
             this.comboBox8.TabIndex = 12;
@@ -415,21 +441,13 @@ namespace WinFormsApp1
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage3.Controls.Add(this.panel3);
             this.tabPage3.Controls.Add(this.panel2);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1021, 566);
+            this.tabPage3.Size = new System.Drawing.Size(1214, 616);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Color Splitter";
-            // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(109, 209);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(51, 8);
-            this.panel3.TabIndex = 18;
             // 
             // panel2
             // 
@@ -448,12 +466,12 @@ namespace WinFormsApp1
             this.panel2.Controls.Add(this.comboBox6);
             this.panel2.Location = new System.Drawing.Point(6, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(776, 197);
+            this.panel2.Size = new System.Drawing.Size(1202, 454);
             this.panel2.TabIndex = 17;
             // 
             // RedSave
             // 
-            this.RedSave.Location = new System.Drawing.Point(335, 6);
+            this.RedSave.Location = new System.Drawing.Point(496, 7);
             this.RedSave.Name = "RedSave";
             this.RedSave.Size = new System.Drawing.Size(19, 23);
             this.RedSave.TabIndex = 27;
@@ -463,7 +481,7 @@ namespace WinFormsApp1
             // 
             // GreenSave
             // 
-            this.GreenSave.Location = new System.Drawing.Point(491, 7);
+            this.GreenSave.Location = new System.Drawing.Point(811, 7);
             this.GreenSave.Name = "GreenSave";
             this.GreenSave.Size = new System.Drawing.Size(19, 23);
             this.GreenSave.TabIndex = 26;
@@ -473,23 +491,24 @@ namespace WinFormsApp1
             // 
             // SplitBlueImage
             // 
-            this.SplitBlueImage.Location = new System.Drawing.Point(516, 36);
+            this.SplitBlueImage.Location = new System.Drawing.Point(885, 36);
             this.SplitBlueImage.Name = "SplitBlueImage";
-            this.SplitBlueImage.Size = new System.Drawing.Size(150, 150);
+            this.SplitBlueImage.Size = new System.Drawing.Size(310, 268);
             this.SplitBlueImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.SplitBlueImage.TabIndex = 25;
             this.SplitBlueImage.TabStop = false;
+            this.SplitBlueImage.Click += new System.EventHandler(this.SplitBlueImage_Click);
             // 
             // GreenTextBox
             // 
-            this.GreenTextBox.Location = new System.Drawing.Point(360, 9);
+            this.GreenTextBox.Location = new System.Drawing.Point(680, 9);
             this.GreenTextBox.Name = "GreenTextBox";
             this.GreenTextBox.Size = new System.Drawing.Size(100, 23);
             this.GreenTextBox.TabIndex = 24;
             // 
             // BlueTextBox
             // 
-            this.BlueTextBox.Location = new System.Drawing.Point(516, 8);
+            this.BlueTextBox.Location = new System.Drawing.Point(1009, 9);
             this.BlueTextBox.Name = "BlueTextBox";
             this.BlueTextBox.Size = new System.Drawing.Size(100, 23);
             this.BlueTextBox.TabIndex = 23;
@@ -498,23 +517,23 @@ namespace WinFormsApp1
             // 
             this.imageBox4.Location = new System.Drawing.Point(3, 36);
             this.imageBox4.Name = "imageBox4";
-            this.imageBox4.Size = new System.Drawing.Size(150, 150);
+            this.imageBox4.Size = new System.Drawing.Size(278, 266);
             this.imageBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox4.TabIndex = 2;
             this.imageBox4.TabStop = false;
             // 
             // SplitGreenImage
             // 
-            this.SplitGreenImage.Location = new System.Drawing.Point(360, 36);
+            this.SplitGreenImage.Location = new System.Drawing.Point(596, 35);
             this.SplitGreenImage.Name = "SplitGreenImage";
-            this.SplitGreenImage.Size = new System.Drawing.Size(150, 150);
+            this.SplitGreenImage.Size = new System.Drawing.Size(283, 268);
             this.SplitGreenImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.SplitGreenImage.TabIndex = 2;
             this.SplitGreenImage.TabStop = false;
             // 
             // BlueSave
             // 
-            this.BlueSave.Location = new System.Drawing.Point(647, 9);
+            this.BlueSave.Location = new System.Drawing.Point(1140, 10);
             this.BlueSave.Name = "BlueSave";
             this.BlueSave.Size = new System.Drawing.Size(19, 23);
             this.BlueSave.TabIndex = 16;
@@ -524,16 +543,16 @@ namespace WinFormsApp1
             // 
             // SplitRedImage
             // 
-            this.SplitRedImage.Location = new System.Drawing.Point(204, 36);
+            this.SplitRedImage.Location = new System.Drawing.Point(287, 35);
             this.SplitRedImage.Name = "SplitRedImage";
-            this.SplitRedImage.Size = new System.Drawing.Size(150, 150);
+            this.SplitRedImage.Size = new System.Drawing.Size(303, 267);
             this.SplitRedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.SplitRedImage.TabIndex = 2;
             this.SplitRedImage.TabStop = false;
             // 
             // RedTextBox
             // 
-            this.RedTextBox.Location = new System.Drawing.Point(204, 7);
+            this.RedTextBox.Location = new System.Drawing.Point(365, 8);
             this.RedTextBox.Name = "RedTextBox";
             this.RedTextBox.Size = new System.Drawing.Size(100, 23);
             this.RedTextBox.TabIndex = 15;
@@ -541,7 +560,7 @@ namespace WinFormsApp1
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(694, 171);
+            this.label2.Location = new System.Drawing.Point(1140, 331);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 15);
             this.label2.TabIndex = 3;
@@ -563,7 +582,7 @@ namespace WinFormsApp1
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1021, 566);
+            this.tabPage1.Size = new System.Drawing.Size(1214, 616);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Basic Operation";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
@@ -590,12 +609,12 @@ namespace WinFormsApp1
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(855, 237);
+            this.panel1.Size = new System.Drawing.Size(1185, 463);
             this.panel1.TabIndex = 17;
             // 
             // GammaTextBox
             // 
-            this.GammaTextBox.Location = new System.Drawing.Point(191, 159);
+            this.GammaTextBox.Location = new System.Drawing.Point(411, 424);
             this.GammaTextBox.Name = "GammaTextBox";
             this.GammaTextBox.PlaceholderText = "gamma Value";
             this.GammaTextBox.Size = new System.Drawing.Size(100, 23);
@@ -603,7 +622,7 @@ namespace WinFormsApp1
             // 
             // alphaTextBox
             // 
-            this.alphaTextBox.Location = new System.Drawing.Point(191, 100);
+            this.alphaTextBox.Location = new System.Drawing.Point(411, 365);
             this.alphaTextBox.Name = "alphaTextBox";
             this.alphaTextBox.PlaceholderText = "alpha Value";
             this.alphaTextBox.Size = new System.Drawing.Size(100, 23);
@@ -611,7 +630,7 @@ namespace WinFormsApp1
             // 
             // betaTextBox
             // 
-            this.betaTextBox.Location = new System.Drawing.Point(191, 130);
+            this.betaTextBox.Location = new System.Drawing.Point(411, 395);
             this.betaTextBox.Name = "betaTextBox";
             this.betaTextBox.PlaceholderText = "beta Value";
             this.betaTextBox.Size = new System.Drawing.Size(100, 23);
@@ -619,7 +638,7 @@ namespace WinFormsApp1
             // 
             // GoButton
             // 
-            this.GoButton.Location = new System.Drawing.Point(512, 142);
+            this.GoButton.Location = new System.Drawing.Point(701, 161);
             this.GoButton.Name = "GoButton";
             this.GoButton.Size = new System.Drawing.Size(35, 23);
             this.GoButton.TabIndex = 22;
@@ -630,7 +649,7 @@ namespace WinFormsApp1
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(170, 9);
+            this.comboBox3.Location = new System.Drawing.Point(284, 365);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 23);
             this.comboBox3.TabIndex = 21;
@@ -638,7 +657,7 @@ namespace WinFormsApp1
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(773, 129);
+            this.button3.Location = new System.Drawing.Point(1094, 130);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 20;
@@ -650,14 +669,14 @@ namespace WinFormsApp1
             // 
             this.imageBox3.Location = new System.Drawing.Point(3, 36);
             this.imageBox3.Name = "imageBox3";
-            this.imageBox3.Size = new System.Drawing.Size(182, 182);
+            this.imageBox3.Size = new System.Drawing.Size(325, 323);
             this.imageBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox3.TabIndex = 2;
             this.imageBox3.TabStop = false;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(773, 100);
+            this.button2.Location = new System.Drawing.Point(1094, 101);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 19;
@@ -667,16 +686,16 @@ namespace WinFormsApp1
             // 
             // imageBox1
             // 
-            this.imageBox1.Location = new System.Drawing.Point(553, 36);
+            this.imageBox1.Location = new System.Drawing.Point(737, 36);
             this.imageBox1.Name = "imageBox1";
-            this.imageBox1.Size = new System.Drawing.Size(200, 194);
+            this.imageBox1.Size = new System.Drawing.Size(351, 323);
             this.imageBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox1.TabIndex = 2;
             this.imageBox1.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(773, 71);
+            this.button1.Location = new System.Drawing.Point(1094, 72);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 18;
@@ -686,7 +705,7 @@ namespace WinFormsApp1
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(773, 8);
+            this.SaveButton.Location = new System.Drawing.Point(1094, 9);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
             this.SaveButton.TabIndex = 16;
@@ -696,16 +715,16 @@ namespace WinFormsApp1
             // 
             // imageBox2
             // 
-            this.imageBox2.Location = new System.Drawing.Point(297, 32);
+            this.imageBox2.Location = new System.Drawing.Point(368, 36);
             this.imageBox2.Name = "imageBox2";
-            this.imageBox2.Size = new System.Drawing.Size(209, 198);
+            this.imageBox2.Size = new System.Drawing.Size(327, 323);
             this.imageBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox2.TabIndex = 2;
             this.imageBox2.TabStop = false;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(553, 7);
+            this.textBox1.Location = new System.Drawing.Point(988, 7);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 23);
             this.textBox1.TabIndex = 15;
@@ -714,7 +733,7 @@ namespace WinFormsApp1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(773, 167);
+            this.label1.Location = new System.Drawing.Point(1094, 168);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 3;
@@ -723,7 +742,7 @@ namespace WinFormsApp1
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(297, 3);
+            this.comboBox2.Location = new System.Drawing.Point(445, 10);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 23);
             this.comboBox2.TabIndex = 13;
@@ -732,7 +751,7 @@ namespace WinFormsApp1
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 8);
+            this.comboBox1.Location = new System.Drawing.Point(79, 7);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 12;
@@ -742,7 +761,7 @@ namespace WinFormsApp1
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(512, 101);
+            this.label3.Location = new System.Drawing.Point(701, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 31);
             this.label3.TabIndex = 11;
@@ -761,10 +780,12 @@ namespace WinFormsApp1
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.AffineTransform);
             this.tabControl1.Controls.Add(this.tabPage10);
+            this.tabControl1.Controls.Add(this.tabPage11);
+            this.tabControl1.Controls.Add(this.tabPage12);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1029, 594);
+            this.tabControl1.Size = new System.Drawing.Size(1222, 644);
             this.tabControl1.TabIndex = 20;
             // 
             // tabPage2
@@ -786,14 +807,14 @@ namespace WinFormsApp1
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1021, 566);
+            this.tabPage2.Size = new System.Drawing.Size(1214, 616);
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "InRange Operation";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(644, 374);
+            this.numericUpDown4.Location = new System.Drawing.Point(780, 545);
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown4.TabIndex = 43;
@@ -801,7 +822,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown5
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(645, 330);
+            this.numericUpDown5.Location = new System.Drawing.Point(781, 501);
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown5.TabIndex = 42;
@@ -809,7 +830,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown6
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(644, 284);
+            this.numericUpDown6.Location = new System.Drawing.Point(780, 455);
             this.numericUpDown6.Name = "numericUpDown6";
             this.numericUpDown6.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown6.TabIndex = 41;
@@ -817,7 +838,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(50, 381);
+            this.numericUpDown3.Location = new System.Drawing.Point(186, 552);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown3.TabIndex = 40;
@@ -825,7 +846,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(50, 328);
+            this.numericUpDown2.Location = new System.Drawing.Point(186, 499);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown2.TabIndex = 39;
@@ -833,7 +854,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(50, 284);
+            this.numericUpDown1.Location = new System.Drawing.Point(186, 455);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown1.TabIndex = 38;
@@ -842,7 +863,7 @@ namespace WinFormsApp1
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(644, 266);
+            this.label7.Location = new System.Drawing.Point(780, 437);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 15);
             this.label7.TabIndex = 37;
@@ -851,7 +872,7 @@ namespace WinFormsApp1
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(644, 310);
+            this.label8.Location = new System.Drawing.Point(780, 481);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 15);
             this.label8.TabIndex = 34;
@@ -860,7 +881,7 @@ namespace WinFormsApp1
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(644, 356);
+            this.label9.Location = new System.Drawing.Point(780, 527);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(86, 15);
             this.label9.TabIndex = 31;
@@ -869,7 +890,7 @@ namespace WinFormsApp1
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(50, 266);
+            this.label6.Location = new System.Drawing.Point(186, 437);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 15);
             this.label6.TabIndex = 28;
@@ -878,7 +899,7 @@ namespace WinFormsApp1
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(50, 310);
+            this.label5.Location = new System.Drawing.Point(186, 481);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 15);
             this.label5.TabIndex = 25;
@@ -887,7 +908,7 @@ namespace WinFormsApp1
             // Channel3
             // 
             this.Channel3.AutoSize = true;
-            this.Channel3.Location = new System.Drawing.Point(50, 363);
+            this.Channel3.Location = new System.Drawing.Point(186, 534);
             this.Channel3.Name = "Channel3";
             this.Channel3.Size = new System.Drawing.Size(84, 15);
             this.Channel3.TabIndex = 22;
@@ -905,30 +926,30 @@ namespace WinFormsApp1
             this.panel4.Controls.Add(this.comboBox4);
             this.panel4.Location = new System.Drawing.Point(17, 6);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(841, 231);
+            this.panel4.Size = new System.Drawing.Size(1169, 407);
             this.panel4.TabIndex = 18;
             // 
             // comboBox5
             // 
             this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(219, 58);
+            this.comboBox5.Location = new System.Drawing.Point(379, 70);
             this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(337, 23);
+            this.comboBox5.Size = new System.Drawing.Size(307, 23);
             this.comboBox5.TabIndex = 26;
             this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
             // imageBox5
             // 
-            this.imageBox5.Location = new System.Drawing.Point(561, 38);
+            this.imageBox5.Location = new System.Drawing.Point(692, 38);
             this.imageBox5.Name = "imageBox5";
-            this.imageBox5.Size = new System.Drawing.Size(191, 186);
+            this.imageBox5.Size = new System.Drawing.Size(380, 338);
             this.imageBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox5.TabIndex = 25;
             this.imageBox5.TabStop = false;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(561, 8);
+            this.textBox3.Location = new System.Drawing.Point(731, 8);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 23);
             this.textBox3.TabIndex = 23;
@@ -937,14 +958,14 @@ namespace WinFormsApp1
             // 
             this.imageBox6.Location = new System.Drawing.Point(15, 36);
             this.imageBox6.Name = "imageBox6";
-            this.imageBox6.Size = new System.Drawing.Size(198, 188);
+            this.imageBox6.Size = new System.Drawing.Size(358, 340);
             this.imageBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox6.TabIndex = 2;
             this.imageBox6.TabStop = false;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(692, 9);
+            this.button6.Location = new System.Drawing.Point(862, 9);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(19, 23);
             this.button6.TabIndex = 16;
@@ -955,7 +976,7 @@ namespace WinFormsApp1
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(784, 171);
+            this.label4.Location = new System.Drawing.Point(1103, 361);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 15);
             this.label4.TabIndex = 3;
@@ -977,7 +998,7 @@ namespace WinFormsApp1
             this.tabPage5.Location = new System.Drawing.Point(4, 24);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1021, 566);
+            this.tabPage5.Size = new System.Drawing.Size(1214, 616);
             this.tabPage5.TabIndex = 6;
             this.tabPage5.Text = "Blurring Operations";
             // 
@@ -995,12 +1016,12 @@ namespace WinFormsApp1
             this.panel6.Controls.Add(this.BlurOperationImageSelect);
             this.panel6.Location = new System.Drawing.Point(20, 6);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(776, 197);
+            this.panel6.Size = new System.Drawing.Size(1188, 443);
             this.panel6.TabIndex = 19;
             // 
             // KernelSizeText
             // 
-            this.KernelSizeText.Location = new System.Drawing.Point(266, 98);
+            this.KernelSizeText.Location = new System.Drawing.Point(490, 117);
             this.KernelSizeText.Name = "KernelSizeText";
             this.KernelSizeText.PlaceholderText = "Kernel Size";
             this.KernelSizeText.Size = new System.Drawing.Size(100, 23);
@@ -1008,18 +1029,18 @@ namespace WinFormsApp1
             // 
             // BlurGoButton
             // 
-            this.BlurGoButton.Location = new System.Drawing.Point(279, 127);
+            this.BlurGoButton.Location = new System.Drawing.Point(503, 146);
             this.BlurGoButton.Name = "BlurGoButton";
             this.BlurGoButton.Size = new System.Drawing.Size(75, 23);
             this.BlurGoButton.TabIndex = 27;
-            this.BlurGoButton.Text = "button10";
+            this.BlurGoButton.Text = "Go";
             this.BlurGoButton.UseVisualStyleBackColor = true;
             this.BlurGoButton.Click += new System.EventHandler(this.button10_Click);
             // 
             // BlurTypeComboBox
             // 
             this.BlurTypeComboBox.FormattingEnabled = true;
-            this.BlurTypeComboBox.Location = new System.Drawing.Point(188, 57);
+            this.BlurTypeComboBox.Location = new System.Drawing.Point(412, 76);
             this.BlurTypeComboBox.Name = "BlurTypeComboBox";
             this.BlurTypeComboBox.Size = new System.Drawing.Size(281, 23);
             this.BlurTypeComboBox.TabIndex = 26;
@@ -1027,32 +1048,32 @@ namespace WinFormsApp1
             // 
             // imageBox9
             // 
-            this.imageBox9.Location = new System.Drawing.Point(516, 36);
+            this.imageBox9.Location = new System.Drawing.Point(699, 36);
             this.imageBox9.Name = "imageBox9";
-            this.imageBox9.Size = new System.Drawing.Size(150, 150);
+            this.imageBox9.Size = new System.Drawing.Size(432, 385);
             this.imageBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox9.TabIndex = 25;
             this.imageBox9.TabStop = false;
             // 
             // BlurSaveText
             // 
-            this.BlurSaveText.Location = new System.Drawing.Point(516, 8);
+            this.BlurSaveText.Location = new System.Drawing.Point(819, 7);
             this.BlurSaveText.Name = "BlurSaveText";
             this.BlurSaveText.Size = new System.Drawing.Size(100, 23);
             this.BlurSaveText.TabIndex = 23;
             // 
             // imageBox10
             // 
-            this.imageBox10.Location = new System.Drawing.Point(3, 36);
+            this.imageBox10.Location = new System.Drawing.Point(18, 37);
             this.imageBox10.Name = "imageBox10";
-            this.imageBox10.Size = new System.Drawing.Size(150, 150);
+            this.imageBox10.Size = new System.Drawing.Size(388, 385);
             this.imageBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox10.TabIndex = 2;
             this.imageBox10.TabStop = false;
             // 
             // BlurSaveButton
             // 
-            this.BlurSaveButton.Location = new System.Drawing.Point(647, 9);
+            this.BlurSaveButton.Location = new System.Drawing.Point(950, 8);
             this.BlurSaveButton.Name = "BlurSaveButton";
             this.BlurSaveButton.Size = new System.Drawing.Size(19, 23);
             this.BlurSaveButton.TabIndex = 16;
@@ -1063,7 +1084,7 @@ namespace WinFormsApp1
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(694, 171);
+            this.label13.Location = new System.Drawing.Point(1137, 370);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(44, 15);
             this.label13.TabIndex = 3;
@@ -1072,7 +1093,7 @@ namespace WinFormsApp1
             // BlurOperationImageSelect
             // 
             this.BlurOperationImageSelect.FormattingEnabled = true;
-            this.BlurOperationImageSelect.Location = new System.Drawing.Point(3, 8);
+            this.BlurOperationImageSelect.Location = new System.Drawing.Point(18, 8);
             this.BlurOperationImageSelect.Name = "BlurOperationImageSelect";
             this.BlurOperationImageSelect.Size = new System.Drawing.Size(121, 23);
             this.BlurOperationImageSelect.TabIndex = 12;
@@ -1092,14 +1113,14 @@ namespace WinFormsApp1
             this.tabPage6.Location = new System.Drawing.Point(4, 24);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1021, 566);
+            this.tabPage6.Size = new System.Drawing.Size(1214, 616);
             this.tabPage6.TabIndex = 7;
             this.tabPage6.Text = "Contours";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(235, 370);
+            this.label18.Location = new System.Drawing.Point(439, 522);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(30, 15);
             this.label18.TabIndex = 27;
@@ -1109,7 +1130,7 @@ namespace WinFormsApp1
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(361, 370);
+            this.label17.Location = new System.Drawing.Point(579, 522);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(38, 15);
             this.label17.TabIndex = 26;
@@ -1119,7 +1140,7 @@ namespace WinFormsApp1
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(550, 370);
+            this.label16.Location = new System.Drawing.Point(752, 522);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(27, 15);
             this.label16.TabIndex = 25;
@@ -1128,7 +1149,7 @@ namespace WinFormsApp1
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(171, 309);
+            this.label15.Location = new System.Drawing.Point(565, 478);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(83, 15);
             this.label15.TabIndex = 24;
@@ -1136,7 +1157,7 @@ namespace WinFormsApp1
             // 
             // RedSelect
             // 
-            this.RedSelect.Location = new System.Drawing.Point(513, 331);
+            this.RedSelect.Location = new System.Drawing.Point(717, 496);
             this.RedSelect.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1148,7 +1169,7 @@ namespace WinFormsApp1
             // 
             // GreenSelect
             // 
-            this.GreenSelect.Location = new System.Drawing.Point(349, 331);
+            this.GreenSelect.Location = new System.Drawing.Point(553, 496);
             this.GreenSelect.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1165,7 +1186,7 @@ namespace WinFormsApp1
             // 
             // BlueSelect
             // 
-            this.BlueSelect.Location = new System.Drawing.Point(198, 331);
+            this.BlueSelect.Location = new System.Drawing.Point(402, 496);
             this.BlueSelect.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1192,23 +1213,23 @@ namespace WinFormsApp1
             this.panel7.Controls.Add(this.comboBox12);
             this.panel7.Location = new System.Drawing.Point(6, 6);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(852, 300);
+            this.panel7.Size = new System.Drawing.Size(1183, 465);
             this.panel7.TabIndex = 20;
             // 
             // MaskSelect
             // 
             this.MaskSelect.FormattingEnabled = true;
-            this.MaskSelect.Location = new System.Drawing.Point(244, 142);
+            this.MaskSelect.Location = new System.Drawing.Point(349, 252);
             this.MaskSelect.Name = "MaskSelect";
-            this.MaskSelect.Size = new System.Drawing.Size(115, 23);
+            this.MaskSelect.Size = new System.Drawing.Size(156, 23);
             this.MaskSelect.TabIndex = 31;
             this.MaskSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged_1);
             // 
             // MaskImage
             // 
-            this.MaskImage.Location = new System.Drawing.Point(244, 171);
+            this.MaskImage.Location = new System.Drawing.Point(349, 281);
             this.MaskImage.Name = "MaskImage";
-            this.MaskImage.Size = new System.Drawing.Size(115, 106);
+            this.MaskImage.Size = new System.Drawing.Size(156, 151);
             this.MaskImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.MaskImage.TabIndex = 30;
             this.MaskImage.TabStop = false;
@@ -1216,7 +1237,7 @@ namespace WinFormsApp1
             // BoundedShapeSelect
             // 
             this.BoundedShapeSelect.FormattingEnabled = true;
-            this.BoundedShapeSelect.Location = new System.Drawing.Point(259, 66);
+            this.BoundedShapeSelect.Location = new System.Drawing.Point(394, 139);
             this.BoundedShapeSelect.Name = "BoundedShapeSelect";
             this.BoundedShapeSelect.Size = new System.Drawing.Size(281, 23);
             this.BoundedShapeSelect.TabIndex = 29;
@@ -1225,7 +1246,7 @@ namespace WinFormsApp1
             // ChainApproxSelect
             // 
             this.ChainApproxSelect.FormattingEnabled = true;
-            this.ChainApproxSelect.Location = new System.Drawing.Point(259, 37);
+            this.ChainApproxSelect.Location = new System.Drawing.Point(394, 110);
             this.ChainApproxSelect.Name = "ChainApproxSelect";
             this.ChainApproxSelect.Size = new System.Drawing.Size(281, 23);
             this.ChainApproxSelect.TabIndex = 28;
@@ -1233,7 +1254,7 @@ namespace WinFormsApp1
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(357, 95);
+            this.button9.Location = new System.Drawing.Point(492, 168);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 27;
@@ -1244,7 +1265,7 @@ namespace WinFormsApp1
             // comboBox11
             // 
             this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Location = new System.Drawing.Point(259, 8);
+            this.comboBox11.Location = new System.Drawing.Point(394, 81);
             this.comboBox11.Name = "comboBox11";
             this.comboBox11.Size = new System.Drawing.Size(281, 23);
             this.comboBox11.TabIndex = 26;
@@ -1252,32 +1273,32 @@ namespace WinFormsApp1
             // 
             // imageBox11
             // 
-            this.imageBox11.Location = new System.Drawing.Point(585, 36);
+            this.imageBox11.Location = new System.Drawing.Point(721, 81);
             this.imageBox11.Name = "imageBox11";
-            this.imageBox11.Size = new System.Drawing.Size(210, 198);
+            this.imageBox11.Size = new System.Drawing.Size(355, 303);
             this.imageBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox11.TabIndex = 25;
             this.imageBox11.TabStop = false;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(645, 8);
+            this.textBox7.Location = new System.Drawing.Point(805, 37);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 23);
             this.textBox7.TabIndex = 23;
             // 
             // imageBox12
             // 
-            this.imageBox12.Location = new System.Drawing.Point(27, 36);
+            this.imageBox12.Location = new System.Drawing.Point(27, 80);
             this.imageBox12.Name = "imageBox12";
-            this.imageBox12.Size = new System.Drawing.Size(201, 198);
+            this.imageBox12.Size = new System.Drawing.Size(316, 304);
             this.imageBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox12.TabIndex = 2;
             this.imageBox12.TabStop = false;
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(776, 3);
+            this.button8.Location = new System.Drawing.Point(911, 37);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(19, 23);
             this.button8.TabIndex = 16;
@@ -1288,7 +1309,7 @@ namespace WinFormsApp1
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(801, 171);
+            this.label14.Location = new System.Drawing.Point(1101, 369);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(44, 15);
             this.label14.TabIndex = 3;
@@ -1297,7 +1318,7 @@ namespace WinFormsApp1
             // comboBox12
             // 
             this.comboBox12.FormattingEnabled = true;
-            this.comboBox12.Location = new System.Drawing.Point(27, 8);
+            this.comboBox12.Location = new System.Drawing.Point(75, 51);
             this.comboBox12.Name = "comboBox12";
             this.comboBox12.Size = new System.Drawing.Size(121, 23);
             this.comboBox12.TabIndex = 12;
@@ -1310,7 +1331,7 @@ namespace WinFormsApp1
             this.tabPage7.Location = new System.Drawing.Point(4, 24);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1021, 566);
+            this.tabPage7.Size = new System.Drawing.Size(1214, 616);
             this.tabPage7.TabIndex = 8;
             this.tabPage7.Text = "Color Converter";
             // 
@@ -1398,20 +1419,30 @@ namespace WinFormsApp1
             this.tabPage8.Location = new System.Drawing.Point(4, 24);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1021, 566);
+            this.tabPage8.Size = new System.Drawing.Size(1214, 616);
             this.tabPage8.TabIndex = 9;
             this.tabPage8.Text = "Camera";
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.CameraSaveBox);
             this.panel9.Controls.Add(this.textBox9);
             this.panel9.Controls.Add(this.button10);
             this.panel9.Controls.Add(this.comboBox9);
             this.panel9.Controls.Add(this.imageBox15);
             this.panel9.Location = new System.Drawing.Point(6, 6);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(840, 418);
+            this.panel9.Size = new System.Drawing.Size(1167, 585);
             this.panel9.TabIndex = 3;
+            // 
+            // CameraSaveBox
+            // 
+            this.CameraSaveBox.Location = new System.Drawing.Point(922, 68);
+            this.CameraSaveBox.Name = "CameraSaveBox";
+            this.CameraSaveBox.Size = new System.Drawing.Size(230, 209);
+            this.CameraSaveBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CameraSaveBox.TabIndex = 6;
+            this.CameraSaveBox.TabStop = false;
             // 
             // textBox9
             // 
@@ -1443,21 +1474,21 @@ namespace WinFormsApp1
             // 
             this.imageBox15.Location = new System.Drawing.Point(12, 68);
             this.imageBox15.Name = "imageBox15";
-            this.imageBox15.Size = new System.Drawing.Size(811, 327);
+            this.imageBox15.Size = new System.Drawing.Size(892, 407);
             this.imageBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox15.TabIndex = 2;
             this.imageBox15.TabStop = false;
             // 
             // tabPage9
             // 
+            this.tabPage9.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabPage9.Controls.Add(this.panel10);
             this.tabPage9.Location = new System.Drawing.Point(4, 24);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(1021, 566);
+            this.tabPage9.Size = new System.Drawing.Size(1214, 616);
             this.tabPage9.TabIndex = 10;
             this.tabPage9.Text = "Difference";
-            this.tabPage9.UseVisualStyleBackColor = true;
             this.tabPage9.Click += new System.EventHandler(this.tabPage9_Click);
             // 
             // panel10
@@ -1476,12 +1507,12 @@ namespace WinFormsApp1
             this.panel10.Controls.Add(this.comboBox13);
             this.panel10.Location = new System.Drawing.Point(6, 6);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(841, 451);
+            this.panel10.Size = new System.Drawing.Size(1163, 575);
             this.panel10.TabIndex = 20;
             // 
             // numericUpDown7
             // 
-            this.numericUpDown7.Location = new System.Drawing.Point(251, 377);
+            this.numericUpDown7.Location = new System.Drawing.Point(385, 516);
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown7.TabIndex = 32;
@@ -1489,25 +1520,25 @@ namespace WinFormsApp1
             // 
             // imageBox16
             // 
-            this.imageBox16.Location = new System.Drawing.Point(519, 235);
+            this.imageBox16.Location = new System.Drawing.Point(710, 333);
             this.imageBox16.Name = "imageBox16";
-            this.imageBox16.Size = new System.Drawing.Size(287, 184);
+            this.imageBox16.Size = new System.Drawing.Size(388, 235);
             this.imageBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox16.TabIndex = 31;
             this.imageBox16.TabStop = false;
             // 
             // imageBox20
             // 
-            this.imageBox20.Location = new System.Drawing.Point(519, 36);
+            this.imageBox20.Location = new System.Drawing.Point(710, 83);
             this.imageBox20.Name = "imageBox20";
-            this.imageBox20.Size = new System.Drawing.Size(287, 193);
+            this.imageBox20.Size = new System.Drawing.Size(388, 244);
             this.imageBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox20.TabIndex = 30;
             this.imageBox20.TabStop = false;
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(270, 98);
+            this.button12.Location = new System.Drawing.Point(394, 192);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(111, 77);
             this.button12.TabIndex = 29;
@@ -1517,25 +1548,25 @@ namespace WinFormsApp1
             // 
             // imageBox19
             // 
-            this.imageBox19.Location = new System.Drawing.Point(251, 299);
+            this.imageBox19.Location = new System.Drawing.Point(337, 393);
             this.imageBox19.Name = "imageBox19";
-            this.imageBox19.Size = new System.Drawing.Size(108, 59);
+            this.imageBox19.Size = new System.Drawing.Size(168, 110);
             this.imageBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox19.TabIndex = 28;
             this.imageBox19.TabStop = false;
             // 
             // imageBox18
             // 
-            this.imageBox18.Location = new System.Drawing.Point(251, 235);
+            this.imageBox18.Location = new System.Drawing.Point(337, 275);
             this.imageBox18.Name = "imageBox18";
-            this.imageBox18.Size = new System.Drawing.Size(108, 58);
+            this.imageBox18.Size = new System.Drawing.Size(168, 112);
             this.imageBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox18.TabIndex = 27;
             this.imageBox18.TabStop = false;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(587, 421);
+            this.textBox8.Location = new System.Drawing.Point(868, 7);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(100, 23);
             this.textBox8.TabIndex = 23;
@@ -1544,14 +1575,14 @@ namespace WinFormsApp1
             // 
             this.imageBox17.Location = new System.Drawing.Point(14, 36);
             this.imageBox17.Name = "imageBox17";
-            this.imageBox17.Size = new System.Drawing.Size(222, 319);
+            this.imageBox17.Size = new System.Drawing.Size(317, 467);
             this.imageBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox17.TabIndex = 2;
             this.imageBox17.TabStop = false;
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(693, 421);
+            this.button11.Location = new System.Drawing.Point(974, 7);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(19, 23);
             this.button11.TabIndex = 16;
@@ -1562,7 +1593,7 @@ namespace WinFormsApp1
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(143, 386);
+            this.label20.Location = new System.Drawing.Point(1117, 536);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(44, 15);
             this.label20.TabIndex = 3;
@@ -1579,14 +1610,14 @@ namespace WinFormsApp1
             // 
             // AffineTransform
             // 
+            this.AffineTransform.BackColor = System.Drawing.Color.WhiteSmoke;
             this.AffineTransform.Controls.Add(this.panel11);
             this.AffineTransform.Location = new System.Drawing.Point(4, 24);
             this.AffineTransform.Name = "AffineTransform";
             this.AffineTransform.Padding = new System.Windows.Forms.Padding(3);
-            this.AffineTransform.Size = new System.Drawing.Size(1021, 566);
+            this.AffineTransform.Size = new System.Drawing.Size(1214, 616);
             this.AffineTransform.TabIndex = 11;
             this.AffineTransform.Text = "Affine Transform";
-            this.AffineTransform.UseVisualStyleBackColor = true;
             // 
             // panel11
             // 
@@ -1607,21 +1638,21 @@ namespace WinFormsApp1
             this.panel11.Controls.Add(this.label21);
             this.panel11.Location = new System.Drawing.Point(6, 25);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(841, 450);
+            this.panel11.Size = new System.Drawing.Size(1175, 585);
             this.panel11.TabIndex = 20;
             // 
             // imageBox22
             // 
-            this.imageBox22.Location = new System.Drawing.Point(561, 230);
+            this.imageBox22.Location = new System.Drawing.Point(793, 294);
             this.imageBox22.Name = "imageBox22";
-            this.imageBox22.Size = new System.Drawing.Size(191, 186);
+            this.imageBox22.Size = new System.Drawing.Size(282, 264);
             this.imageBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox22.TabIndex = 34;
             this.imageBox22.TabStop = false;
             // 
             // numericUpDown11
             // 
-            this.numericUpDown11.Location = new System.Drawing.Point(393, 87);
+            this.numericUpDown11.Location = new System.Drawing.Point(589, 112);
             this.numericUpDown11.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1639,7 +1670,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown12
             // 
-            this.numericUpDown12.Location = new System.Drawing.Point(393, 58);
+            this.numericUpDown12.Location = new System.Drawing.Point(589, 83);
             this.numericUpDown12.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1657,7 +1688,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown13
             // 
-            this.numericUpDown13.Location = new System.Drawing.Point(393, 29);
+            this.numericUpDown13.Location = new System.Drawing.Point(589, 54);
             this.numericUpDown13.Maximum = new decimal(new int[] {
             180,
             0,
@@ -1675,7 +1706,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown10
             // 
-            this.numericUpDown10.Location = new System.Drawing.Point(267, 87);
+            this.numericUpDown10.Location = new System.Drawing.Point(463, 112);
             this.numericUpDown10.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1688,7 +1719,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown9
             // 
-            this.numericUpDown9.Location = new System.Drawing.Point(267, 58);
+            this.numericUpDown9.Location = new System.Drawing.Point(463, 83);
             this.numericUpDown9.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1701,7 +1732,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown8
             // 
-            this.numericUpDown8.Location = new System.Drawing.Point(267, 29);
+            this.numericUpDown8.Location = new System.Drawing.Point(463, 54);
             this.numericUpDown8.Maximum = new decimal(new int[] {
             180,
             0,
@@ -1714,16 +1745,16 @@ namespace WinFormsApp1
             // 
             // imageBox21
             // 
-            this.imageBox21.Location = new System.Drawing.Point(15, 227);
+            this.imageBox21.Location = new System.Drawing.Point(69, 292);
             this.imageBox21.Name = "imageBox21";
-            this.imageBox21.Size = new System.Drawing.Size(229, 216);
+            this.imageBox21.Size = new System.Drawing.Size(304, 264);
             this.imageBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox21.TabIndex = 27;
             this.imageBox21.TabStop = false;
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(250, 227);
+            this.button14.Location = new System.Drawing.Point(525, 180);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(137, 52);
             this.button14.TabIndex = 26;
@@ -1733,32 +1764,32 @@ namespace WinFormsApp1
             // 
             // AffineTransformImageOutput
             // 
-            this.AffineTransformImageOutput.Location = new System.Drawing.Point(561, 38);
+            this.AffineTransformImageOutput.Location = new System.Drawing.Point(793, 29);
             this.AffineTransformImageOutput.Name = "AffineTransformImageOutput";
-            this.AffineTransformImageOutput.Size = new System.Drawing.Size(191, 186);
+            this.AffineTransformImageOutput.Size = new System.Drawing.Size(282, 264);
             this.AffineTransformImageOutput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.AffineTransformImageOutput.TabIndex = 25;
             this.AffineTransformImageOutput.TabStop = false;
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(561, 8);
+            this.textBox10.Location = new System.Drawing.Point(847, 3);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(100, 23);
             this.textBox10.TabIndex = 23;
             // 
             // AffineTransformInputImage
             // 
-            this.AffineTransformInputImage.Location = new System.Drawing.Point(15, 8);
+            this.AffineTransformInputImage.Location = new System.Drawing.Point(69, 29);
             this.AffineTransformInputImage.Name = "AffineTransformInputImage";
-            this.AffineTransformInputImage.Size = new System.Drawing.Size(229, 216);
+            this.AffineTransformInputImage.Size = new System.Drawing.Size(304, 264);
             this.AffineTransformInputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.AffineTransformInputImage.TabIndex = 2;
             this.AffineTransformInputImage.TabStop = false;
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(692, 9);
+            this.button13.Location = new System.Drawing.Point(978, 4);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(19, 23);
             this.button13.TabIndex = 16;
@@ -1768,7 +1799,7 @@ namespace WinFormsApp1
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(784, 171);
+            this.label21.Location = new System.Drawing.Point(1107, 470);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(44, 15);
             this.label21.TabIndex = 3;
@@ -1776,14 +1807,14 @@ namespace WinFormsApp1
             // 
             // tabPage10
             // 
+            this.tabPage10.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabPage10.Controls.Add(this.panel12);
             this.tabPage10.Location = new System.Drawing.Point(4, 24);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(1021, 566);
+            this.tabPage10.Size = new System.Drawing.Size(1214, 616);
             this.tabPage10.TabIndex = 12;
             this.tabPage10.Text = "Perspective TForm";
-            this.tabPage10.UseVisualStyleBackColor = true;
             // 
             // panel12
             // 
@@ -1804,21 +1835,21 @@ namespace WinFormsApp1
             this.panel12.Controls.Add(this.label22);
             this.panel12.Location = new System.Drawing.Point(41, 24);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(841, 450);
+            this.panel12.Size = new System.Drawing.Size(1130, 570);
             this.panel12.TabIndex = 21;
             // 
             // PerspectiveMask
             // 
-            this.PerspectiveMask.Location = new System.Drawing.Point(561, 230);
+            this.PerspectiveMask.Location = new System.Drawing.Point(741, 314);
             this.PerspectiveMask.Name = "PerspectiveMask";
-            this.PerspectiveMask.Size = new System.Drawing.Size(191, 186);
+            this.PerspectiveMask.Size = new System.Drawing.Size(262, 248);
             this.PerspectiveMask.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PerspectiveMask.TabIndex = 34;
             this.PerspectiveMask.TabStop = false;
             // 
             // numericUpDown14
             // 
-            this.numericUpDown14.Location = new System.Drawing.Point(393, 87);
+            this.numericUpDown14.Location = new System.Drawing.Point(563, 134);
             this.numericUpDown14.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1836,7 +1867,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown15
             // 
-            this.numericUpDown15.Location = new System.Drawing.Point(393, 58);
+            this.numericUpDown15.Location = new System.Drawing.Point(563, 105);
             this.numericUpDown15.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1854,7 +1885,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown16
             // 
-            this.numericUpDown16.Location = new System.Drawing.Point(393, 29);
+            this.numericUpDown16.Location = new System.Drawing.Point(563, 76);
             this.numericUpDown16.Maximum = new decimal(new int[] {
             180,
             0,
@@ -1872,7 +1903,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown17
             // 
-            this.numericUpDown17.Location = new System.Drawing.Point(267, 87);
+            this.numericUpDown17.Location = new System.Drawing.Point(437, 134);
             this.numericUpDown17.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1885,7 +1916,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown18
             // 
-            this.numericUpDown18.Location = new System.Drawing.Point(267, 58);
+            this.numericUpDown18.Location = new System.Drawing.Point(437, 105);
             this.numericUpDown18.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1898,7 +1929,7 @@ namespace WinFormsApp1
             // 
             // numericUpDown19
             // 
-            this.numericUpDown19.Location = new System.Drawing.Point(267, 29);
+            this.numericUpDown19.Location = new System.Drawing.Point(437, 76);
             this.numericUpDown19.Maximum = new decimal(new int[] {
             180,
             0,
@@ -1911,16 +1942,16 @@ namespace WinFormsApp1
             // 
             // PerspectiveImageInput
             // 
-            this.PerspectiveImageInput.Location = new System.Drawing.Point(15, 227);
+            this.PerspectiveImageInput.Location = new System.Drawing.Point(47, 293);
             this.PerspectiveImageInput.Name = "PerspectiveImageInput";
-            this.PerspectiveImageInput.Size = new System.Drawing.Size(229, 216);
+            this.PerspectiveImageInput.Size = new System.Drawing.Size(287, 269);
             this.PerspectiveImageInput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PerspectiveImageInput.TabIndex = 27;
             this.PerspectiveImageInput.TabStop = false;
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(250, 227);
+            this.button15.Location = new System.Drawing.Point(500, 218);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(137, 52);
             this.button15.TabIndex = 26;
@@ -1929,32 +1960,32 @@ namespace WinFormsApp1
             // 
             // PerspectiveImageOutput
             // 
-            this.PerspectiveImageOutput.Location = new System.Drawing.Point(561, 38);
+            this.PerspectiveImageOutput.Location = new System.Drawing.Point(741, 58);
             this.PerspectiveImageOutput.Name = "PerspectiveImageOutput";
-            this.PerspectiveImageOutput.Size = new System.Drawing.Size(191, 186);
+            this.PerspectiveImageOutput.Size = new System.Drawing.Size(262, 250);
             this.PerspectiveImageOutput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PerspectiveImageOutput.TabIndex = 25;
             this.PerspectiveImageOutput.TabStop = false;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(561, 8);
+            this.textBox11.Location = new System.Drawing.Point(773, 19);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(100, 23);
             this.textBox11.TabIndex = 23;
             // 
             // PerspectiveImageCamera
             // 
-            this.PerspectiveImageCamera.Location = new System.Drawing.Point(15, 8);
+            this.PerspectiveImageCamera.Location = new System.Drawing.Point(47, 29);
             this.PerspectiveImageCamera.Name = "PerspectiveImageCamera";
-            this.PerspectiveImageCamera.Size = new System.Drawing.Size(229, 216);
+            this.PerspectiveImageCamera.Size = new System.Drawing.Size(287, 268);
             this.PerspectiveImageCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PerspectiveImageCamera.TabIndex = 2;
             this.PerspectiveImageCamera.TabStop = false;
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(692, 9);
+            this.button16.Location = new System.Drawing.Point(904, 20);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(19, 23);
             this.button16.TabIndex = 16;
@@ -1964,11 +1995,176 @@ namespace WinFormsApp1
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(784, 171);
+            this.label22.Location = new System.Drawing.Point(1057, 452);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(44, 15);
             this.label22.TabIndex = 3;
             this.label22.Text = "label22";
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage11.Controls.Add(this.panel13);
+            this.tabPage11.Location = new System.Drawing.Point(4, 24);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage11.TabIndex = 13;
+            this.tabPage11.Text = "Erode/Dilate";
+            // 
+            // panel13
+            // 
+            this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel13.Controls.Add(this.IntensityText);
+            this.panel13.Controls.Add(this.button17);
+            this.panel13.Controls.Add(this.comboBox10);
+            this.panel13.Controls.Add(this.DilateErodeOutputImage);
+            this.panel13.Controls.Add(this.textBox13);
+            this.panel13.Controls.Add(this.DilateErodeInputImage);
+            this.panel13.Controls.Add(this.button18);
+            this.panel13.Controls.Add(this.label23);
+            this.panel13.Controls.Add(this.comboBox14);
+            this.panel13.Location = new System.Drawing.Point(6, 6);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(1202, 416);
+            this.panel13.TabIndex = 20;
+            // 
+            // IntensityText
+            // 
+            this.IntensityText.Location = new System.Drawing.Point(513, 105);
+            this.IntensityText.Name = "IntensityText";
+            this.IntensityText.PlaceholderText = "Kernel Size";
+            this.IntensityText.Size = new System.Drawing.Size(100, 23);
+            this.IntensityText.TabIndex = 28;
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(525, 145);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(75, 23);
+            this.button17.TabIndex = 27;
+            this.button17.Text = "button10";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // comboBox10
+            // 
+            this.comboBox10.FormattingEnabled = true;
+            this.comboBox10.Location = new System.Drawing.Point(410, 63);
+            this.comboBox10.Name = "comboBox10";
+            this.comboBox10.Size = new System.Drawing.Size(281, 23);
+            this.comboBox10.TabIndex = 26;
+            this.comboBox10.SelectedIndexChanged += new System.EventHandler(this.comboBox10_SelectedIndexChanged_1);
+            // 
+            // DilateErodeOutputImage
+            // 
+            this.DilateErodeOutputImage.Location = new System.Drawing.Point(726, 45);
+            this.DilateErodeOutputImage.Name = "DilateErodeOutputImage";
+            this.DilateErodeOutputImage.Size = new System.Drawing.Size(372, 344);
+            this.DilateErodeOutputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DilateErodeOutputImage.TabIndex = 25;
+            this.DilateErodeOutputImage.TabStop = false;
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(898, 10);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(100, 23);
+            this.textBox13.TabIndex = 23;
+            this.textBox13.TextChanged += new System.EventHandler(this.textBox13_TextChanged);
+            // 
+            // DilateErodeInputImage
+            // 
+            this.DilateErodeInputImage.Location = new System.Drawing.Point(11, 36);
+            this.DilateErodeInputImage.Name = "DilateErodeInputImage";
+            this.DilateErodeInputImage.Size = new System.Drawing.Size(393, 353);
+            this.DilateErodeInputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DilateErodeInputImage.TabIndex = 2;
+            this.DilateErodeInputImage.TabStop = false;
+            this.DilateErodeInputImage.Click += new System.EventHandler(this.imageBox24_Click);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(1019, 9);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(19, 23);
+            this.button18.TabIndex = 16;
+            this.button18.Text = "Save";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(1123, 374);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(44, 15);
+            this.label23.TabIndex = 3;
+            this.label23.Text = "label23";
+            // 
+            // comboBox14
+            // 
+            this.comboBox14.FormattingEnabled = true;
+            this.comboBox14.Location = new System.Drawing.Point(25, 8);
+            this.comboBox14.Name = "comboBox14";
+            this.comboBox14.Size = new System.Drawing.Size(121, 23);
+            this.comboBox14.TabIndex = 12;
+            this.comboBox14.SelectedIndexChanged += new System.EventHandler(this.comboBox14_SelectedIndexChanged);
+            // 
+            // tabPage12
+            // 
+            this.tabPage12.Controls.Add(this.panel3);
+            this.tabPage12.Location = new System.Drawing.Point(4, 24);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage12.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage12.TabIndex = 14;
+            this.tabPage12.Text = "tabPage12";
+            this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel3.Controls.Add(this.EyeTrackCameraInput);
+            this.panel3.Controls.Add(this.EyeTrackMaskImage);
+            this.panel3.Controls.Add(this.EyeTrackFinalImage);
+            this.panel3.Location = new System.Drawing.Point(26, 20);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1120, 579);
+            this.panel3.TabIndex = 0;
+            // 
+            // EyeTrackCameraInput
+            // 
+            this.EyeTrackCameraInput.Location = new System.Drawing.Point(795, 295);
+            this.EyeTrackCameraInput.Name = "EyeTrackCameraInput";
+            this.EyeTrackCameraInput.Size = new System.Drawing.Size(304, 264);
+            this.EyeTrackCameraInput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.EyeTrackCameraInput.TabIndex = 5;
+            this.EyeTrackCameraInput.TabStop = false;
+            // 
+            // EyeTrackMaskImage
+            // 
+            this.EyeTrackMaskImage.Location = new System.Drawing.Point(795, 25);
+            this.EyeTrackMaskImage.Name = "EyeTrackMaskImage";
+            this.EyeTrackMaskImage.Size = new System.Drawing.Size(304, 264);
+            this.EyeTrackMaskImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.EyeTrackMaskImage.TabIndex = 4;
+            this.EyeTrackMaskImage.TabStop = false;
+            // 
+            // EyeTrackFinalImage
+            // 
+            this.EyeTrackFinalImage.Location = new System.Drawing.Point(52, 16);
+            this.EyeTrackFinalImage.Name = "EyeTrackFinalImage";
+            this.EyeTrackFinalImage.Size = new System.Drawing.Size(724, 541);
+            this.EyeTrackFinalImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.EyeTrackFinalImage.TabIndex = 3;
+            this.EyeTrackFinalImage.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 17;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -1977,7 +2173,7 @@ namespace WinFormsApp1
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImage = global::EmguCVIntro.Properties.Resources.hqdefault;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1053, 618);
+            this.ClientSize = new System.Drawing.Size(1258, 676);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -2036,6 +2232,7 @@ namespace WinFormsApp1
             this.tabPage8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraSaveBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox15)).EndInit();
             this.tabPage9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
@@ -2072,6 +2269,16 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.PerspectiveImageInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PerspectiveImageOutput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PerspectiveImageCamera)).EndInit();
+            this.tabPage11.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DilateErodeOutputImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DilateErodeInputImage)).EndInit();
+            this.tabPage12.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.EyeTrackCameraInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EyeTrackMaskImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EyeTrackFinalImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2080,7 +2287,6 @@ namespace WinFormsApp1
 
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button RedSave;
         private System.Windows.Forms.Button GreenSave;
@@ -2241,6 +2447,23 @@ namespace WinFormsApp1
         private Emgu.CV.UI.ImageBox PerspectiveImageCamera;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.TextBox IntensityText;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.ComboBox comboBox10;
+        private Emgu.CV.UI.ImageBox DilateErodeOutputImage;
+        private System.Windows.Forms.TextBox textBox13;
+        private Emgu.CV.UI.ImageBox DilateErodeInputImage;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox comboBox14;
+        private Emgu.CV.UI.ImageBox CameraSaveBox;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.Panel panel3;
+        private Emgu.CV.UI.ImageBox EyeTrackMaskImage;
+        private Emgu.CV.UI.ImageBox EyeTrackFinalImage;
+        private Emgu.CV.UI.ImageBox EyeTrackCameraInput;
     }
 }
 

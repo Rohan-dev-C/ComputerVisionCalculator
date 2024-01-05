@@ -84,6 +84,13 @@ namespace WinFormsApp1
             GrayScale,
         }
 
+        public enum DilateErode
+        { 
+            Dilate,
+            Erode,
+        }
+
+
         #endregion 
         public Form1()
         {
@@ -100,6 +107,7 @@ namespace WinFormsApp1
         Dictionary<string, ContourType> ContourTypes = new Dictionary<string, ContourType>(); 
         Dictionary<string, BlurTypes> BlurType = new Dictionary<string, BlurTypes>();
         Dictionary<string, MaxLum> MaximumValueColor = new Dictionary<string, MaxLum>();  
+        Dictionary<string, DilateErode> DilateErodeOperations = new Dictionary<string, DilateErode>();  
         BitwiseOperators currentBitwise;
         ThresholdType currentThreshold; 
         ColorShiftOperators currentColorShift;
@@ -109,6 +117,7 @@ namespace WinFormsApp1
         BlurTypes currentBlur;
         MaxLum currentColorSpace;
         Mat currentMaskContour;
+        DilateErode currentDilateErode; 
         bool notSelected = true;
         VideoCapture capture = new VideoCapture(0);
         #endregion
@@ -117,9 +126,10 @@ namespace WinFormsApp1
             AffineTransformInputImage.Image?.Dispose(); 
             Mat output = capture.QueryFrame();
             if (output == null) return; 
-            //CvInvoke.Flip(output, output, FlipType.Horizontal);
+            CvInvoke.Flip(output, output, FlipType.Horizontal);
             imageBox15.Image = output;
             AffineTransformInputImage.Image = output;
+            EyeTrackCameraInput.Image = output; 
             PerspectiveImageCamera.Image = output;
         }
         void GetFrame(ref ImageBox imageBOx)
@@ -145,6 +155,7 @@ namespace WinFormsApp1
             comboBox8.Items.Add(textBox1.Text);
             comboBox4.Items.Add(textBox1.Text);
             comboBox13.Items.Add(textBox1.Text);
+            comboBox14.Items.Add(textBox1.Text); 
             textBox1.Clear();
             imageBox1.Image = default;
         }
@@ -216,6 +227,8 @@ namespace WinFormsApp1
             MaximumValueColor.Add("BGR", MaxLum.BGR);
             MaximumValueColor.Add("HSV", MaxLum.HSV);
             MaximumValueColor.Add("GrayScale", MaxLum.GrayScale);
+            DilateErodeOperations.Add("Dilate", DilateErode.Dilate);
+            DilateErodeOperations.Add("Erode", DilateErode.Erode);
             #endregion
             #region designs 
 
@@ -299,6 +312,10 @@ namespace WinFormsApp1
             images.Add("gradient", output6);
             #endregion
             #region comboBoxSetup
+            foreach (var item in DilateErodeOperations.Keys)
+            {
+                comboBox10.Items.Add(item) ;
+            }
             foreach (var item in BlurType.Keys)
             {
                 BlurTypeComboBox.Items.Add(item); 
@@ -341,7 +358,8 @@ namespace WinFormsApp1
                 MaskSelect.Items.Add(item);
                 comboBox8.Items.Add(item);
                 comboBox12.Items.Add(item);
-                comboBox13.Items.Add(item); 
+                comboBox13.Items.Add(item);
+                comboBox14.Items.Add(item);
                 ColorShiftImageSelect.Items.Add(item);
             }
             image.AsReadOnly();
@@ -533,6 +551,10 @@ namespace WinFormsApp1
         }
         #endregion
         #region ColorSplit
+        private void SplitBlueImage_Click(object sender, EventArgs e)
+        {
+
+        }
         private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
         {
             imageBox4.Image = images[comboBox6.SelectedItem.ToString()];
@@ -912,17 +934,7 @@ namespace WinFormsApp1
         }
         private void button7_Click_1(object sender, EventArgs e)
         {
-            images.Add(textBox6.Text, imageBox13.Image);
-            comboBox1.Items.Add(textBox6.Text);
-            comboBox2.Items.Add(textBox6.Text);
-            comboBox6.Items.Add(textBox6.Text);
-            BlurOperationImageSelect.Items.Add(textBox6.Text);
-            ColorShiftImageSelect.Items.Add(textBox6.Text);
-            comboBox12.Items.Add(textBox6.Text);
-            comboBox8.Items.Add(textBox6.Text);
-            comboBox4.Items.Add(textBox6.Text);
-            textBox6.Clear();
-            imageBox13.Image = default;
+            SaveInfo(textBox6, imageBox13);
         }
 
 
@@ -935,14 +947,15 @@ namespace WinFormsApp1
 
         private void button10_Click_1(object sender, EventArgs e)
         {
-            SaveInfo(textBox9, imageBox15);  
+            Mat temp = (Mat)imageBox15.Image;
+            CameraSaveBox.Image = temp.Clone();
+            SaveInfo(textBox9, CameraSaveBox);  
         }
         private void tabPage9_Click(object sender, EventArgs e)
         {
 
         }
         #endregion
-
         #region Spot the difference
         private void comboBox13_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -994,7 +1007,6 @@ namespace WinFormsApp1
 
         }
         #endregion
-
         #region Affine
         VectorOfPoint FindLargestContour(VectorOfVectorOfPoint contours)
         {
@@ -1523,6 +1535,88 @@ namespace WinFormsApp1
             PerspectiveMask.Image = mask;
             PerspectiveImageOutput.Image = output;
         }
+
         #endregion
+        #region dilate erode
+        private void comboBox14_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DilateErodeInputImage.Image = images[comboBox14.SelectedItem.ToString()];
+
+        }
+
+        private void comboBox10_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            currentDilateErode = DilateErodeOperations[comboBox10.SelectedItem.ToString()];
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            if(IntensityText.Text == "")
+            {
+                MessageBox.Show("input value");
+                return; 
+            }
+            var x = int.Parse(IntensityText.Text.ToString());
+            Mat output = new Mat(); 
+            Mat element = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(x, x), new Point(-1, -1));
+            switch (currentDilateErode)
+            {
+                case DilateErode.Dilate:
+                    CvInvoke.Dilate(DilateErodeInputImage.Image as Mat, output, element, new Point(-1, -1), 1, BorderType.Constant, new MCvScalar(0, 0, 0));
+                    DilateErodeOutputImage.Image = output; 
+                    break;
+
+                case DilateErode.Erode:
+                    CvInvoke.Erode(DilateErodeInputImage.Image as Mat, output, element, new Point(-1, -1), 1, BorderType.Constant, new MCvScalar(0, 0, 0));
+                    DilateErodeOutputImage.Image = output;
+                    break; 
+            }
+
+        }
+
+        private void imageBox24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            SaveInfo(textBox13, DilateErodeOutputImage);
+        }
+
+        private void textBox13_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        #endregion
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Mat currentFrame = capture.QueryFrame();
+            CvInvoke.Flip(currentFrame, currentFrame, FlipType.Horizontal);
+            Mat mask = currentFrame.Clone();
+            Mat finalImage = mask.Clone(); 
+            EyeTrackCameraInput.Image = mask;
+            CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
+            CvInvoke.InRange(mask, (ScalarArray) new MCvScalar(10, 66, 32), (ScalarArray) new MCvScalar(33, 170, 101), mask);
+            CvInvoke.MedianBlur(mask, mask, 5);
+            Mat element1 = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(5, 5), new Point(-1, -1));
+            CvInvoke.Erode(mask, mask, element1, new Point(-1, -1), 1, BorderType.Constant, new MCvScalar(0, 0, 0));
+            CvInvoke.MedianBlur(mask, mask, 5);
+            Mat element2 = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(10, 10), new Point(-1, -1));
+            CvInvoke.Dilate(mask, mask, element2, new Point(-1, -1), 1, BorderType.Constant, new MCvScalar(0, 0, 0));
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat nextLayer = new Mat();
+            CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+            EyeTrackMaskImage.Image = mask;
+            VectorOfPoint contour = FindLargestContour(contours); 
+            Rectangle rect = CvInvoke.BoundingRectangle(contour);
+            CvInvoke.Rectangle(finalImage, rect, new MCvScalar(255, 0, 0), 5);
+            EyeTrackFinalImage.Image = finalImage; 
+
+        }
+
     }
 }
