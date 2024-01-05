@@ -33,6 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Images\download.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Images\restaurant.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

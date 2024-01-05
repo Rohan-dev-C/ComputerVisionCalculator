@@ -32,18 +32,18 @@ namespace WinFormsApp1
             this.components = new System.ComponentModel.Container();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
+            this.ThresholdGoButton = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.imageBox7 = new Emgu.CV.UI.ImageBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.imageBox8 = new Emgu.CV.UI.ImageBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.ThresholdMaxValueText = new System.Windows.Forms.TextBox();
+            this.ThresholdMinValueText = new System.Windows.Forms.TextBox();
+            this.ThresholdTypeSelect = new System.Windows.Forms.ComboBox();
+            this.ThresholdOutputImageBox = new Emgu.CV.UI.ImageBox();
+            this.ThresholdSaveText = new System.Windows.Forms.TextBox();
+            this.ThresholdImageBox = new Emgu.CV.UI.ImageBox();
+            this.ThresholdSaveButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.ThresholdImageSelect = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.RedSave = new System.Windows.Forms.Button();
@@ -51,31 +51,31 @@ namespace WinFormsApp1
             this.SplitBlueImage = new Emgu.CV.UI.ImageBox();
             this.GreenTextBox = new System.Windows.Forms.TextBox();
             this.BlueTextBox = new System.Windows.Forms.TextBox();
-            this.imageBox4 = new Emgu.CV.UI.ImageBox();
+            this.ColorSplitImageBox = new Emgu.CV.UI.ImageBox();
             this.SplitGreenImage = new Emgu.CV.UI.ImageBox();
             this.BlueSave = new System.Windows.Forms.Button();
             this.SplitRedImage = new Emgu.CV.UI.ImageBox();
             this.RedTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.ColorSplitImageSelect = new System.Windows.Forms.ComboBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.GammaTextBox = new System.Windows.Forms.TextBox();
             this.alphaTextBox = new System.Windows.Forms.TextBox();
             this.betaTextBox = new System.Windows.Forms.TextBox();
             this.GoButton = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.imageBox3 = new Emgu.CV.UI.ImageBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.imageBox1 = new Emgu.CV.UI.ImageBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BitWiseOperationSelect = new System.Windows.Forms.ComboBox();
+            this.RotateLeftButton = new System.Windows.Forms.Button();
+            this.bitWiseInput1 = new Emgu.CV.UI.ImageBox();
+            this.RotateRightButton = new System.Windows.Forms.Button();
+            this.bitWiseOutput = new Emgu.CV.UI.ImageBox();
+            this.InvertButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.imageBox2 = new Emgu.CV.UI.ImageBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.bitWiseInput2 = new Emgu.CV.UI.ImageBox();
+            this.BitWiseSaveText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.BitWisePic2Select = new System.Windows.Forms.ComboBox();
+            this.BitwisePic1Select = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -85,28 +85,28 @@ namespace WinFormsApp1
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.Channel1MaxLabel = new System.Windows.Forms.Label();
+            this.Channel2MaxLabel = new System.Windows.Forms.Label();
+            this.Channel3MaxLabel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Channel3 = new System.Windows.Forms.Label();
+            this.Channel3MinLabel = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.InRangeColorSpaceSelect = new System.Windows.Forms.ComboBox();
             this.imageBox5 = new Emgu.CV.UI.ImageBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.imageBox6 = new Emgu.CV.UI.ImageBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.InRangeSaveText = new System.Windows.Forms.TextBox();
+            this.InRangeInputImage = new Emgu.CV.UI.ImageBox();
+            this.InRangeSaveButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.InRangeSelect = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.KernelSizeText = new System.Windows.Forms.TextBox();
             this.BlurGoButton = new System.Windows.Forms.Button();
             this.BlurTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.imageBox9 = new Emgu.CV.UI.ImageBox();
+            this.BlurOutputImage = new Emgu.CV.UI.ImageBox();
             this.BlurSaveText = new System.Windows.Forms.TextBox();
-            this.imageBox10 = new Emgu.CV.UI.ImageBox();
+            this.BlurInputImage = new Emgu.CV.UI.ImageBox();
             this.BlurSaveButton = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.BlurOperationImageSelect = new System.Windows.Forms.ComboBox();
@@ -123,43 +123,43 @@ namespace WinFormsApp1
             this.MaskImage = new Emgu.CV.UI.ImageBox();
             this.BoundedShapeSelect = new System.Windows.Forms.ComboBox();
             this.ChainApproxSelect = new System.Windows.Forms.ComboBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
-            this.imageBox11 = new Emgu.CV.UI.ImageBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.imageBox12 = new Emgu.CV.UI.ImageBox();
-            this.button8 = new System.Windows.Forms.Button();
+            this.ContourGoButton = new System.Windows.Forms.Button();
+            this.ContourTypeSelect = new System.Windows.Forms.ComboBox();
+            this.ContourOutputImage = new Emgu.CV.UI.ImageBox();
+            this.ContourSaveText = new System.Windows.Forms.TextBox();
+            this.ContourInputImage = new Emgu.CV.UI.ImageBox();
+            this.ContourSaveButton = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox12 = new System.Windows.Forms.ComboBox();
+            this.ContourImageSelect = new System.Windows.Forms.ComboBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
             this.ColorShiftOperationSelect = new System.Windows.Forms.ComboBox();
-            this.imageBox13 = new Emgu.CV.UI.ImageBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.imageBox14 = new Emgu.CV.UI.ImageBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.ColorCVTOutput = new Emgu.CV.UI.ImageBox();
+            this.ColorCVTSaveText = new System.Windows.Forms.TextBox();
+            this.ColorCVTInput = new Emgu.CV.UI.ImageBox();
+            this.ColorCVTSaveButton = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.ColorShiftImageSelect = new System.Windows.Forms.ComboBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
             this.CameraSaveBox = new Emgu.CV.UI.ImageBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.CameraImageText = new System.Windows.Forms.TextBox();
+            this.CaptureButton = new System.Windows.Forms.Button();
+            this.CameraSelectBox = new System.Windows.Forms.ComboBox();
             this.imageBox15 = new Emgu.CV.UI.ImageBox();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.imageBox16 = new Emgu.CV.UI.ImageBox();
-            this.imageBox20 = new Emgu.CV.UI.ImageBox();
-            this.button12 = new System.Windows.Forms.Button();
-            this.imageBox19 = new Emgu.CV.UI.ImageBox();
-            this.imageBox18 = new Emgu.CV.UI.ImageBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.imageBox17 = new Emgu.CV.UI.ImageBox();
-            this.button11 = new System.Windows.Forms.Button();
+            this.SpotTheDifferenceSensitivity = new System.Windows.Forms.NumericUpDown();
+            this.SpotTheDifferenceOutputImage = new Emgu.CV.UI.ImageBox();
+            this.SpotTheDifferenceTopOutput = new Emgu.CV.UI.ImageBox();
+            this.SpottheDifferenceSplitButton = new System.Windows.Forms.Button();
+            this.bottomImage = new Emgu.CV.UI.ImageBox();
+            this.topImage = new Emgu.CV.UI.ImageBox();
+            this.SpottheDifferenceSaveText = new System.Windows.Forms.TextBox();
+            this.SpotTheDifferenceInputImage = new Emgu.CV.UI.ImageBox();
+            this.SpotTheDifferenceSaveButton = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
-            this.comboBox13 = new System.Windows.Forms.ComboBox();
+            this.SpotDiffSelectionBox = new System.Windows.Forms.ComboBox();
             this.AffineTransform = new System.Windows.Forms.TabPage();
             this.panel11 = new System.Windows.Forms.Panel();
             this.imageBox22 = new Emgu.CV.UI.ImageBox();
@@ -170,7 +170,7 @@ namespace WinFormsApp1
             this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
             this.imageBox21 = new Emgu.CV.UI.ImageBox();
-            this.button14 = new System.Windows.Forms.Button();
+            this.AffineTransformGoButton = new System.Windows.Forms.Button();
             this.AffineTransformImageOutput = new Emgu.CV.UI.ImageBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.AffineTransformInputImage = new Emgu.CV.UI.ImageBox();
@@ -186,24 +186,25 @@ namespace WinFormsApp1
             this.numericUpDown18 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown19 = new System.Windows.Forms.NumericUpDown();
             this.PerspectiveImageInput = new Emgu.CV.UI.ImageBox();
-            this.button15 = new System.Windows.Forms.Button();
+            this.PerspectiveTFormGoButton = new System.Windows.Forms.Button();
             this.PerspectiveImageOutput = new Emgu.CV.UI.ImageBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.PerspectiveTextSave = new System.Windows.Forms.TextBox();
             this.PerspectiveImageCamera = new Emgu.CV.UI.ImageBox();
             this.button16 = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.panel13 = new System.Windows.Forms.Panel();
             this.IntensityText = new System.Windows.Forms.TextBox();
-            this.button17 = new System.Windows.Forms.Button();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.DilateErodeGoButton = new System.Windows.Forms.Button();
+            this.ErodeDilateSelectOperation = new System.Windows.Forms.ComboBox();
             this.DilateErodeOutputImage = new Emgu.CV.UI.ImageBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.DilateErodeSaveText = new System.Windows.Forms.TextBox();
             this.DilateErodeInputImage = new Emgu.CV.UI.ImageBox();
-            this.button18 = new System.Windows.Forms.Button();
+            this.DilateErodeSaveButton = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
-            this.comboBox14 = new System.Windows.Forms.ComboBox();
+            this.ErodeDilateSelectImage = new System.Windows.Forms.ComboBox();
             this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.button19 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.EyeTrackCameraInput = new Emgu.CV.UI.ImageBox();
             this.EyeTrackMaskImage = new Emgu.CV.UI.ImageBox();
@@ -211,19 +212,19 @@ namespace WinFormsApp1
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThresholdOutputImageBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThresholdImageBox)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitBlueImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorSplitImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitGreenImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitRedImage)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bitWiseInput1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bitWiseOutput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bitWiseInput2)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
@@ -234,35 +235,35 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InRangeInputImage)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BlurOutputImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BlurInputImage)).BeginInit();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RedSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GreenSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BlueSelect)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaskImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContourOutputImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContourInputImage)).BeginInit();
             this.tabPage7.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorCVTOutput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorCVTInput)).BeginInit();
             this.tabPage8.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CameraSaveBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox15)).BeginInit();
             this.tabPage9.SuspendLayout();
             this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpotTheDifferenceSensitivity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpotTheDifferenceOutputImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpotTheDifferenceTopOutput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bottomImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.topImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpotTheDifferenceInputImage)).BeginInit();
             this.AffineTransform.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox22)).BeginInit();
@@ -312,32 +313,32 @@ namespace WinFormsApp1
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel5.Controls.Add(this.button5);
+            this.panel5.Controls.Add(this.ThresholdGoButton);
             this.panel5.Controls.Add(this.label12);
             this.panel5.Controls.Add(this.label11);
-            this.panel5.Controls.Add(this.textBox5);
-            this.panel5.Controls.Add(this.textBox4);
-            this.panel5.Controls.Add(this.comboBox7);
-            this.panel5.Controls.Add(this.imageBox7);
-            this.panel5.Controls.Add(this.textBox2);
-            this.panel5.Controls.Add(this.imageBox8);
-            this.panel5.Controls.Add(this.button4);
+            this.panel5.Controls.Add(this.ThresholdMaxValueText);
+            this.panel5.Controls.Add(this.ThresholdMinValueText);
+            this.panel5.Controls.Add(this.ThresholdTypeSelect);
+            this.panel5.Controls.Add(this.ThresholdOutputImageBox);
+            this.panel5.Controls.Add(this.ThresholdSaveText);
+            this.panel5.Controls.Add(this.ThresholdImageBox);
+            this.panel5.Controls.Add(this.ThresholdSaveButton);
             this.panel5.Controls.Add(this.label10);
-            this.panel5.Controls.Add(this.comboBox8);
+            this.panel5.Controls.Add(this.ThresholdImageSelect);
             this.panel5.Location = new System.Drawing.Point(6, 19);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1174, 411);
             this.panel5.TabIndex = 19;
             // 
-            // button5
+            // ThresholdGoButton
             // 
-            this.button5.Location = new System.Drawing.Point(509, 202);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 31;
-            this.button5.Text = "Go";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.ThresholdGoButton.Location = new System.Drawing.Point(509, 202);
+            this.ThresholdGoButton.Name = "ThresholdGoButton";
+            this.ThresholdGoButton.Size = new System.Drawing.Size(75, 23);
+            this.ThresholdGoButton.TabIndex = 31;
+            this.ThresholdGoButton.Text = "Go";
+            this.ThresholdGoButton.UseVisualStyleBackColor = true;
+            this.ThresholdGoButton.Click += new System.EventHandler(this.button5_Click);
             // 
             // label12
             // 
@@ -359,66 +360,66 @@ namespace WinFormsApp1
             this.label11.TabIndex = 29;
             this.label11.Text = "Threshold (Min) : ";
             // 
-            // textBox5
+            // ThresholdMaxValueText
             // 
-            this.textBox5.Location = new System.Drawing.Point(610, 166);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.PlaceholderText = "maxVal";
-            this.textBox5.Size = new System.Drawing.Size(100, 23);
-            this.textBox5.TabIndex = 28;
+            this.ThresholdMaxValueText.Location = new System.Drawing.Point(610, 166);
+            this.ThresholdMaxValueText.Name = "ThresholdMaxValueText";
+            this.ThresholdMaxValueText.PlaceholderText = "maxVal";
+            this.ThresholdMaxValueText.Size = new System.Drawing.Size(100, 23);
+            this.ThresholdMaxValueText.TabIndex = 28;
             // 
-            // textBox4
+            // ThresholdMinValueText
             // 
-            this.textBox4.Location = new System.Drawing.Point(610, 112);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.PlaceholderText = "threshold";
-            this.textBox4.Size = new System.Drawing.Size(100, 23);
-            this.textBox4.TabIndex = 27;
+            this.ThresholdMinValueText.Location = new System.Drawing.Point(610, 112);
+            this.ThresholdMinValueText.Name = "ThresholdMinValueText";
+            this.ThresholdMinValueText.PlaceholderText = "threshold";
+            this.ThresholdMinValueText.Size = new System.Drawing.Size(100, 23);
+            this.ThresholdMinValueText.TabIndex = 27;
             // 
-            // comboBox7
+            // ThresholdTypeSelect
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(429, 57);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(281, 23);
-            this.comboBox7.TabIndex = 26;
-            this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.comboBox7_SelectedIndexChanged);
+            this.ThresholdTypeSelect.FormattingEnabled = true;
+            this.ThresholdTypeSelect.Location = new System.Drawing.Point(429, 57);
+            this.ThresholdTypeSelect.Name = "ThresholdTypeSelect";
+            this.ThresholdTypeSelect.Size = new System.Drawing.Size(281, 23);
+            this.ThresholdTypeSelect.TabIndex = 26;
+            this.ThresholdTypeSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox7_SelectedIndexChanged);
             // 
-            // imageBox7
+            // ThresholdOutputImageBox
             // 
-            this.imageBox7.Location = new System.Drawing.Point(758, 40);
-            this.imageBox7.Name = "imageBox7";
-            this.imageBox7.Size = new System.Drawing.Size(335, 291);
-            this.imageBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox7.TabIndex = 25;
-            this.imageBox7.TabStop = false;
+            this.ThresholdOutputImageBox.Location = new System.Drawing.Point(758, 40);
+            this.ThresholdOutputImageBox.Name = "ThresholdOutputImageBox";
+            this.ThresholdOutputImageBox.Size = new System.Drawing.Size(335, 291);
+            this.ThresholdOutputImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ThresholdOutputImageBox.TabIndex = 25;
+            this.ThresholdOutputImageBox.TabStop = false;
             // 
-            // textBox2
+            // ThresholdSaveText
             // 
-            this.textBox2.Location = new System.Drawing.Point(758, 10);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 23;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.ThresholdSaveText.Location = new System.Drawing.Point(758, 10);
+            this.ThresholdSaveText.Name = "ThresholdSaveText";
+            this.ThresholdSaveText.Size = new System.Drawing.Size(100, 23);
+            this.ThresholdSaveText.TabIndex = 23;
+            this.ThresholdSaveText.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // imageBox8
+            // ThresholdImageBox
             // 
-            this.imageBox8.Location = new System.Drawing.Point(24, 37);
-            this.imageBox8.Name = "imageBox8";
-            this.imageBox8.Size = new System.Drawing.Size(322, 294);
-            this.imageBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox8.TabIndex = 2;
-            this.imageBox8.TabStop = false;
+            this.ThresholdImageBox.Location = new System.Drawing.Point(24, 37);
+            this.ThresholdImageBox.Name = "ThresholdImageBox";
+            this.ThresholdImageBox.Size = new System.Drawing.Size(322, 294);
+            this.ThresholdImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ThresholdImageBox.TabIndex = 2;
+            this.ThresholdImageBox.TabStop = false;
             // 
-            // button4
+            // ThresholdSaveButton
             // 
-            this.button4.Location = new System.Drawing.Point(889, 11);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(19, 23);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "Save";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.ThresholdSaveButton.Location = new System.Drawing.Point(889, 11);
+            this.ThresholdSaveButton.Name = "ThresholdSaveButton";
+            this.ThresholdSaveButton.Size = new System.Drawing.Size(19, 23);
+            this.ThresholdSaveButton.TabIndex = 16;
+            this.ThresholdSaveButton.Text = "Save";
+            this.ThresholdSaveButton.UseVisualStyleBackColor = true;
+            this.ThresholdSaveButton.Click += new System.EventHandler(this.button4_Click);
             // 
             // label10
             // 
@@ -429,14 +430,14 @@ namespace WinFormsApp1
             this.label10.TabIndex = 3;
             this.label10.Text = "label10";
             // 
-            // comboBox8
+            // ThresholdImageSelect
             // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(24, 8);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(121, 23);
-            this.comboBox8.TabIndex = 12;
-            this.comboBox8.SelectedIndexChanged += new System.EventHandler(this.comboBox8_SelectedIndexChanged);
+            this.ThresholdImageSelect.FormattingEnabled = true;
+            this.ThresholdImageSelect.Location = new System.Drawing.Point(24, 8);
+            this.ThresholdImageSelect.Name = "ThresholdImageSelect";
+            this.ThresholdImageSelect.Size = new System.Drawing.Size(121, 23);
+            this.ThresholdImageSelect.TabIndex = 12;
+            this.ThresholdImageSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox8_SelectedIndexChanged);
             // 
             // tabPage3
             // 
@@ -457,13 +458,13 @@ namespace WinFormsApp1
             this.panel2.Controls.Add(this.SplitBlueImage);
             this.panel2.Controls.Add(this.GreenTextBox);
             this.panel2.Controls.Add(this.BlueTextBox);
-            this.panel2.Controls.Add(this.imageBox4);
+            this.panel2.Controls.Add(this.ColorSplitImageBox);
             this.panel2.Controls.Add(this.SplitGreenImage);
             this.panel2.Controls.Add(this.BlueSave);
             this.panel2.Controls.Add(this.SplitRedImage);
             this.panel2.Controls.Add(this.RedTextBox);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.comboBox6);
+            this.panel2.Controls.Add(this.ColorSplitImageSelect);
             this.panel2.Location = new System.Drawing.Point(6, 6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1202, 454);
@@ -513,14 +514,14 @@ namespace WinFormsApp1
             this.BlueTextBox.Size = new System.Drawing.Size(100, 23);
             this.BlueTextBox.TabIndex = 23;
             // 
-            // imageBox4
+            // ColorSplitImageBox
             // 
-            this.imageBox4.Location = new System.Drawing.Point(3, 36);
-            this.imageBox4.Name = "imageBox4";
-            this.imageBox4.Size = new System.Drawing.Size(278, 266);
-            this.imageBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox4.TabIndex = 2;
-            this.imageBox4.TabStop = false;
+            this.ColorSplitImageBox.Location = new System.Drawing.Point(3, 36);
+            this.ColorSplitImageBox.Name = "ColorSplitImageBox";
+            this.ColorSplitImageBox.Size = new System.Drawing.Size(278, 266);
+            this.ColorSplitImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ColorSplitImageBox.TabIndex = 2;
+            this.ColorSplitImageBox.TabStop = false;
             // 
             // SplitGreenImage
             // 
@@ -566,14 +567,14 @@ namespace WinFormsApp1
             this.label2.TabIndex = 3;
             this.label2.Text = "label2";
             // 
-            // comboBox6
+            // ColorSplitImageSelect
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(3, 8);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 23);
-            this.comboBox6.TabIndex = 12;
-            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.comboBox6_SelectedIndexChanged);
+            this.ColorSplitImageSelect.FormattingEnabled = true;
+            this.ColorSplitImageSelect.Location = new System.Drawing.Point(3, 8);
+            this.ColorSplitImageSelect.Name = "ColorSplitImageSelect";
+            this.ColorSplitImageSelect.Size = new System.Drawing.Size(121, 23);
+            this.ColorSplitImageSelect.TabIndex = 12;
+            this.ColorSplitImageSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox6_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -594,18 +595,18 @@ namespace WinFormsApp1
             this.panel1.Controls.Add(this.alphaTextBox);
             this.panel1.Controls.Add(this.betaTextBox);
             this.panel1.Controls.Add(this.GoButton);
-            this.panel1.Controls.Add(this.comboBox3);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.imageBox3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.imageBox1);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.BitWiseOperationSelect);
+            this.panel1.Controls.Add(this.RotateLeftButton);
+            this.panel1.Controls.Add(this.bitWiseInput1);
+            this.panel1.Controls.Add(this.RotateRightButton);
+            this.panel1.Controls.Add(this.bitWiseOutput);
+            this.panel1.Controls.Add(this.InvertButton);
             this.panel1.Controls.Add(this.SaveButton);
-            this.panel1.Controls.Add(this.imageBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.bitWiseInput2);
+            this.panel1.Controls.Add(this.BitWiseSaveText);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.BitWisePic2Select);
+            this.panel1.Controls.Add(this.BitwisePic1Select);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
@@ -646,62 +647,62 @@ namespace WinFormsApp1
             this.GoButton.UseVisualStyleBackColor = true;
             this.GoButton.Click += new System.EventHandler(this.GoButton_Click);
             // 
-            // comboBox3
+            // BitWiseOperationSelect
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(284, 365);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 23);
-            this.comboBox3.TabIndex = 21;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.BitWiseOperationSelect.FormattingEnabled = true;
+            this.BitWiseOperationSelect.Location = new System.Drawing.Point(284, 365);
+            this.BitWiseOperationSelect.Name = "BitWiseOperationSelect";
+            this.BitWiseOperationSelect.Size = new System.Drawing.Size(121, 23);
+            this.BitWiseOperationSelect.TabIndex = 21;
+            this.BitWiseOperationSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
-            // button3
+            // RotateLeftButton
             // 
-            this.button3.Location = new System.Drawing.Point(1094, 130);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Rotate L";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            this.RotateLeftButton.Location = new System.Drawing.Point(1094, 130);
+            this.RotateLeftButton.Name = "RotateLeftButton";
+            this.RotateLeftButton.Size = new System.Drawing.Size(75, 23);
+            this.RotateLeftButton.TabIndex = 20;
+            this.RotateLeftButton.Text = "Rotate L";
+            this.RotateLeftButton.UseVisualStyleBackColor = true;
+            this.RotateLeftButton.Click += new System.EventHandler(this.button3_Click_1);
             // 
-            // imageBox3
+            // bitWiseInput1
             // 
-            this.imageBox3.Location = new System.Drawing.Point(3, 36);
-            this.imageBox3.Name = "imageBox3";
-            this.imageBox3.Size = new System.Drawing.Size(325, 323);
-            this.imageBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox3.TabIndex = 2;
-            this.imageBox3.TabStop = false;
+            this.bitWiseInput1.Location = new System.Drawing.Point(3, 36);
+            this.bitWiseInput1.Name = "bitWiseInput1";
+            this.bitWiseInput1.Size = new System.Drawing.Size(325, 323);
+            this.bitWiseInput1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bitWiseInput1.TabIndex = 2;
+            this.bitWiseInput1.TabStop = false;
             // 
-            // button2
+            // RotateRightButton
             // 
-            this.button2.Location = new System.Drawing.Point(1094, 101);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Rotate R";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.RotateRightButton.Location = new System.Drawing.Point(1094, 101);
+            this.RotateRightButton.Name = "RotateRightButton";
+            this.RotateRightButton.Size = new System.Drawing.Size(75, 23);
+            this.RotateRightButton.TabIndex = 19;
+            this.RotateRightButton.Text = "Rotate R";
+            this.RotateRightButton.UseVisualStyleBackColor = true;
+            this.RotateRightButton.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // imageBox1
+            // bitWiseOutput
             // 
-            this.imageBox1.Location = new System.Drawing.Point(737, 36);
-            this.imageBox1.Name = "imageBox1";
-            this.imageBox1.Size = new System.Drawing.Size(351, 323);
-            this.imageBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox1.TabIndex = 2;
-            this.imageBox1.TabStop = false;
+            this.bitWiseOutput.Location = new System.Drawing.Point(737, 36);
+            this.bitWiseOutput.Name = "bitWiseOutput";
+            this.bitWiseOutput.Size = new System.Drawing.Size(351, 323);
+            this.bitWiseOutput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bitWiseOutput.TabIndex = 2;
+            this.bitWiseOutput.TabStop = false;
             // 
-            // button1
+            // InvertButton
             // 
-            this.button1.Location = new System.Drawing.Point(1094, 72);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Invert";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.InvertButton.Location = new System.Drawing.Point(1094, 72);
+            this.InvertButton.Name = "InvertButton";
+            this.InvertButton.Size = new System.Drawing.Size(75, 23);
+            this.InvertButton.TabIndex = 18;
+            this.InvertButton.Text = "Invert";
+            this.InvertButton.UseVisualStyleBackColor = true;
+            this.InvertButton.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // SaveButton
             // 
@@ -713,22 +714,22 @@ namespace WinFormsApp1
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // imageBox2
+            // bitWiseInput2
             // 
-            this.imageBox2.Location = new System.Drawing.Point(368, 36);
-            this.imageBox2.Name = "imageBox2";
-            this.imageBox2.Size = new System.Drawing.Size(327, 323);
-            this.imageBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox2.TabIndex = 2;
-            this.imageBox2.TabStop = false;
+            this.bitWiseInput2.Location = new System.Drawing.Point(368, 36);
+            this.bitWiseInput2.Name = "bitWiseInput2";
+            this.bitWiseInput2.Size = new System.Drawing.Size(327, 323);
+            this.bitWiseInput2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bitWiseInput2.TabIndex = 2;
+            this.bitWiseInput2.TabStop = false;
             // 
-            // textBox1
+            // BitWiseSaveText
             // 
-            this.textBox1.Location = new System.Drawing.Point(988, 7);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.BitWiseSaveText.Location = new System.Drawing.Point(988, 7);
+            this.BitWiseSaveText.Name = "BitWiseSaveText";
+            this.BitWiseSaveText.Size = new System.Drawing.Size(100, 23);
+            this.BitWiseSaveText.TabIndex = 15;
+            this.BitWiseSaveText.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -739,23 +740,23 @@ namespace WinFormsApp1
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             // 
-            // comboBox2
+            // BitWisePic2Select
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(445, 10);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 23);
-            this.comboBox2.TabIndex = 13;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.BitWisePic2Select.FormattingEnabled = true;
+            this.BitWisePic2Select.Location = new System.Drawing.Point(445, 10);
+            this.BitWisePic2Select.Name = "BitWisePic2Select";
+            this.BitWisePic2Select.Size = new System.Drawing.Size(121, 23);
+            this.BitWisePic2Select.TabIndex = 13;
+            this.BitWisePic2Select.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
-            // comboBox1
+            // BitwisePic1Select
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(79, 7);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 12;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.BitwisePic1Select.FormattingEnabled = true;
+            this.BitwisePic1Select.Location = new System.Drawing.Point(79, 7);
+            this.BitwisePic1Select.Name = "BitwisePic1Select";
+            this.BitwisePic1Select.Size = new System.Drawing.Size(121, 23);
+            this.BitwisePic1Select.TabIndex = 12;
+            this.BitwisePic1Select.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -797,12 +798,12 @@ namespace WinFormsApp1
             this.tabPage2.Controls.Add(this.numericUpDown3);
             this.tabPage2.Controls.Add(this.numericUpDown2);
             this.tabPage2.Controls.Add(this.numericUpDown1);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.Channel1MaxLabel);
+            this.tabPage2.Controls.Add(this.Channel2MaxLabel);
+            this.tabPage2.Controls.Add(this.Channel3MaxLabel);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.Channel3);
+            this.tabPage2.Controls.Add(this.Channel3MinLabel);
             this.tabPage2.Controls.Add(this.panel4);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
@@ -860,32 +861,32 @@ namespace WinFormsApp1
             this.numericUpDown1.TabIndex = 38;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
-            // label7
+            // Channel1MaxLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(780, 437);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 15);
-            this.label7.TabIndex = 37;
-            this.label7.Text = "Channel 1 Max";
+            this.Channel1MaxLabel.AutoSize = true;
+            this.Channel1MaxLabel.Location = new System.Drawing.Point(780, 437);
+            this.Channel1MaxLabel.Name = "Channel1MaxLabel";
+            this.Channel1MaxLabel.Size = new System.Drawing.Size(86, 15);
+            this.Channel1MaxLabel.TabIndex = 37;
+            this.Channel1MaxLabel.Text = "Channel 1 Max";
             // 
-            // label8
+            // Channel2MaxLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(780, 481);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(86, 15);
-            this.label8.TabIndex = 34;
-            this.label8.Text = "Channel 2 Max";
+            this.Channel2MaxLabel.AutoSize = true;
+            this.Channel2MaxLabel.Location = new System.Drawing.Point(780, 481);
+            this.Channel2MaxLabel.Name = "Channel2MaxLabel";
+            this.Channel2MaxLabel.Size = new System.Drawing.Size(86, 15);
+            this.Channel2MaxLabel.TabIndex = 34;
+            this.Channel2MaxLabel.Text = "Channel 2 Max";
             // 
-            // label9
+            // Channel3MaxLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(780, 527);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(86, 15);
-            this.label9.TabIndex = 31;
-            this.label9.Text = "Channel 3 Max";
+            this.Channel3MaxLabel.AutoSize = true;
+            this.Channel3MaxLabel.Location = new System.Drawing.Point(780, 527);
+            this.Channel3MaxLabel.Name = "Channel3MaxLabel";
+            this.Channel3MaxLabel.Size = new System.Drawing.Size(86, 15);
+            this.Channel3MaxLabel.TabIndex = 31;
+            this.Channel3MaxLabel.Text = "Channel 3 Max";
             // 
             // label6
             // 
@@ -905,38 +906,38 @@ namespace WinFormsApp1
             this.label5.TabIndex = 25;
             this.label5.Text = "Channel 2 Min";
             // 
-            // Channel3
+            // Channel3MinLabel
             // 
-            this.Channel3.AutoSize = true;
-            this.Channel3.Location = new System.Drawing.Point(186, 534);
-            this.Channel3.Name = "Channel3";
-            this.Channel3.Size = new System.Drawing.Size(84, 15);
-            this.Channel3.TabIndex = 22;
-            this.Channel3.Text = "Channel 3 Min";
+            this.Channel3MinLabel.AutoSize = true;
+            this.Channel3MinLabel.Location = new System.Drawing.Point(186, 534);
+            this.Channel3MinLabel.Name = "Channel3MinLabel";
+            this.Channel3MinLabel.Size = new System.Drawing.Size(84, 15);
+            this.Channel3MinLabel.TabIndex = 22;
+            this.Channel3MinLabel.Text = "Channel 3 Min";
             // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.comboBox5);
+            this.panel4.Controls.Add(this.InRangeColorSpaceSelect);
             this.panel4.Controls.Add(this.imageBox5);
-            this.panel4.Controls.Add(this.textBox3);
-            this.panel4.Controls.Add(this.imageBox6);
-            this.panel4.Controls.Add(this.button6);
+            this.panel4.Controls.Add(this.InRangeSaveText);
+            this.panel4.Controls.Add(this.InRangeInputImage);
+            this.panel4.Controls.Add(this.InRangeSaveButton);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.comboBox4);
+            this.panel4.Controls.Add(this.InRangeSelect);
             this.panel4.Location = new System.Drawing.Point(17, 6);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1169, 407);
             this.panel4.TabIndex = 18;
             // 
-            // comboBox5
+            // InRangeColorSpaceSelect
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(379, 70);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(307, 23);
-            this.comboBox5.TabIndex = 26;
-            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
+            this.InRangeColorSpaceSelect.FormattingEnabled = true;
+            this.InRangeColorSpaceSelect.Location = new System.Drawing.Point(379, 70);
+            this.InRangeColorSpaceSelect.Name = "InRangeColorSpaceSelect";
+            this.InRangeColorSpaceSelect.Size = new System.Drawing.Size(307, 23);
+            this.InRangeColorSpaceSelect.TabIndex = 26;
+            this.InRangeColorSpaceSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
             // imageBox5
             // 
@@ -947,31 +948,31 @@ namespace WinFormsApp1
             this.imageBox5.TabIndex = 25;
             this.imageBox5.TabStop = false;
             // 
-            // textBox3
+            // InRangeSaveText
             // 
-            this.textBox3.Location = new System.Drawing.Point(731, 8);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 23);
-            this.textBox3.TabIndex = 23;
+            this.InRangeSaveText.Location = new System.Drawing.Point(731, 8);
+            this.InRangeSaveText.Name = "InRangeSaveText";
+            this.InRangeSaveText.Size = new System.Drawing.Size(100, 23);
+            this.InRangeSaveText.TabIndex = 23;
             // 
-            // imageBox6
+            // InRangeInputImage
             // 
-            this.imageBox6.Location = new System.Drawing.Point(15, 36);
-            this.imageBox6.Name = "imageBox6";
-            this.imageBox6.Size = new System.Drawing.Size(358, 340);
-            this.imageBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox6.TabIndex = 2;
-            this.imageBox6.TabStop = false;
+            this.InRangeInputImage.Location = new System.Drawing.Point(15, 36);
+            this.InRangeInputImage.Name = "InRangeInputImage";
+            this.InRangeInputImage.Size = new System.Drawing.Size(358, 340);
+            this.InRangeInputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.InRangeInputImage.TabIndex = 2;
+            this.InRangeInputImage.TabStop = false;
             // 
-            // button6
+            // InRangeSaveButton
             // 
-            this.button6.Location = new System.Drawing.Point(862, 9);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(19, 23);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "Save";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.InRangeSaveButton.Location = new System.Drawing.Point(862, 9);
+            this.InRangeSaveButton.Name = "InRangeSaveButton";
+            this.InRangeSaveButton.Size = new System.Drawing.Size(19, 23);
+            this.InRangeSaveButton.TabIndex = 16;
+            this.InRangeSaveButton.Text = "Save";
+            this.InRangeSaveButton.UseVisualStyleBackColor = true;
+            this.InRangeSaveButton.Click += new System.EventHandler(this.button6_Click);
             // 
             // label4
             // 
@@ -982,14 +983,14 @@ namespace WinFormsApp1
             this.label4.TabIndex = 3;
             this.label4.Text = "label4";
             // 
-            // comboBox4
+            // InRangeSelect
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(14, 7);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 23);
-            this.comboBox4.TabIndex = 12;
-            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            this.InRangeSelect.FormattingEnabled = true;
+            this.InRangeSelect.Location = new System.Drawing.Point(14, 7);
+            this.InRangeSelect.Name = "InRangeSelect";
+            this.InRangeSelect.Size = new System.Drawing.Size(121, 23);
+            this.InRangeSelect.TabIndex = 12;
+            this.InRangeSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // tabPage5
             // 
@@ -1008,9 +1009,9 @@ namespace WinFormsApp1
             this.panel6.Controls.Add(this.KernelSizeText);
             this.panel6.Controls.Add(this.BlurGoButton);
             this.panel6.Controls.Add(this.BlurTypeComboBox);
-            this.panel6.Controls.Add(this.imageBox9);
+            this.panel6.Controls.Add(this.BlurOutputImage);
             this.panel6.Controls.Add(this.BlurSaveText);
-            this.panel6.Controls.Add(this.imageBox10);
+            this.panel6.Controls.Add(this.BlurInputImage);
             this.panel6.Controls.Add(this.BlurSaveButton);
             this.panel6.Controls.Add(this.label13);
             this.panel6.Controls.Add(this.BlurOperationImageSelect);
@@ -1046,14 +1047,14 @@ namespace WinFormsApp1
             this.BlurTypeComboBox.TabIndex = 26;
             this.BlurTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged);
             // 
-            // imageBox9
+            // BlurOutputImage
             // 
-            this.imageBox9.Location = new System.Drawing.Point(699, 36);
-            this.imageBox9.Name = "imageBox9";
-            this.imageBox9.Size = new System.Drawing.Size(432, 385);
-            this.imageBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox9.TabIndex = 25;
-            this.imageBox9.TabStop = false;
+            this.BlurOutputImage.Location = new System.Drawing.Point(699, 36);
+            this.BlurOutputImage.Name = "BlurOutputImage";
+            this.BlurOutputImage.Size = new System.Drawing.Size(432, 385);
+            this.BlurOutputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BlurOutputImage.TabIndex = 25;
+            this.BlurOutputImage.TabStop = false;
             // 
             // BlurSaveText
             // 
@@ -1062,14 +1063,14 @@ namespace WinFormsApp1
             this.BlurSaveText.Size = new System.Drawing.Size(100, 23);
             this.BlurSaveText.TabIndex = 23;
             // 
-            // imageBox10
+            // BlurInputImage
             // 
-            this.imageBox10.Location = new System.Drawing.Point(18, 37);
-            this.imageBox10.Name = "imageBox10";
-            this.imageBox10.Size = new System.Drawing.Size(388, 385);
-            this.imageBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox10.TabIndex = 2;
-            this.imageBox10.TabStop = false;
+            this.BlurInputImage.Location = new System.Drawing.Point(18, 37);
+            this.BlurInputImage.Name = "BlurInputImage";
+            this.BlurInputImage.Size = new System.Drawing.Size(388, 385);
+            this.BlurInputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BlurInputImage.TabIndex = 2;
+            this.BlurInputImage.TabStop = false;
             // 
             // BlurSaveButton
             // 
@@ -1203,14 +1204,14 @@ namespace WinFormsApp1
             this.panel7.Controls.Add(this.MaskImage);
             this.panel7.Controls.Add(this.BoundedShapeSelect);
             this.panel7.Controls.Add(this.ChainApproxSelect);
-            this.panel7.Controls.Add(this.button9);
-            this.panel7.Controls.Add(this.comboBox11);
-            this.panel7.Controls.Add(this.imageBox11);
-            this.panel7.Controls.Add(this.textBox7);
-            this.panel7.Controls.Add(this.imageBox12);
-            this.panel7.Controls.Add(this.button8);
+            this.panel7.Controls.Add(this.ContourGoButton);
+            this.panel7.Controls.Add(this.ContourTypeSelect);
+            this.panel7.Controls.Add(this.ContourOutputImage);
+            this.panel7.Controls.Add(this.ContourSaveText);
+            this.panel7.Controls.Add(this.ContourInputImage);
+            this.panel7.Controls.Add(this.ContourSaveButton);
             this.panel7.Controls.Add(this.label14);
-            this.panel7.Controls.Add(this.comboBox12);
+            this.panel7.Controls.Add(this.ContourImageSelect);
             this.panel7.Location = new System.Drawing.Point(6, 6);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1183, 465);
@@ -1252,59 +1253,59 @@ namespace WinFormsApp1
             this.ChainApproxSelect.TabIndex = 28;
             this.ChainApproxSelect.SelectedIndexChanged += new System.EventHandler(this.ChainApproxSelect_SelectedIndexChanged);
             // 
-            // button9
+            // ContourGoButton
             // 
-            this.button9.Location = new System.Drawing.Point(492, 168);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 27;
-            this.button9.Text = "Go";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.ContourGoButton.Location = new System.Drawing.Point(492, 168);
+            this.ContourGoButton.Name = "ContourGoButton";
+            this.ContourGoButton.Size = new System.Drawing.Size(75, 23);
+            this.ContourGoButton.TabIndex = 27;
+            this.ContourGoButton.Text = "Go";
+            this.ContourGoButton.UseVisualStyleBackColor = true;
+            this.ContourGoButton.Click += new System.EventHandler(this.button9_Click);
             // 
-            // comboBox11
+            // ContourTypeSelect
             // 
-            this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Location = new System.Drawing.Point(394, 81);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(281, 23);
-            this.comboBox11.TabIndex = 26;
-            this.comboBox11.SelectedIndexChanged += new System.EventHandler(this.comboBox11_SelectedIndexChanged);
+            this.ContourTypeSelect.FormattingEnabled = true;
+            this.ContourTypeSelect.Location = new System.Drawing.Point(394, 81);
+            this.ContourTypeSelect.Name = "ContourTypeSelect";
+            this.ContourTypeSelect.Size = new System.Drawing.Size(281, 23);
+            this.ContourTypeSelect.TabIndex = 26;
+            this.ContourTypeSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox11_SelectedIndexChanged);
             // 
-            // imageBox11
+            // ContourOutputImage
             // 
-            this.imageBox11.Location = new System.Drawing.Point(721, 81);
-            this.imageBox11.Name = "imageBox11";
-            this.imageBox11.Size = new System.Drawing.Size(355, 303);
-            this.imageBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox11.TabIndex = 25;
-            this.imageBox11.TabStop = false;
+            this.ContourOutputImage.Location = new System.Drawing.Point(721, 81);
+            this.ContourOutputImage.Name = "ContourOutputImage";
+            this.ContourOutputImage.Size = new System.Drawing.Size(355, 303);
+            this.ContourOutputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ContourOutputImage.TabIndex = 25;
+            this.ContourOutputImage.TabStop = false;
             // 
-            // textBox7
+            // ContourSaveText
             // 
-            this.textBox7.Location = new System.Drawing.Point(805, 37);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 23);
-            this.textBox7.TabIndex = 23;
+            this.ContourSaveText.Location = new System.Drawing.Point(805, 37);
+            this.ContourSaveText.Name = "ContourSaveText";
+            this.ContourSaveText.Size = new System.Drawing.Size(100, 23);
+            this.ContourSaveText.TabIndex = 23;
             // 
-            // imageBox12
+            // ContourInputImage
             // 
-            this.imageBox12.Location = new System.Drawing.Point(27, 80);
-            this.imageBox12.Name = "imageBox12";
-            this.imageBox12.Size = new System.Drawing.Size(316, 304);
-            this.imageBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox12.TabIndex = 2;
-            this.imageBox12.TabStop = false;
+            this.ContourInputImage.Location = new System.Drawing.Point(27, 80);
+            this.ContourInputImage.Name = "ContourInputImage";
+            this.ContourInputImage.Size = new System.Drawing.Size(316, 304);
+            this.ContourInputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ContourInputImage.TabIndex = 2;
+            this.ContourInputImage.TabStop = false;
             // 
-            // button8
+            // ContourSaveButton
             // 
-            this.button8.Location = new System.Drawing.Point(911, 37);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(19, 23);
-            this.button8.TabIndex = 16;
-            this.button8.Text = "Save";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.ContourSaveButton.Location = new System.Drawing.Point(911, 37);
+            this.ContourSaveButton.Name = "ContourSaveButton";
+            this.ContourSaveButton.Size = new System.Drawing.Size(19, 23);
+            this.ContourSaveButton.TabIndex = 16;
+            this.ContourSaveButton.Text = "Save";
+            this.ContourSaveButton.UseVisualStyleBackColor = true;
+            this.ContourSaveButton.Click += new System.EventHandler(this.button8_Click);
             // 
             // label14
             // 
@@ -1315,14 +1316,14 @@ namespace WinFormsApp1
             this.label14.TabIndex = 3;
             this.label14.Text = "label14";
             // 
-            // comboBox12
+            // ContourImageSelect
             // 
-            this.comboBox12.FormattingEnabled = true;
-            this.comboBox12.Location = new System.Drawing.Point(75, 51);
-            this.comboBox12.Name = "comboBox12";
-            this.comboBox12.Size = new System.Drawing.Size(121, 23);
-            this.comboBox12.TabIndex = 12;
-            this.comboBox12.SelectedIndexChanged += new System.EventHandler(this.comboBox12_SelectedIndexChanged);
+            this.ContourImageSelect.FormattingEnabled = true;
+            this.ContourImageSelect.Location = new System.Drawing.Point(75, 51);
+            this.ContourImageSelect.Name = "ContourImageSelect";
+            this.ContourImageSelect.Size = new System.Drawing.Size(121, 23);
+            this.ContourImageSelect.TabIndex = 12;
+            this.ContourImageSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox12_SelectedIndexChanged);
             // 
             // tabPage7
             // 
@@ -1339,10 +1340,10 @@ namespace WinFormsApp1
             // 
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel8.Controls.Add(this.ColorShiftOperationSelect);
-            this.panel8.Controls.Add(this.imageBox13);
-            this.panel8.Controls.Add(this.textBox6);
-            this.panel8.Controls.Add(this.imageBox14);
-            this.panel8.Controls.Add(this.button7);
+            this.panel8.Controls.Add(this.ColorCVTOutput);
+            this.panel8.Controls.Add(this.ColorCVTSaveText);
+            this.panel8.Controls.Add(this.ColorCVTInput);
+            this.panel8.Controls.Add(this.ColorCVTSaveButton);
             this.panel8.Controls.Add(this.label19);
             this.panel8.Controls.Add(this.ColorShiftImageSelect);
             this.panel8.Location = new System.Drawing.Point(6, 6);
@@ -1359,40 +1360,40 @@ namespace WinFormsApp1
             this.ColorShiftOperationSelect.TabIndex = 26;
             this.ColorShiftOperationSelect.SelectedIndexChanged += new System.EventHandler(this.ColorShiftOperationSelect_SelectedIndexChanged);
             // 
-            // imageBox13
+            // ColorCVTOutput
             // 
-            this.imageBox13.Location = new System.Drawing.Point(561, 38);
-            this.imageBox13.Name = "imageBox13";
-            this.imageBox13.Size = new System.Drawing.Size(191, 186);
-            this.imageBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox13.TabIndex = 25;
-            this.imageBox13.TabStop = false;
+            this.ColorCVTOutput.Location = new System.Drawing.Point(561, 38);
+            this.ColorCVTOutput.Name = "ColorCVTOutput";
+            this.ColorCVTOutput.Size = new System.Drawing.Size(191, 186);
+            this.ColorCVTOutput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ColorCVTOutput.TabIndex = 25;
+            this.ColorCVTOutput.TabStop = false;
             // 
-            // textBox6
+            // ColorCVTSaveText
             // 
-            this.textBox6.Location = new System.Drawing.Point(561, 8);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 23);
-            this.textBox6.TabIndex = 23;
+            this.ColorCVTSaveText.Location = new System.Drawing.Point(561, 8);
+            this.ColorCVTSaveText.Name = "ColorCVTSaveText";
+            this.ColorCVTSaveText.Size = new System.Drawing.Size(100, 23);
+            this.ColorCVTSaveText.TabIndex = 23;
             // 
-            // imageBox14
+            // ColorCVTInput
             // 
-            this.imageBox14.Location = new System.Drawing.Point(15, 36);
-            this.imageBox14.Name = "imageBox14";
-            this.imageBox14.Size = new System.Drawing.Size(198, 188);
-            this.imageBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox14.TabIndex = 2;
-            this.imageBox14.TabStop = false;
+            this.ColorCVTInput.Location = new System.Drawing.Point(15, 36);
+            this.ColorCVTInput.Name = "ColorCVTInput";
+            this.ColorCVTInput.Size = new System.Drawing.Size(198, 188);
+            this.ColorCVTInput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ColorCVTInput.TabIndex = 2;
+            this.ColorCVTInput.TabStop = false;
             // 
-            // button7
+            // ColorCVTSaveButton
             // 
-            this.button7.Location = new System.Drawing.Point(692, 9);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(19, 23);
-            this.button7.TabIndex = 16;
-            this.button7.Text = "Save";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click_1);
+            this.ColorCVTSaveButton.Location = new System.Drawing.Point(692, 9);
+            this.ColorCVTSaveButton.Name = "ColorCVTSaveButton";
+            this.ColorCVTSaveButton.Size = new System.Drawing.Size(19, 23);
+            this.ColorCVTSaveButton.TabIndex = 16;
+            this.ColorCVTSaveButton.Text = "Save";
+            this.ColorCVTSaveButton.UseVisualStyleBackColor = true;
+            this.ColorCVTSaveButton.Click += new System.EventHandler(this.button7_Click_1);
             // 
             // label19
             // 
@@ -1426,9 +1427,9 @@ namespace WinFormsApp1
             // panel9
             // 
             this.panel9.Controls.Add(this.CameraSaveBox);
-            this.panel9.Controls.Add(this.textBox9);
-            this.panel9.Controls.Add(this.button10);
-            this.panel9.Controls.Add(this.comboBox9);
+            this.panel9.Controls.Add(this.CameraImageText);
+            this.panel9.Controls.Add(this.CaptureButton);
+            this.panel9.Controls.Add(this.CameraSelectBox);
             this.panel9.Controls.Add(this.imageBox15);
             this.panel9.Location = new System.Drawing.Point(6, 6);
             this.panel9.Name = "panel9";
@@ -1444,31 +1445,31 @@ namespace WinFormsApp1
             this.CameraSaveBox.TabIndex = 6;
             this.CameraSaveBox.TabStop = false;
             // 
-            // textBox9
+            // CameraImageText
             // 
-            this.textBox9.Location = new System.Drawing.Point(327, 39);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 23);
-            this.textBox9.TabIndex = 5;
+            this.CameraImageText.Location = new System.Drawing.Point(327, 39);
+            this.CameraImageText.Name = "CameraImageText";
+            this.CameraImageText.Size = new System.Drawing.Size(100, 23);
+            this.CameraImageText.TabIndex = 5;
             // 
-            // button10
+            // CaptureButton
             // 
-            this.button10.Location = new System.Drawing.Point(219, 38);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(89, 23);
-            this.button10.TabIndex = 4;
-            this.button10.Text = "button10";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click_1);
+            this.CaptureButton.Location = new System.Drawing.Point(219, 38);
+            this.CaptureButton.Name = "CaptureButton";
+            this.CaptureButton.Size = new System.Drawing.Size(89, 23);
+            this.CaptureButton.TabIndex = 4;
+            this.CaptureButton.Text = "Capture";
+            this.CaptureButton.UseVisualStyleBackColor = true;
+            this.CaptureButton.Click += new System.EventHandler(this.button10_Click_1);
             // 
-            // comboBox9
+            // CameraSelectBox
             // 
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(12, 39);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(200, 23);
-            this.comboBox9.TabIndex = 3;
-            this.comboBox9.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged_2);
+            this.CameraSelectBox.FormattingEnabled = true;
+            this.CameraSelectBox.Location = new System.Drawing.Point(12, 39);
+            this.CameraSelectBox.Name = "CameraSelectBox";
+            this.CameraSelectBox.Size = new System.Drawing.Size(200, 23);
+            this.CameraSelectBox.TabIndex = 3;
+            this.CameraSelectBox.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged_2);
             // 
             // imageBox15
             // 
@@ -1494,101 +1495,101 @@ namespace WinFormsApp1
             // panel10
             // 
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel10.Controls.Add(this.numericUpDown7);
-            this.panel10.Controls.Add(this.imageBox16);
-            this.panel10.Controls.Add(this.imageBox20);
-            this.panel10.Controls.Add(this.button12);
-            this.panel10.Controls.Add(this.imageBox19);
-            this.panel10.Controls.Add(this.imageBox18);
-            this.panel10.Controls.Add(this.textBox8);
-            this.panel10.Controls.Add(this.imageBox17);
-            this.panel10.Controls.Add(this.button11);
+            this.panel10.Controls.Add(this.SpotTheDifferenceSensitivity);
+            this.panel10.Controls.Add(this.SpotTheDifferenceOutputImage);
+            this.panel10.Controls.Add(this.SpotTheDifferenceTopOutput);
+            this.panel10.Controls.Add(this.SpottheDifferenceSplitButton);
+            this.panel10.Controls.Add(this.bottomImage);
+            this.panel10.Controls.Add(this.topImage);
+            this.panel10.Controls.Add(this.SpottheDifferenceSaveText);
+            this.panel10.Controls.Add(this.SpotTheDifferenceInputImage);
+            this.panel10.Controls.Add(this.SpotTheDifferenceSaveButton);
             this.panel10.Controls.Add(this.label20);
-            this.panel10.Controls.Add(this.comboBox13);
+            this.panel10.Controls.Add(this.SpotDiffSelectionBox);
             this.panel10.Location = new System.Drawing.Point(6, 6);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(1163, 575);
             this.panel10.TabIndex = 20;
             // 
-            // numericUpDown7
+            // SpotTheDifferenceSensitivity
             // 
-            this.numericUpDown7.Location = new System.Drawing.Point(385, 516);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown7.TabIndex = 32;
-            this.numericUpDown7.ValueChanged += new System.EventHandler(this.numericUpDown7_ValueChanged);
+            this.SpotTheDifferenceSensitivity.Location = new System.Drawing.Point(385, 516);
+            this.SpotTheDifferenceSensitivity.Name = "SpotTheDifferenceSensitivity";
+            this.SpotTheDifferenceSensitivity.Size = new System.Drawing.Size(120, 23);
+            this.SpotTheDifferenceSensitivity.TabIndex = 32;
+            this.SpotTheDifferenceSensitivity.ValueChanged += new System.EventHandler(this.numericUpDown7_ValueChanged);
             // 
-            // imageBox16
+            // SpotTheDifferenceOutputImage
             // 
-            this.imageBox16.Location = new System.Drawing.Point(710, 333);
-            this.imageBox16.Name = "imageBox16";
-            this.imageBox16.Size = new System.Drawing.Size(388, 235);
-            this.imageBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox16.TabIndex = 31;
-            this.imageBox16.TabStop = false;
+            this.SpotTheDifferenceOutputImage.Location = new System.Drawing.Point(710, 333);
+            this.SpotTheDifferenceOutputImage.Name = "SpotTheDifferenceOutputImage";
+            this.SpotTheDifferenceOutputImage.Size = new System.Drawing.Size(388, 235);
+            this.SpotTheDifferenceOutputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.SpotTheDifferenceOutputImage.TabIndex = 31;
+            this.SpotTheDifferenceOutputImage.TabStop = false;
             // 
-            // imageBox20
+            // SpotTheDifferenceTopOutput
             // 
-            this.imageBox20.Location = new System.Drawing.Point(710, 83);
-            this.imageBox20.Name = "imageBox20";
-            this.imageBox20.Size = new System.Drawing.Size(388, 244);
-            this.imageBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox20.TabIndex = 30;
-            this.imageBox20.TabStop = false;
+            this.SpotTheDifferenceTopOutput.Location = new System.Drawing.Point(710, 83);
+            this.SpotTheDifferenceTopOutput.Name = "SpotTheDifferenceTopOutput";
+            this.SpotTheDifferenceTopOutput.Size = new System.Drawing.Size(388, 244);
+            this.SpotTheDifferenceTopOutput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.SpotTheDifferenceTopOutput.TabIndex = 30;
+            this.SpotTheDifferenceTopOutput.TabStop = false;
             // 
-            // button12
+            // SpottheDifferenceSplitButton
             // 
-            this.button12.Location = new System.Drawing.Point(394, 192);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(111, 77);
-            this.button12.TabIndex = 29;
-            this.button12.Text = "Split";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.SpottheDifferenceSplitButton.Location = new System.Drawing.Point(394, 192);
+            this.SpottheDifferenceSplitButton.Name = "SpottheDifferenceSplitButton";
+            this.SpottheDifferenceSplitButton.Size = new System.Drawing.Size(111, 77);
+            this.SpottheDifferenceSplitButton.TabIndex = 29;
+            this.SpottheDifferenceSplitButton.Text = "Split";
+            this.SpottheDifferenceSplitButton.UseVisualStyleBackColor = true;
+            this.SpottheDifferenceSplitButton.Click += new System.EventHandler(this.button12_Click);
             // 
-            // imageBox19
+            // bottomImage
             // 
-            this.imageBox19.Location = new System.Drawing.Point(337, 393);
-            this.imageBox19.Name = "imageBox19";
-            this.imageBox19.Size = new System.Drawing.Size(168, 110);
-            this.imageBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox19.TabIndex = 28;
-            this.imageBox19.TabStop = false;
+            this.bottomImage.Location = new System.Drawing.Point(337, 393);
+            this.bottomImage.Name = "bottomImage";
+            this.bottomImage.Size = new System.Drawing.Size(168, 110);
+            this.bottomImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bottomImage.TabIndex = 28;
+            this.bottomImage.TabStop = false;
             // 
-            // imageBox18
+            // topImage
             // 
-            this.imageBox18.Location = new System.Drawing.Point(337, 275);
-            this.imageBox18.Name = "imageBox18";
-            this.imageBox18.Size = new System.Drawing.Size(168, 112);
-            this.imageBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox18.TabIndex = 27;
-            this.imageBox18.TabStop = false;
+            this.topImage.Location = new System.Drawing.Point(337, 275);
+            this.topImage.Name = "topImage";
+            this.topImage.Size = new System.Drawing.Size(168, 112);
+            this.topImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.topImage.TabIndex = 27;
+            this.topImage.TabStop = false;
             // 
-            // textBox8
+            // SpottheDifferenceSaveText
             // 
-            this.textBox8.Location = new System.Drawing.Point(868, 7);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 23);
-            this.textBox8.TabIndex = 23;
+            this.SpottheDifferenceSaveText.Location = new System.Drawing.Point(868, 7);
+            this.SpottheDifferenceSaveText.Name = "SpottheDifferenceSaveText";
+            this.SpottheDifferenceSaveText.Size = new System.Drawing.Size(100, 23);
+            this.SpottheDifferenceSaveText.TabIndex = 23;
             // 
-            // imageBox17
+            // SpotTheDifferenceInputImage
             // 
-            this.imageBox17.Location = new System.Drawing.Point(14, 36);
-            this.imageBox17.Name = "imageBox17";
-            this.imageBox17.Size = new System.Drawing.Size(317, 467);
-            this.imageBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBox17.TabIndex = 2;
-            this.imageBox17.TabStop = false;
+            this.SpotTheDifferenceInputImage.Location = new System.Drawing.Point(14, 36);
+            this.SpotTheDifferenceInputImage.Name = "SpotTheDifferenceInputImage";
+            this.SpotTheDifferenceInputImage.Size = new System.Drawing.Size(317, 467);
+            this.SpotTheDifferenceInputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.SpotTheDifferenceInputImage.TabIndex = 2;
+            this.SpotTheDifferenceInputImage.TabStop = false;
             // 
-            // button11
+            // SpotTheDifferenceSaveButton
             // 
-            this.button11.Location = new System.Drawing.Point(974, 7);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(19, 23);
-            this.button11.TabIndex = 16;
-            this.button11.Text = "Save";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.SpotTheDifferenceSaveButton.Location = new System.Drawing.Point(974, 7);
+            this.SpotTheDifferenceSaveButton.Name = "SpotTheDifferenceSaveButton";
+            this.SpotTheDifferenceSaveButton.Size = new System.Drawing.Size(19, 23);
+            this.SpotTheDifferenceSaveButton.TabIndex = 16;
+            this.SpotTheDifferenceSaveButton.Text = "Save";
+            this.SpotTheDifferenceSaveButton.UseVisualStyleBackColor = true;
+            this.SpotTheDifferenceSaveButton.Click += new System.EventHandler(this.button11_Click);
             // 
             // label20
             // 
@@ -1599,14 +1600,14 @@ namespace WinFormsApp1
             this.label20.TabIndex = 3;
             this.label20.Text = "label20";
             // 
-            // comboBox13
+            // SpotDiffSelectionBox
             // 
-            this.comboBox13.FormattingEnabled = true;
-            this.comboBox13.Location = new System.Drawing.Point(14, 7);
-            this.comboBox13.Name = "comboBox13";
-            this.comboBox13.Size = new System.Drawing.Size(121, 23);
-            this.comboBox13.TabIndex = 12;
-            this.comboBox13.SelectedIndexChanged += new System.EventHandler(this.comboBox13_SelectedIndexChanged);
+            this.SpotDiffSelectionBox.FormattingEnabled = true;
+            this.SpotDiffSelectionBox.Location = new System.Drawing.Point(14, 7);
+            this.SpotDiffSelectionBox.Name = "SpotDiffSelectionBox";
+            this.SpotDiffSelectionBox.Size = new System.Drawing.Size(121, 23);
+            this.SpotDiffSelectionBox.TabIndex = 12;
+            this.SpotDiffSelectionBox.SelectedIndexChanged += new System.EventHandler(this.comboBox13_SelectedIndexChanged);
             // 
             // AffineTransform
             // 
@@ -1630,7 +1631,7 @@ namespace WinFormsApp1
             this.panel11.Controls.Add(this.numericUpDown9);
             this.panel11.Controls.Add(this.numericUpDown8);
             this.panel11.Controls.Add(this.imageBox21);
-            this.panel11.Controls.Add(this.button14);
+            this.panel11.Controls.Add(this.AffineTransformGoButton);
             this.panel11.Controls.Add(this.AffineTransformImageOutput);
             this.panel11.Controls.Add(this.textBox10);
             this.panel11.Controls.Add(this.AffineTransformInputImage);
@@ -1752,15 +1753,15 @@ namespace WinFormsApp1
             this.imageBox21.TabIndex = 27;
             this.imageBox21.TabStop = false;
             // 
-            // button14
+            // AffineTransformGoButton
             // 
-            this.button14.Location = new System.Drawing.Point(525, 180);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(137, 52);
-            this.button14.TabIndex = 26;
-            this.button14.Text = "button14";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.AffineTransformGoButton.Location = new System.Drawing.Point(525, 180);
+            this.AffineTransformGoButton.Name = "AffineTransformGoButton";
+            this.AffineTransformGoButton.Size = new System.Drawing.Size(137, 52);
+            this.AffineTransformGoButton.TabIndex = 26;
+            this.AffineTransformGoButton.Text = "real operation";
+            this.AffineTransformGoButton.UseVisualStyleBackColor = true;
+            this.AffineTransformGoButton.Click += new System.EventHandler(this.button14_Click);
             // 
             // AffineTransformImageOutput
             // 
@@ -1827,9 +1828,9 @@ namespace WinFormsApp1
             this.panel12.Controls.Add(this.numericUpDown18);
             this.panel12.Controls.Add(this.numericUpDown19);
             this.panel12.Controls.Add(this.PerspectiveImageInput);
-            this.panel12.Controls.Add(this.button15);
+            this.panel12.Controls.Add(this.PerspectiveTFormGoButton);
             this.panel12.Controls.Add(this.PerspectiveImageOutput);
-            this.panel12.Controls.Add(this.textBox11);
+            this.panel12.Controls.Add(this.PerspectiveTextSave);
             this.panel12.Controls.Add(this.PerspectiveImageCamera);
             this.panel12.Controls.Add(this.button16);
             this.panel12.Controls.Add(this.label22);
@@ -1949,14 +1950,14 @@ namespace WinFormsApp1
             this.PerspectiveImageInput.TabIndex = 27;
             this.PerspectiveImageInput.TabStop = false;
             // 
-            // button15
+            // PerspectiveTFormGoButton
             // 
-            this.button15.Location = new System.Drawing.Point(500, 218);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(137, 52);
-            this.button15.TabIndex = 26;
-            this.button15.Text = "button15";
-            this.button15.UseVisualStyleBackColor = true;
+            this.PerspectiveTFormGoButton.Location = new System.Drawing.Point(500, 218);
+            this.PerspectiveTFormGoButton.Name = "PerspectiveTFormGoButton";
+            this.PerspectiveTFormGoButton.Size = new System.Drawing.Size(137, 52);
+            this.PerspectiveTFormGoButton.TabIndex = 26;
+            this.PerspectiveTFormGoButton.Text = "this button does something";
+            this.PerspectiveTFormGoButton.UseVisualStyleBackColor = true;
             // 
             // PerspectiveImageOutput
             // 
@@ -1967,12 +1968,12 @@ namespace WinFormsApp1
             this.PerspectiveImageOutput.TabIndex = 25;
             this.PerspectiveImageOutput.TabStop = false;
             // 
-            // textBox11
+            // PerspectiveTextSave
             // 
-            this.textBox11.Location = new System.Drawing.Point(773, 19);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 23);
-            this.textBox11.TabIndex = 23;
+            this.PerspectiveTextSave.Location = new System.Drawing.Point(773, 19);
+            this.PerspectiveTextSave.Name = "PerspectiveTextSave";
+            this.PerspectiveTextSave.Size = new System.Drawing.Size(100, 23);
+            this.PerspectiveTextSave.TabIndex = 23;
             // 
             // PerspectiveImageCamera
             // 
@@ -1991,6 +1992,7 @@ namespace WinFormsApp1
             this.button16.TabIndex = 16;
             this.button16.Text = "Save";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // label22
             // 
@@ -2016,14 +2018,14 @@ namespace WinFormsApp1
             // 
             this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel13.Controls.Add(this.IntensityText);
-            this.panel13.Controls.Add(this.button17);
-            this.panel13.Controls.Add(this.comboBox10);
+            this.panel13.Controls.Add(this.DilateErodeGoButton);
+            this.panel13.Controls.Add(this.ErodeDilateSelectOperation);
             this.panel13.Controls.Add(this.DilateErodeOutputImage);
-            this.panel13.Controls.Add(this.textBox13);
+            this.panel13.Controls.Add(this.DilateErodeSaveText);
             this.panel13.Controls.Add(this.DilateErodeInputImage);
-            this.panel13.Controls.Add(this.button18);
+            this.panel13.Controls.Add(this.DilateErodeSaveButton);
             this.panel13.Controls.Add(this.label23);
-            this.panel13.Controls.Add(this.comboBox14);
+            this.panel13.Controls.Add(this.ErodeDilateSelectImage);
             this.panel13.Location = new System.Drawing.Point(6, 6);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(1202, 416);
@@ -2037,24 +2039,22 @@ namespace WinFormsApp1
             this.IntensityText.Size = new System.Drawing.Size(100, 23);
             this.IntensityText.TabIndex = 28;
             // 
-            // button17
+            // DilateErodeGoButton
             // 
-            this.button17.Location = new System.Drawing.Point(525, 145);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(75, 23);
-            this.button17.TabIndex = 27;
-            this.button17.Text = "button10";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
+            this.DilateErodeGoButton.Location = new System.Drawing.Point(525, 145);
+            this.DilateErodeGoButton.Name = "DilateErodeGoButton";
+            this.DilateErodeGoButton.Size = new System.Drawing.Size(75, 23);
+            this.DilateErodeGoButton.TabIndex = 27;
+            this.DilateErodeGoButton.Text = "button10";
+            this.DilateErodeGoButton.UseVisualStyleBackColor = true;
             // 
-            // comboBox10
+            // ErodeDilateSelectOperation
             // 
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Location = new System.Drawing.Point(410, 63);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(281, 23);
-            this.comboBox10.TabIndex = 26;
-            this.comboBox10.SelectedIndexChanged += new System.EventHandler(this.comboBox10_SelectedIndexChanged_1);
+            this.ErodeDilateSelectOperation.FormattingEnabled = true;
+            this.ErodeDilateSelectOperation.Location = new System.Drawing.Point(410, 63);
+            this.ErodeDilateSelectOperation.Name = "ErodeDilateSelectOperation";
+            this.ErodeDilateSelectOperation.Size = new System.Drawing.Size(281, 23);
+            this.ErodeDilateSelectOperation.TabIndex = 26;
             // 
             // DilateErodeOutputImage
             // 
@@ -2065,13 +2065,12 @@ namespace WinFormsApp1
             this.DilateErodeOutputImage.TabIndex = 25;
             this.DilateErodeOutputImage.TabStop = false;
             // 
-            // textBox13
+            // DilateErodeSaveText
             // 
-            this.textBox13.Location = new System.Drawing.Point(898, 10);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 23);
-            this.textBox13.TabIndex = 23;
-            this.textBox13.TextChanged += new System.EventHandler(this.textBox13_TextChanged);
+            this.DilateErodeSaveText.Location = new System.Drawing.Point(898, 10);
+            this.DilateErodeSaveText.Name = "DilateErodeSaveText";
+            this.DilateErodeSaveText.Size = new System.Drawing.Size(100, 23);
+            this.DilateErodeSaveText.TabIndex = 23;
             // 
             // DilateErodeInputImage
             // 
@@ -2081,17 +2080,16 @@ namespace WinFormsApp1
             this.DilateErodeInputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DilateErodeInputImage.TabIndex = 2;
             this.DilateErodeInputImage.TabStop = false;
-            this.DilateErodeInputImage.Click += new System.EventHandler(this.imageBox24_Click);
             // 
-            // button18
+            // DilateErodeSaveButton
             // 
-            this.button18.Location = new System.Drawing.Point(1019, 9);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(19, 23);
-            this.button18.TabIndex = 16;
-            this.button18.Text = "Save";
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
+            this.DilateErodeSaveButton.Location = new System.Drawing.Point(1019, 9);
+            this.DilateErodeSaveButton.Name = "DilateErodeSaveButton";
+            this.DilateErodeSaveButton.Size = new System.Drawing.Size(19, 23);
+            this.DilateErodeSaveButton.TabIndex = 16;
+            this.DilateErodeSaveButton.Text = "Save";
+            this.DilateErodeSaveButton.UseVisualStyleBackColor = true;
+            this.DilateErodeSaveButton.Click += new System.EventHandler(this.button18_Click);
             // 
             // label23
             // 
@@ -2102,17 +2100,17 @@ namespace WinFormsApp1
             this.label23.TabIndex = 3;
             this.label23.Text = "label23";
             // 
-            // comboBox14
+            // ErodeDilateSelectImage
             // 
-            this.comboBox14.FormattingEnabled = true;
-            this.comboBox14.Location = new System.Drawing.Point(25, 8);
-            this.comboBox14.Name = "comboBox14";
-            this.comboBox14.Size = new System.Drawing.Size(121, 23);
-            this.comboBox14.TabIndex = 12;
-            this.comboBox14.SelectedIndexChanged += new System.EventHandler(this.comboBox14_SelectedIndexChanged);
+            this.ErodeDilateSelectImage.FormattingEnabled = true;
+            this.ErodeDilateSelectImage.Location = new System.Drawing.Point(25, 8);
+            this.ErodeDilateSelectImage.Name = "ErodeDilateSelectImage";
+            this.ErodeDilateSelectImage.Size = new System.Drawing.Size(121, 23);
+            this.ErodeDilateSelectImage.TabIndex = 12;
             // 
             // tabPage12
             // 
+            this.tabPage12.Controls.Add(this.button19);
             this.tabPage12.Controls.Add(this.panel3);
             this.tabPage12.Location = new System.Drawing.Point(4, 24);
             this.tabPage12.Name = "tabPage12";
@@ -2121,6 +2119,16 @@ namespace WinFormsApp1
             this.tabPage12.TabIndex = 14;
             this.tabPage12.Text = "tabPage12";
             this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(1131, 303);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(75, 23);
+            this.button19.TabIndex = 6;
+            this.button19.Text = "ENABLE";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // panel3
             // 
@@ -2181,21 +2189,21 @@ namespace WinFormsApp1
             this.tabPage4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThresholdOutputImageBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThresholdImageBox)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitBlueImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorSplitImageBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitGreenImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitRedImage)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bitWiseInput1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bitWiseOutput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bitWiseInput2)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -2208,12 +2216,12 @@ namespace WinFormsApp1
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InRangeInputImage)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BlurOutputImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BlurInputImage)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RedSelect)).EndInit();
@@ -2222,13 +2230,13 @@ namespace WinFormsApp1
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaskImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContourOutputImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContourInputImage)).EndInit();
             this.tabPage7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorCVTOutput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorCVTInput)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
@@ -2237,12 +2245,12 @@ namespace WinFormsApp1
             this.tabPage9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpotTheDifferenceSensitivity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpotTheDifferenceOutputImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpotTheDifferenceTopOutput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bottomImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.topImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpotTheDifferenceInputImage)).EndInit();
             this.AffineTransform.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
@@ -2293,80 +2301,80 @@ namespace WinFormsApp1
         private Emgu.CV.UI.ImageBox SplitBlueImage;
         private System.Windows.Forms.TextBox GreenTextBox;
         private System.Windows.Forms.TextBox BlueTextBox;
-        private Emgu.CV.UI.ImageBox imageBox4;
+        private Emgu.CV.UI.ImageBox ColorSplitImageBox;
         private Emgu.CV.UI.ImageBox SplitGreenImage;
         private System.Windows.Forms.Button BlueSave;
         private Emgu.CV.UI.ImageBox SplitRedImage;
         private System.Windows.Forms.TextBox RedTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox ColorSplitImageSelect;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox GammaTextBox;
         private System.Windows.Forms.TextBox alphaTextBox;
         private System.Windows.Forms.TextBox betaTextBox;
         private System.Windows.Forms.Button GoButton;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Button button3;
-        private Emgu.CV.UI.ImageBox imageBox3;
-        private System.Windows.Forms.Button button2;
-        private Emgu.CV.UI.ImageBox imageBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox BitWiseOperationSelect;
+        private System.Windows.Forms.Button RotateLeftButton;
+        private Emgu.CV.UI.ImageBox bitWiseInput1;
+        private System.Windows.Forms.Button RotateRightButton;
+        private Emgu.CV.UI.ImageBox bitWiseOutput;
+        private System.Windows.Forms.Button InvertButton;
         private System.Windows.Forms.Button SaveButton;
-        private Emgu.CV.UI.ImageBox imageBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private Emgu.CV.UI.ImageBox bitWiseInput2;
+        private System.Windows.Forms.TextBox BitWiseSaveText;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox BitWisePic2Select;
+        private System.Windows.Forms.ComboBox BitwisePic1Select;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private Emgu.CV.UI.ImageBox imageBox7;
-        private System.Windows.Forms.TextBox textBox2;
-        private Emgu.CV.UI.ImageBox imageBox8;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox ThresholdMaxValueText;
+        private System.Windows.Forms.TextBox ThresholdMinValueText;
+        private System.Windows.Forms.ComboBox ThresholdTypeSelect;
+        private Emgu.CV.UI.ImageBox ThresholdOutputImageBox;
+        private System.Windows.Forms.TextBox ThresholdSaveText;
+        private Emgu.CV.UI.ImageBox ThresholdImageBox;
+        private System.Windows.Forms.Button ThresholdSaveButton;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.ComboBox ThresholdImageSelect;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label Channel1MaxLabel;
+        private System.Windows.Forms.Label Channel2MaxLabel;
+        private System.Windows.Forms.Label Channel3MaxLabel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label Channel3;
+        private System.Windows.Forms.Label Channel3MinLabel;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox InRangeColorSpaceSelect;
         private Emgu.CV.UI.ImageBox imageBox5;
-        private System.Windows.Forms.TextBox textBox3;
-        private Emgu.CV.UI.ImageBox imageBox6;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox InRangeSaveText;
+        private Emgu.CV.UI.ImageBox InRangeInputImage;
+        private System.Windows.Forms.Button InRangeSaveButton;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ComboBox InRangeSelect;
+        private System.Windows.Forms.Button ThresholdGoButton;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.ComboBox BlurTypeComboBox;
-        private Emgu.CV.UI.ImageBox imageBox9;
+        private Emgu.CV.UI.ImageBox BlurOutputImage;
         private System.Windows.Forms.TextBox BlurSaveText;
-        private Emgu.CV.UI.ImageBox imageBox10;
+        private Emgu.CV.UI.ImageBox BlurInputImage;
         private System.Windows.Forms.Button BlurSaveButton;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox BlurOperationImageSelect;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.ComboBox comboBox11;
-        private Emgu.CV.UI.ImageBox imageBox11;
-        private System.Windows.Forms.TextBox textBox7;
-        private Emgu.CV.UI.ImageBox imageBox12;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.ComboBox ContourTypeSelect;
+        private Emgu.CV.UI.ImageBox ContourOutputImage;
+        private System.Windows.Forms.TextBox ContourSaveText;
+        private Emgu.CV.UI.ImageBox ContourInputImage;
+        private System.Windows.Forms.Button ContourSaveButton;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox12;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.ComboBox ContourImageSelect;
+        private System.Windows.Forms.Button ContourGoButton;
         private System.Windows.Forms.ComboBox BoundedShapeSelect;
         private System.Windows.Forms.ComboBox ChainApproxSelect;
         private System.Windows.Forms.Label label18;
@@ -2387,37 +2395,37 @@ namespace WinFormsApp1
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.ComboBox ColorShiftOperationSelect;
-        private Emgu.CV.UI.ImageBox imageBox13;
-        private System.Windows.Forms.TextBox textBox6;
-        private Emgu.CV.UI.ImageBox imageBox14;
-        private System.Windows.Forms.Button button7;
+        private Emgu.CV.UI.ImageBox ColorCVTOutput;
+        private System.Windows.Forms.TextBox ColorCVTSaveText;
+        private Emgu.CV.UI.ImageBox ColorCVTInput;
+        private System.Windows.Forms.Button ColorCVTSaveButton;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox ColorShiftImageSelect;
         private System.Windows.Forms.ComboBox MaskSelect;
         private Emgu.CV.UI.ImageBox MaskImage;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.ComboBox comboBox9;
+        private System.Windows.Forms.Button CaptureButton;
+        private System.Windows.Forms.ComboBox CameraSelectBox;
         private Emgu.CV.UI.ImageBox imageBox15;
         private System.Windows.Forms.TabPage tabPage9;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox textBox8;
-        private Emgu.CV.UI.ImageBox imageBox17;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TextBox SpottheDifferenceSaveText;
+        private Emgu.CV.UI.ImageBox SpotTheDifferenceInputImage;
+        private System.Windows.Forms.Button SpotTheDifferenceSaveButton;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox comboBox13;
-        private Emgu.CV.UI.ImageBox imageBox20;
-        private System.Windows.Forms.Button button12;
-        private Emgu.CV.UI.ImageBox imageBox19;
-        private Emgu.CV.UI.ImageBox imageBox18;
-        private Emgu.CV.UI.ImageBox imageBox16;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
+        private System.Windows.Forms.ComboBox SpotDiffSelectionBox;
+        private Emgu.CV.UI.ImageBox SpotTheDifferenceTopOutput;
+        private System.Windows.Forms.Button SpottheDifferenceSplitButton;
+        private Emgu.CV.UI.ImageBox bottomImage;
+        private Emgu.CV.UI.ImageBox topImage;
+        private Emgu.CV.UI.ImageBox SpotTheDifferenceOutputImage;
+        private System.Windows.Forms.NumericUpDown SpotTheDifferenceSensitivity;
         private System.Windows.Forms.TabPage AffineTransform;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox CameraImageText;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button AffineTransformGoButton;
         private Emgu.CV.UI.ImageBox AffineTransformImageOutput;
         private System.Windows.Forms.TextBox textBox10;
         private Emgu.CV.UI.ImageBox AffineTransformInputImage;
@@ -2441,29 +2449,30 @@ namespace WinFormsApp1
         private System.Windows.Forms.NumericUpDown numericUpDown18;
         private System.Windows.Forms.NumericUpDown numericUpDown19;
         private Emgu.CV.UI.ImageBox PerspectiveImageInput;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button PerspectiveTFormGoButton;
         private Emgu.CV.UI.ImageBox PerspectiveImageOutput;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox PerspectiveTextSave;
         private Emgu.CV.UI.ImageBox PerspectiveImageCamera;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TabPage tabPage11;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.TextBox IntensityText;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.ComboBox comboBox10;
+        private System.Windows.Forms.Button DilateErodeGoButton;
+        private System.Windows.Forms.ComboBox ErodeDilateSelectOperation;
         private Emgu.CV.UI.ImageBox DilateErodeOutputImage;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox DilateErodeSaveText;
         private Emgu.CV.UI.ImageBox DilateErodeInputImage;
-        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button DilateErodeSaveButton;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.ComboBox comboBox14;
+        private System.Windows.Forms.ComboBox ErodeDilateSelectImage;
         private Emgu.CV.UI.ImageBox CameraSaveBox;
         private System.Windows.Forms.TabPage tabPage12;
         private System.Windows.Forms.Panel panel3;
         private Emgu.CV.UI.ImageBox EyeTrackMaskImage;
         private Emgu.CV.UI.ImageBox EyeTrackFinalImage;
         private Emgu.CV.UI.ImageBox EyeTrackCameraInput;
+        private System.Windows.Forms.Button button19;
     }
 }
 

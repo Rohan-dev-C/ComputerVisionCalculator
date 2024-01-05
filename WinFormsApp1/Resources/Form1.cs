@@ -129,7 +129,6 @@ namespace WinFormsApp1
             CvInvoke.Flip(output, output, FlipType.Horizontal);
             imageBox15.Image = output;
             AffineTransformInputImage.Image = output;
-            EyeTrackCameraInput.Image = output; 
             PerspectiveImageCamera.Image = output;
         }
         void GetFrame(ref ImageBox imageBOx)
@@ -145,17 +144,17 @@ namespace WinFormsApp1
         private void SaveInfo(TextBox textBox1, ImageBox imageBox1)
         {
             images.Add(textBox1.Text, imageBox1.Image);
-            comboBox1.Items.Add(textBox1.Text);
-            comboBox2.Items.Add(textBox1.Text);
-            comboBox6.Items.Add(textBox1.Text);
+            BitwisePic1Select.Items.Add(textBox1.Text);
+            BitWisePic2Select.Items.Add(textBox1.Text);
+            ColorSplitImageSelect.Items.Add(textBox1.Text);
             BlurOperationImageSelect.Items.Add(textBox1.Text);
             ColorShiftImageSelect.Items.Add(textBox1.Text);
             MaskSelect.Items.Add(textBox1.Text);
-            comboBox12.Items.Add(textBox1.Text);
-            comboBox8.Items.Add(textBox1.Text);
-            comboBox4.Items.Add(textBox1.Text);
-            comboBox13.Items.Add(textBox1.Text);
-            comboBox14.Items.Add(textBox1.Text); 
+            ContourImageSelect.Items.Add(textBox1.Text);
+            ThresholdImageSelect.Items.Add(textBox1.Text);
+            InRangeSelect.Items.Add(textBox1.Text);
+            SpotDiffSelectionBox.Items.Add(textBox1.Text);
+            ErodeDilateSelectImage.Items.Add(textBox1.Text); 
             textBox1.Clear();
             imageBox1.Image = default;
         }
@@ -189,6 +188,7 @@ namespace WinFormsApp1
             images.Add("kitchen", CvInvoke.Imread("Images/cooking.png"));
             images.Add("restaurant", CvInvoke.Imread("Images/restaurant.png"));
             images.Add("Affine", CvInvoke.Imread("Images/restaurant.png"));
+            images.Add("whiteGuy", CvInvoke.Imread("Images/download.png"));
             bitwiseOperations.Add("Add", BitwiseOperators.Add);
             bitwiseOperations.Add("And", BitwiseOperators.And);
             bitwiseOperations.Add("Or", BitwiseOperators.Or);
@@ -314,7 +314,7 @@ namespace WinFormsApp1
             #region comboBoxSetup
             foreach (var item in DilateErodeOperations.Keys)
             {
-                comboBox10.Items.Add(item) ;
+                ErodeDilateSelectOperation.Items.Add(item) ;
             }
             foreach (var item in BlurType.Keys)
             {
@@ -330,11 +330,11 @@ namespace WinFormsApp1
             }
             foreach (var item in ContourTypes.Keys)
             {
-                comboBox11.Items.Add(item); 
+                ContourTypeSelect.Items.Add(item); 
             }
             foreach (var item in bitwiseOperations.Keys)
             {
-                comboBox3.Items.Add(item);
+                BitWiseOperationSelect.Items.Add(item);
             }
             foreach (var item in colorshiftOperations.Keys)
             {
@@ -342,24 +342,24 @@ namespace WinFormsApp1
             }
             foreach(var item in thresholdOperations.Keys)
             {
-                comboBox7.Items.Add(item); 
+                ThresholdTypeSelect.Items.Add(item); 
             }
             foreach (var item in MaximumValueColor.Keys)
             {
-                comboBox5.Items.Add(item); 
+                InRangeColorSpaceSelect.Items.Add(item); 
             }
             foreach (var item in images.Keys)
             {
-                comboBox1.Items.Add(item); 
-                comboBox2.Items.Add(item);
-                comboBox4.Items.Add(item); 
-                comboBox6.Items.Add(item);
+                BitwisePic1Select.Items.Add(item); 
+                BitWisePic2Select.Items.Add(item);
+                InRangeSelect.Items.Add(item); 
+                ColorSplitImageSelect.Items.Add(item);
                 BlurOperationImageSelect.Items.Add(item);
                 MaskSelect.Items.Add(item);
-                comboBox8.Items.Add(item);
-                comboBox12.Items.Add(item);
-                comboBox13.Items.Add(item);
-                comboBox14.Items.Add(item);
+                ThresholdImageSelect.Items.Add(item);
+                ContourImageSelect.Items.Add(item);
+                SpotDiffSelectionBox.Items.Add(item);
+                ErodeDilateSelectImage.Items.Add(item);
                 ColorShiftImageSelect.Items.Add(item);
             }
             image.AsReadOnly();
@@ -368,15 +368,15 @@ namespace WinFormsApp1
         #region Bitwise Operations
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            imageBox3.Image = images[comboBox1.SelectedItem.ToString()] ;
+            bitWiseInput1.Image = images[BitwisePic1Select.SelectedItem.ToString()] ;
         }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            imageBox2.Image = images[comboBox2.SelectedItem.ToString()]; 
+            bitWiseInput2.Image = images[BitWisePic2Select.SelectedItem.ToString()]; 
         }
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            SaveInfo(textBox1, imageBox1); 
+            SaveInfo(BitWiseSaveText, bitWiseOutput); 
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -393,24 +393,24 @@ namespace WinFormsApp1
         private void button1_Click_1(object sender, EventArgs e)
         {
             Mat temp = new Mat();
-            CvInvoke.BitwiseNot(imageBox1.Image, temp);
-            imageBox1.Image = temp; 
+            CvInvoke.BitwiseNot(bitWiseOutput.Image, temp);
+            bitWiseOutput.Image = temp; 
         }
         private void button2_Click_1(object sender, EventArgs e)
         {
             Mat temp = new Mat();
-            CvInvoke.Rotate(imageBox1.Image, temp, Emgu.CV.CvEnum.RotateFlags.Rotate90Clockwise);
-            imageBox1.Image = temp;
+            CvInvoke.Rotate(bitWiseOutput.Image, temp, Emgu.CV.CvEnum.RotateFlags.Rotate90Clockwise);
+            bitWiseOutput.Image = temp;
         }
         private void button3_Click_1(object sender, EventArgs e)
         {
             Mat temp = new Mat();
-            CvInvoke.Rotate(imageBox1.Image, temp, Emgu.CV.CvEnum.RotateFlags.Rotate90CounterClockwise);
-            imageBox1.Image = temp;
+            CvInvoke.Rotate(bitWiseOutput.Image, temp, Emgu.CV.CvEnum.RotateFlags.Rotate90CounterClockwise);
+            bitWiseOutput.Image = temp;
         }
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentBitwise = bitwiseOperations[comboBox3.SelectedItem.ToString()]; 
+            currentBitwise = bitwiseOperations[BitWiseOperationSelect.SelectedItem.ToString()]; 
             if(currentBitwise == BitwiseOperators.AddWeighted)
             {
                 alphaTextBox.Show();
@@ -426,13 +426,13 @@ namespace WinFormsApp1
         }
         private void GoButton_Click(object sender, EventArgs e)
         {
-            if(imageBox3.Image == null|| imageBox2.Image == null)
+            if(bitWiseInput1.Image == null|| bitWiseInput2.Image == null)
             {
                 MessageBox.Show("SELECT SOMETHING");
                 return;
             }
-            Mat image1 = imageBox3.Image as Mat; 
-            Mat image2 = imageBox2.Image as Mat; 
+            Mat image1 = bitWiseInput1.Image as Mat; 
+            Mat image2 = bitWiseInput2.Image as Mat; 
             if(image1.NumberOfChannels != image2.NumberOfChannels)
             {
                 MessageBox.Show("Select images with same number of Channels");
@@ -446,95 +446,95 @@ namespace WinFormsApp1
             switch (currentBitwise)
             {
                 case BitwiseOperators.And:
-                    imageBox2.Show();
+                    bitWiseInput2.Show();
                     Mat output = new Mat();
                     Stopwatch clock = Stopwatch.StartNew();
-                    CvInvoke.BitwiseAnd(imageBox2.Image, imageBox3.Image, output);
+                    CvInvoke.BitwiseAnd(bitWiseInput2.Image, bitWiseInput1.Image, output);
                     clock.Stop();
-                    imageBox1.Image = output;
+                    bitWiseOutput.Image = output;
                     label1.Text = clock.ElapsedMilliseconds.ToString();
                     break;
 
                 case BitwiseOperators.Or:
-                    imageBox2.Show();
+                    bitWiseInput2.Show();
                     Mat output2 = new Mat();
                     Stopwatch clock2 = Stopwatch.StartNew();
-                    CvInvoke.BitwiseOr(imageBox2.Image, imageBox3.Image, output2);
+                    CvInvoke.BitwiseOr(bitWiseInput2.Image, bitWiseInput1.Image, output2);
                     clock2.Stop();
-                    imageBox1.Image = output2;
+                    bitWiseOutput.Image = output2;
                     label1.Text = clock2.ElapsedMilliseconds.ToString();
                     break;
 
                 case BitwiseOperators.Not:
                     Mat output3 = new Mat();
                     Stopwatch clock3 = Stopwatch.StartNew();
-                    CvInvoke.BitwiseNot(imageBox3.Image, output3);
-                    imageBox2.Hide();
+                    CvInvoke.BitwiseNot(bitWiseInput1.Image, output3);
+                    bitWiseInput2.Hide();
                     clock3.Stop();
-                    imageBox1.Image = output3;
+                    bitWiseOutput.Image = output3;
                     label1.Text = clock3.ElapsedMilliseconds.ToString();
                     break;
 
                 case BitwiseOperators.XOr:
-                    imageBox2.Show();
+                    bitWiseInput2.Show();
                     Mat output4 = new Mat();
                     Stopwatch clock4 = Stopwatch.StartNew();
-                    CvInvoke.BitwiseXor(imageBox2.Image, imageBox3.Image, output4);
+                    CvInvoke.BitwiseXor(bitWiseInput2.Image, bitWiseInput1.Image, output4);
                     clock4.Stop();
-                    imageBox1.Image = output4;
+                    bitWiseOutput.Image = output4;
                     label1.Text = clock4.ElapsedMilliseconds.ToString();
                     break;
 
                 case BitwiseOperators.Add:
-                    imageBox2.Show();
+                    bitWiseInput2.Show();
                     Mat output5 = new Mat();
                     Stopwatch clock5 = Stopwatch.StartNew();
-                    CvInvoke.Add(imageBox3.Image, imageBox2.Image, output5);
+                    CvInvoke.Add(bitWiseInput1.Image, bitWiseInput2.Image, output5);
                     clock5.Stop();
-                    imageBox1.Image = output5;
+                    bitWiseOutput.Image = output5;
                     label1.Text = clock5.ElapsedMilliseconds.ToString();
                     break;
 
                 case BitwiseOperators.Subtract:
-                    imageBox2.Show();
+                    bitWiseInput2.Show();
                     Mat output6 = new Mat();
                     Stopwatch clock6 = Stopwatch.StartNew();
-                    CvInvoke.Subtract(imageBox3.Image, imageBox2.Image, output6);
+                    CvInvoke.Subtract(bitWiseInput1.Image, bitWiseInput2.Image, output6);
                     clock6.Stop();
-                    imageBox1.Image = output6;
+                    bitWiseOutput.Image = output6;
                     label1.Text = clock6.ElapsedMilliseconds.ToString();
                     break;
 
                 case BitwiseOperators.Multiply:
-                    imageBox2.Show();
+                    bitWiseInput2.Show();
                     Mat output7 = new Mat();
                     Stopwatch clock7 = Stopwatch.StartNew();
-                    CvInvoke.Multiply(imageBox3.Image, imageBox2.Image, output7);
+                    CvInvoke.Multiply(bitWiseInput1.Image, bitWiseInput2.Image, output7);
                     clock7.Stop();
-                    imageBox1.Image = output7;
+                    bitWiseOutput.Image = output7;
                     label1.Text = clock7.ElapsedMilliseconds.ToString();
                     break;
 
                 case BitwiseOperators.Divide:
-                    imageBox2.Show();
+                    bitWiseInput2.Show();
                     Mat output8 = new Mat();
                     Stopwatch clock8 = Stopwatch.StartNew();
-                    CvInvoke.Divide(imageBox3.Image, imageBox2.Image, output8);
+                    CvInvoke.Divide(bitWiseInput1.Image, bitWiseInput2.Image, output8);
                     clock8.Stop();
-                    imageBox1.Image = output8;
+                    bitWiseOutput.Image = output8;
                     label1.Text = clock8.ElapsedMilliseconds.ToString();
                     break;
 
                 case BitwiseOperators.AddWeighted:
-                    imageBox2.Show();
+                    bitWiseInput2.Show();
                     double alpha = double.Parse(alphaTextBox.Text);
                     double beta = double.Parse(betaTextBox.Text);
                     double gamma = double.Parse(GammaTextBox.Text); 
                     Mat output9 = new Mat();
                     Stopwatch clock9 = Stopwatch.StartNew();
-                    CvInvoke.AddWeighted(imageBox3.Image, alpha, imageBox2.Image, beta, gamma, output9);
+                    CvInvoke.AddWeighted(bitWiseInput1.Image, alpha, bitWiseInput2.Image, beta, gamma, output9);
                     clock9.Stop();
-                    imageBox1.Image = output9;
+                    bitWiseOutput.Image = output9;
                     label1.Text = clock9.ElapsedMilliseconds.ToString();
                     alphaTextBox.ResetText();
                     betaTextBox.ResetText();
@@ -557,8 +557,8 @@ namespace WinFormsApp1
         }
         private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
         {
-            imageBox4.Image = images[comboBox6.SelectedItem.ToString()];
-            Mat temp = imageBox4.Image as Mat;
+            ColorSplitImageBox.Image = images[ColorSplitImageSelect.SelectedItem.ToString()];
+            Mat temp = ColorSplitImageBox.Image as Mat;
             VectorOfMat vectorOfMat = new VectorOfMat();
             CvInvoke.Split(temp, vectorOfMat);
             SplitRedImage.Image = vectorOfMat[2];
@@ -582,7 +582,7 @@ namespace WinFormsApp1
         #region InRange 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentColorSpace = MaximumValueColor[comboBox5.SelectedItem.ToString()];
+            currentColorSpace = MaximumValueColor[InRangeColorSpaceSelect.SelectedItem.ToString()];
 
             switch (currentColorSpace)
             {
@@ -611,17 +611,17 @@ namespace WinFormsApp1
             numericUpDown4.Value = numericUpDown4.Maximum; 
             numericUpDown5.Value = numericUpDown5.Maximum; 
             numericUpDown6.Value = numericUpDown6.Maximum; 
-            imageBox6.Image = images[comboBox4.SelectedItem.ToString()];
+            InRangeInputImage.Image = images[InRangeSelect.SelectedItem.ToString()];
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            SaveInfo(textBox3, imageBox5);
+            SaveInfo(InRangeSaveText, imageBox5);
         }
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             Mat output = new Mat();
-            Mat temp = imageBox6.Image as Mat;
+            Mat temp = InRangeInputImage.Image as Mat;
             if (temp == null) return;
 
             CvInvoke.InRange(temp, (ScalarArray)new MCvScalar(int.Parse(numericUpDown1.Text), int.Parse(numericUpDown2.Text), int.Parse(numericUpDown3.Text)),
@@ -632,7 +632,7 @@ namespace WinFormsApp1
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
             Mat output = new Mat();
-            Mat temp = imageBox6.Image as Mat;
+            Mat temp = InRangeInputImage.Image as Mat;
             if (temp == null) return;
 
             CvInvoke.InRange(temp, (ScalarArray)new MCvScalar((double)numericUpDown1.Value, (double)numericUpDown2.Value, (double)numericUpDown3.Value),
@@ -643,7 +643,7 @@ namespace WinFormsApp1
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
             Mat output = new Mat();
-            Mat temp = imageBox6.Image as Mat;
+            Mat temp = InRangeInputImage.Image as Mat;
             if (temp == null) return;
 
             CvInvoke.InRange(temp, (ScalarArray)new MCvScalar(int.Parse(numericUpDown1.Text), int.Parse(numericUpDown2.Text), int.Parse(numericUpDown3.Text)),
@@ -654,7 +654,7 @@ namespace WinFormsApp1
         private void numericUpDown4_ValueChanged(object sender, EventArgs e)
         {
             Mat output = new Mat();
-            Mat temp = imageBox6.Image as Mat;
+            Mat temp = InRangeInputImage.Image as Mat;
             if (temp == null) return;
             CvInvoke.InRange(temp, (ScalarArray)new MCvScalar(int.Parse(numericUpDown1.Text), int.Parse(numericUpDown2.Text), int.Parse(numericUpDown3.Text)),
                              (ScalarArray)new MCvScalar(int.Parse(numericUpDown6.Text), int.Parse(numericUpDown5.Text), int.Parse(numericUpDown4.Text)), output);
@@ -664,7 +664,7 @@ namespace WinFormsApp1
         private void numericUpDown5_ValueChanged(object sender, EventArgs e)
         {
             Mat output = new Mat();
-            Mat temp = imageBox6.Image as Mat;
+            Mat temp = InRangeInputImage.Image as Mat;
             if (temp == null) return;
 
             CvInvoke.InRange(temp, (ScalarArray)new MCvScalar(int.Parse(numericUpDown1.Text), int.Parse(numericUpDown2.Text), int.Parse(numericUpDown3.Text)),
@@ -675,7 +675,7 @@ namespace WinFormsApp1
         private void numericUpDown6_ValueChanged(object sender, EventArgs e)
         {
             Mat output = new Mat();
-            Mat temp = imageBox6.Image as Mat;
+            Mat temp = InRangeInputImage.Image as Mat;
             if (temp == null) return;
 
             CvInvoke.InRange(temp, (ScalarArray)new MCvScalar(int.Parse(numericUpDown1.Text), int.Parse(numericUpDown2.Text), int.Parse(numericUpDown3.Text)),
@@ -687,11 +687,11 @@ namespace WinFormsApp1
         #region Threshold Operations
         private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentThreshold = thresholdOperations[comboBox7.SelectedItem.ToString()]; 
+            currentThreshold = thresholdOperations[ThresholdTypeSelect.SelectedItem.ToString()]; 
         }
         private void comboBox8_SelectedIndexChanged(object sender, EventArgs e)
         {
-            imageBox8.Image = images[comboBox8.SelectedItem.ToString()];
+            ThresholdImageBox.Image = images[ThresholdImageSelect.SelectedItem.ToString()];
         }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -701,16 +701,16 @@ namespace WinFormsApp1
         {
             Stopwatch clock = Stopwatch.StartNew();
             Mat output = new Mat();
-            CvInvoke.Threshold(imageBox8.Image, output, int.Parse(textBox4.Text), int.Parse(textBox5.Text), (Emgu.CV.CvEnum.ThresholdType)currentThreshold);
-            imageBox7.Image = output;
+            CvInvoke.Threshold(ThresholdImageBox.Image, output, int.Parse(ThresholdMinValueText.Text), int.Parse(ThresholdMaxValueText.Text), (Emgu.CV.CvEnum.ThresholdType)currentThreshold);
+            ThresholdOutputImageBox.Image = output;
             clock.Stop();
             label10.Text = $"{clock.ElapsedMilliseconds} ms"; 
-            textBox4.Clear();
-            textBox5.Clear();
+            ThresholdMinValueText.Clear();
+            ThresholdMaxValueText.Clear();
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            SaveInfo(textBox2, imageBox7);
+            SaveInfo(ThresholdSaveText, ThresholdOutputImageBox);
 
         }
 
@@ -719,11 +719,11 @@ namespace WinFormsApp1
         #region blurring
         private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
         {
-            imageBox10.Image = images[BlurOperationImageSelect.SelectedItem.ToString()];
+            BlurInputImage.Image = images[BlurOperationImageSelect.SelectedItem.ToString()];
         }
         private void button7_Click(object sender, EventArgs e)
         {
-            SaveInfo(BlurSaveText, imageBox9); 
+            SaveInfo(BlurSaveText, BlurOutputImage); 
         }
         private void comboBox9_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -736,40 +736,40 @@ namespace WinFormsApp1
             switch (currentBlur)
             {
                 case BlurTypes.Simple:
-                    CvInvoke.Blur(imageBox10.Image, output, kSize, new Point(-1, -1));
+                    CvInvoke.Blur(BlurInputImage.Image, output, kSize, new Point(-1, -1));
                     break;
                 case BlurTypes.Gaussian:
-                    CvInvoke.GaussianBlur(imageBox10.Image, output, kSize, 0);
+                    CvInvoke.GaussianBlur(BlurInputImage.Image, output, kSize, 0);
                     break;
                 case BlurTypes.Median:
-                    CvInvoke.MedianBlur(imageBox10.Image, output, kSize.Width);
+                    CvInvoke.MedianBlur(BlurInputImage.Image, output, kSize.Width);
                     break;
                 case BlurTypes.Bilateral:
-                    CvInvoke.BilateralFilter(imageBox10.Image, output, 0, 0, 0, BorderType.Reflect101);
+                    CvInvoke.BilateralFilter(BlurInputImage.Image, output, 0, 0, 0, BorderType.Reflect101);
                     break;
             }
-            imageBox9.Image = output; 
+            BlurOutputImage.Image = output; 
         }
         #endregion
         #region Contours
         private void comboBox12_SelectedIndexChanged(object sender, EventArgs e)
         {
-            imageBox12.Image = images[comboBox12.SelectedItem.ToString()];
+            ContourInputImage.Image = images[ContourImageSelect.SelectedItem.ToString()];
         }
         private void button8_Click(object sender, EventArgs e)
         {
-            SaveInfo(textBox7, imageBox11); 
+            SaveInfo(ContourSaveText, ContourOutputImage); 
         }
 
         private void comboBox11_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentContourType = ContourTypes[comboBox11.SelectedItem.ToString()];
-            if(comboBox11.SelectedItem.ToString() == "ChainApprox")
+            currentContourType = ContourTypes[ContourTypeSelect.SelectedItem.ToString()];
+            if(ContourTypeSelect.SelectedItem.ToString() == "ChainApprox")
             {
                 ChainApproxSelect.Show();
                 BoundedShapeSelect.Hide(); 
             }
-            else if(comboBox11.SelectedItem.ToString() == "Bounded")
+            else if(ContourTypeSelect.SelectedItem.ToString() == "Bounded")
             {
                 ChainApproxSelect.Hide();
                 BoundedShapeSelect.Show();
@@ -783,7 +783,7 @@ namespace WinFormsApp1
         }
         private void button9_Click(object sender, EventArgs e)
         {
-            Mat first = imageBox12.Image as Mat;
+            Mat first = ContourInputImage.Image as Mat;
             Mat mask = new Mat();
             if (currentMaskContour != null)
             {
@@ -799,7 +799,7 @@ namespace WinFormsApp1
             {
                 case ContourType.Bounded:
                     Mat grayScaledImage = mask;
-                    var temp = imageBox12.Image as Mat;
+                    var temp = ContourInputImage.Image as Mat;
                     Mat original = temp.Clone();
                     VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
                     Mat nextLayer = new Mat();
@@ -817,7 +817,7 @@ namespace WinFormsApp1
                                 CircleF circ = CvInvoke.MinEnclosingCircle(contours[i]);
                                 CvInvoke.Circle(original, new Point((int)circ.Center.X, (int)circ.Center.Y), (int)circ.Radius, new MCvScalar((double)BlueSelect.Value, (double)GreenSelect.Value, (double)RedSelect.Value), 2);
                             }
-                            imageBox11.Image = original;
+                            ContourOutputImage.Image = original;
                             break;
 
                         case BoundTypes.Rectangle:
@@ -831,7 +831,7 @@ namespace WinFormsApp1
                                 Rectangle rect = CvInvoke.BoundingRectangle(contours[i]); 
                                 CvInvoke.Rectangle(original, rect, new MCvScalar((double)BlueSelect.Value, (double)GreenSelect.Value, (double)RedSelect.Value), 2);
                             }
-                            imageBox11.Image = original;
+                            ContourOutputImage.Image = original;
                             break;
                         case BoundTypes.MinimumArea:
                             for (int i = 0; i < contours.Size; i++)
@@ -843,7 +843,7 @@ namespace WinFormsApp1
                                 CvInvoke.Line(original, verticies[2], verticies[3], new MCvScalar((double)BlueSelect.Value, (double)GreenSelect.Value, (double)RedSelect.Value), 2);
                                 CvInvoke.Line(original, verticies[3], verticies[0], new MCvScalar((double)BlueSelect.Value, (double)GreenSelect.Value, (double)RedSelect.Value), 2);
                             }
-                            imageBox11.Image = original; 
+                            ContourOutputImage.Image = original; 
                             break;
                         default:
                             MessageBox.Show("CHOOSE A METHOD");
@@ -852,14 +852,14 @@ namespace WinFormsApp1
                     break;
                 case ContourType.ChainApprox:
                     Mat grayScaledImage2 = new Mat();
-                    var temp2 = imageBox12.Image as Mat;
+                    var temp2 = ContourInputImage.Image as Mat;
                     Mat original2 = temp2;
                     CvInvoke.CvtColor(original2, grayScaledImage2, ColorConversion.Bgr2Gray);
                     VectorOfVectorOfPoint contours2 = new VectorOfVectorOfPoint();
                     Mat nextLayer2 = new Mat();
                     CvInvoke.FindContours(grayScaledImage2, contours2, nextLayer2, RetrType.External, (Emgu.CV.CvEnum.ChainApproxMethod)currentChainApprox);
                     CvInvoke.DrawContours(original2, contours2, -1, new MCvScalar((double)BlueSelect.Value, (double)GreenSelect.Value, (double)RedSelect.Value), 3); 
-                    imageBox11.Image = original2;
+                    ContourOutputImage.Image = original2;
                     break;
                       
             }
@@ -894,20 +894,20 @@ namespace WinFormsApp1
         #region Color Convert
         private void ColorShiftImageSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            imageBox14.Image = images[ColorShiftImageSelect.SelectedItem.ToString()];
+            ColorCVTInput.Image = images[ColorShiftImageSelect.SelectedItem.ToString()];
         }
         private void ColorShiftOperationSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentColorShift = colorshiftOperations[ColorShiftOperationSelect.SelectedItem.ToString()];
 
             Mat output = new Mat();
-            Mat temp = imageBox14.Image as Mat;
+            Mat temp = ColorCVTInput.Image as Mat;
             Stopwatch clock = Stopwatch.StartNew();
             switch (currentColorShift)
             {
                 case ColorShiftOperators.BGR_GRAY:
                     CvInvoke.CvtColor(temp, output, ColorConversion.Bgr2Gray);
-                    imageBox13.Image = output;
+                    ColorCVTOutput.Image = output;
                     break;
                 case ColorShiftOperators.BGR_HSV:
                     if(temp.NumberOfChannels != 3)
@@ -916,7 +916,7 @@ namespace WinFormsApp1
                         return; 
                     }
                     CvInvoke.CvtColor(temp, output, ColorConversion.Bgr2Hsv);
-                    imageBox13.Image = output;
+                    ColorCVTOutput.Image = output;
                     break;
                 case ColorShiftOperators.HSV_BGR:
                     if (temp.NumberOfChannels != 3)
@@ -925,7 +925,7 @@ namespace WinFormsApp1
                         return;
                     }
                     CvInvoke.CvtColor(temp, output, ColorConversion.Hsv2Bgr);
-                    imageBox13.Image = output;
+                    ColorCVTOutput.Image = output;
                     break;
             }
             clock.Stop();
@@ -934,7 +934,7 @@ namespace WinFormsApp1
         }
         private void button7_Click_1(object sender, EventArgs e)
         {
-            SaveInfo(textBox6, imageBox13);
+            SaveInfo(ColorCVTSaveText, ColorCVTOutput);
         }
 
 
@@ -949,7 +949,7 @@ namespace WinFormsApp1
         {
             Mat temp = (Mat)imageBox15.Image;
             CameraSaveBox.Image = temp.Clone();
-            SaveInfo(textBox9, CameraSaveBox);  
+            SaveInfo(CameraImageText, CameraSaveBox);  
         }
         private void tabPage9_Click(object sender, EventArgs e)
         {
@@ -959,17 +959,17 @@ namespace WinFormsApp1
         #region Spot the difference
         private void comboBox13_SelectedIndexChanged(object sender, EventArgs e)
         {
-            imageBox17.Image = images[comboBox13.SelectedItem.ToString()];
+            SpotTheDifferenceInputImage.Image = images[SpotDiffSelectionBox.SelectedItem.ToString()];
         }
         private void button11_Click(object sender, EventArgs e)
         {
-            SaveInfo(textBox5, imageBox20); 
+            SaveInfo(ThresholdMaxValueText, SpotTheDifferenceTopOutput); 
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
             Mat original = new Mat();
-            CvInvoke.CvtColor(imageBox17.Image, original, ColorConversion.Bgr2Gray);
+            CvInvoke.CvtColor(SpotTheDifferenceInputImage.Image, original, ColorConversion.Bgr2Gray);
             CvInvoke.Threshold(original, original, 1, 255, (Emgu.CV.CvEnum.ThresholdType)ThresholdType.Binary);
             VectorOfVectorOfPoint imageCounter = new VectorOfVectorOfPoint();
             Mat nextLayer = new Mat();
@@ -977,16 +977,16 @@ namespace WinFormsApp1
             Rectangle Rectangle1 = CvInvoke.BoundingRectangle(imageCounter[0]);
             Rectangle Rectangle2 = CvInvoke.BoundingRectangle(imageCounter[1]);
             Rectangle1.Size = Rectangle2.Size;
-            Mat topImage = new Mat((Mat)imageBox17.Image, Rectangle1);
-            Mat bottomImage = new Mat((Mat)imageBox17.Image, Rectangle2);
-            imageBox19.Image = topImage;
-            imageBox18.Image = bottomImage;
+            Mat topImage = new Mat((Mat)SpotTheDifferenceInputImage.Image, Rectangle1);
+            Mat bottomImage = new Mat((Mat)SpotTheDifferenceInputImage.Image, Rectangle2);
+            this.bottomImage.Image = topImage;
+            this.topImage.Image = bottomImage;
             Mat ImageDifference = new Mat();
             CvInvoke.AbsDiff(topImage, bottomImage, ImageDifference);
             Mat GrayScaleDifference = new Mat();
             CvInvoke.CvtColor(ImageDifference, GrayScaleDifference, ColorConversion.Bgr2Gray);
             CvInvoke.MedianBlur(GrayScaleDifference, GrayScaleDifference, 5);
-            CvInvoke.Threshold(GrayScaleDifference, GrayScaleDifference, (double)numericUpDown7.Value, 255, (Emgu.CV.CvEnum.ThresholdType)ThresholdType.Binary);
+            CvInvoke.Threshold(GrayScaleDifference, GrayScaleDifference, (double)SpotTheDifferenceSensitivity.Value, 255, (Emgu.CV.CvEnum.ThresholdType)ThresholdType.Binary);
             VectorOfVectorOfPoint ContourDifferenceArray = new VectorOfVectorOfPoint();
             CvInvoke.FindContours(GrayScaleDifference, ContourDifferenceArray, nextLayer, RetrType.External, (Emgu.CV.CvEnum.ChainApproxMethod)ChainApproxMethod.ChainApproxNone);
             MCvScalar contourColor = new MCvScalar(255, 0, 0);
@@ -998,8 +998,8 @@ namespace WinFormsApp1
                 CvInvoke.Rectangle(bottomImage, bounds, contourColor, 2);
             }
 
-            imageBox20.Image = topImage; ;
-            imageBox16.Image = bottomImage; 
+            SpotTheDifferenceTopOutput.Image = topImage; ;
+            SpotTheDifferenceOutputImage.Image = bottomImage; 
 
         }
         private void numericUpDown7_ValueChanged(object sender, EventArgs e)
@@ -1011,6 +1011,10 @@ namespace WinFormsApp1
         VectorOfPoint FindLargestContour(VectorOfVectorOfPoint contours)
         {
             VectorOfPoint largest = new VectorOfPoint();
+            if(contours.Size == 0)
+            {
+                return null;
+            }
             largest = contours[0];
             for (int i = 0; i < contours.Size; i++)
             {
@@ -1283,7 +1287,7 @@ namespace WinFormsApp1
             Mat temp = PerspectiveImageInput.Image as Mat;
             Mat mask = temp.Clone();
             CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
-            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown19.Value, (double)numericUpDown18.Value, (double)numericUpDown17.Value), 
+            CvInvoke.InRange(mask, (ScalarArray)new MCvScalar((double)numericUpDown19.Value, (double)numericUpDown18.Value, (double)numericUpDown17.Value),
                 (ScalarArray)new MCvScalar((double)numericUpDown16.Value, (double)numericUpDown15.Value, (double)numericUpDown14.Value), mask);
             VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
             Mat nextLayer = new Mat();
@@ -1296,20 +1300,19 @@ namespace WinFormsApp1
                 return;
             }
             VectorOfPoint contour = FindLargestContour(contours);
-            RotatedRect rect = CvInvoke.MinAreaRect(contour);
-            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+            CvInvoke.ApproxPolyDP(contour, contour, 10, true);
 
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[0], contour[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[1], contour[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[2], contour[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[3], contour[0], new MCvScalar(255, 0, 0), 2);
 
             PointF[] points1 = new PointF[4];
             PointF[] outputPoints = new PointF[4];
-            points1[0] = verticies[1];
-            points1[1] = verticies[2];
-            points1[2] = verticies[0];
-            points1[3] = verticies[3];
+            points1[0] = contour[1];
+            points1[1] = contour[2];
+            points1[2] = contour[0];
+            points1[3] = contour[3];
             outputPoints[0] = new PointF(0, 0);
             outputPoints[1] = new PointF(PerspectiveImageOutput.Size.Width, 0);
             outputPoints[2] = new PointF(0, PerspectiveImageOutput.Size.Height);
@@ -1339,20 +1342,19 @@ namespace WinFormsApp1
                 return;
             }
             VectorOfPoint contour = FindLargestContour(contours);
-            RotatedRect rect = CvInvoke.MinAreaRect(contour);
-            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+            CvInvoke.ApproxPolyDP(contour, contour, 10, true);
 
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[0], contour[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[1], contour[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[2], contour[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[3], contour[0], new MCvScalar(255, 0, 0), 2);
 
             PointF[] points1 = new PointF[4];
             PointF[] outputPoints = new PointF[4];
-            points1[0] = verticies[1];
-            points1[1] = verticies[2];
-            points1[2] = verticies[0];
-            points1[3] = verticies[3];
+            points1[0] = contour[1];
+            points1[1] = contour[2];
+            points1[2] = contour[0];
+            points1[3] = contour[3];
             outputPoints[0] = new PointF(0, 0);
             outputPoints[1] = new PointF(PerspectiveImageOutput.Size.Width, 0);
             outputPoints[2] = new PointF(0, PerspectiveImageOutput.Size.Height);
@@ -1382,20 +1384,19 @@ namespace WinFormsApp1
                 return;
             }
             VectorOfPoint contour = FindLargestContour(contours);
-            RotatedRect rect = CvInvoke.MinAreaRect(contour);
-            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+            CvInvoke.ApproxPolyDP(contour, contour, 10, true);
 
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[0], contour[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[1], contour[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[2], contour[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[3], contour[0], new MCvScalar(255, 0, 0), 2);
 
             PointF[] points1 = new PointF[4];
             PointF[] outputPoints = new PointF[4];
-            points1[0] = verticies[1];
-            points1[1] = verticies[2];
-            points1[2] = verticies[0];
-            points1[3] = verticies[3];
+            points1[0] = contour[1];
+            points1[1] = contour[2];
+            points1[2] = contour[0];
+            points1[3] = contour[3];
             outputPoints[0] = new PointF(0, 0);
             outputPoints[1] = new PointF(PerspectiveImageOutput.Size.Width, 0);
             outputPoints[2] = new PointF(0, PerspectiveImageOutput.Size.Height);
@@ -1425,20 +1426,19 @@ namespace WinFormsApp1
                 return;
             }
             VectorOfPoint contour = FindLargestContour(contours);
-            RotatedRect rect = CvInvoke.MinAreaRect(contour);
-            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+            CvInvoke.ApproxPolyDP(contour, contour, 10, true);
 
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[0], contour[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[1], contour[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[2], contour[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[3], contour[0], new MCvScalar(255, 0, 0), 2);
 
             PointF[] points1 = new PointF[4];
             PointF[] outputPoints = new PointF[4];
-            points1[0] = verticies[1];
-            points1[1] = verticies[2];
-            points1[2] = verticies[0];
-            points1[3] = verticies[3];
+            points1[0] = contour[1];
+            points1[1] = contour[2];
+            points1[2] = contour[0];
+            points1[3] = contour[3];
             outputPoints[0] = new PointF(0, 0);
             outputPoints[1] = new PointF(PerspectiveImageOutput.Size.Width, 0);
             outputPoints[2] = new PointF(0, PerspectiveImageOutput.Size.Height);
@@ -1468,20 +1468,19 @@ namespace WinFormsApp1
                 return;
             }
             VectorOfPoint contour = FindLargestContour(contours);
-            RotatedRect rect = CvInvoke.MinAreaRect(contour);
-            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+            CvInvoke.ApproxPolyDP(contour, contour, 10, true);
 
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[0], contour[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[1], contour[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[2], contour[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[3], contour[0], new MCvScalar(255, 0, 0), 2);
 
             PointF[] points1 = new PointF[4];
             PointF[] outputPoints = new PointF[4];
-            points1[0] = verticies[1];
-            points1[1] = verticies[2];
-            points1[2] = verticies[0];
-            points1[3] = verticies[3];
+            points1[0] = contour[1];
+            points1[1] = contour[2];
+            points1[2] = contour[0];
+            points1[3] = contour[3];
             outputPoints[0] = new PointF(0, 0);
             outputPoints[1] = new PointF(PerspectiveImageOutput.Size.Width, 0);
             outputPoints[2] = new PointF(0, PerspectiveImageOutput.Size.Height);
@@ -1511,20 +1510,19 @@ namespace WinFormsApp1
                 return; 
             }
             VectorOfPoint contour = FindLargestContour(contours);
-            RotatedRect rect = CvInvoke.MinAreaRect(contour);
-            var verticies = rect.GetVertices().Select(curr => new Point((int)curr.X, (int)curr.Y)).ToArray();
+            CvInvoke.ApproxPolyDP(contour, contour, 10, true);
 
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[0], verticies[1], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[1], verticies[2], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[2], verticies[3], new MCvScalar(255, 0, 0), 2);
-            CvInvoke.Line(PerspectiveImageInput.Image as Mat, verticies[3], verticies[0], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[0], contour[1], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[1], contour[2], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[2], contour[3], new MCvScalar(255, 0, 0), 2);
+            CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[3], contour[0], new MCvScalar(255, 0, 0), 2);
 
             PointF[] points1 = new PointF[4];
             PointF[] outputPoints = new PointF[4];
-            points1[0] = verticies[1];
-            points1[1] = verticies[2];
-            points1[2] = verticies[0];
-            points1[3] = verticies[3];
+            points1[0] = contour[1];
+            points1[1] = contour[2];
+            points1[2] = contour[0];
+            points1[3] = contour[3];
             outputPoints[0] = new PointF(0, 0);
             outputPoints[1] = new PointF(PerspectiveImageOutput.Size.Width, 0);
             outputPoints[2] = new PointF(0, PerspectiveImageOutput.Size.Height);
@@ -1537,61 +1535,8 @@ namespace WinFormsApp1
         }
 
         #endregion
-        #region dilate erode
-        private void comboBox14_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DilateErodeInputImage.Image = images[comboBox14.SelectedItem.ToString()];
-
-        }
-
-        private void comboBox10_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            currentDilateErode = DilateErodeOperations[comboBox10.SelectedItem.ToString()];
-        }
-
-        private void button17_Click(object sender, EventArgs e)
-        {
-            if(IntensityText.Text == "")
-            {
-                MessageBox.Show("input value");
-                return; 
-            }
-            var x = int.Parse(IntensityText.Text.ToString());
-            Mat output = new Mat(); 
-            Mat element = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(x, x), new Point(-1, -1));
-            switch (currentDilateErode)
-            {
-                case DilateErode.Dilate:
-                    CvInvoke.Dilate(DilateErodeInputImage.Image as Mat, output, element, new Point(-1, -1), 1, BorderType.Constant, new MCvScalar(0, 0, 0));
-                    DilateErodeOutputImage.Image = output; 
-                    break;
-
-                case DilateErode.Erode:
-                    CvInvoke.Erode(DilateErodeInputImage.Image as Mat, output, element, new Point(-1, -1), 1, BorderType.Constant, new MCvScalar(0, 0, 0));
-                    DilateErodeOutputImage.Image = output;
-                    break; 
-            }
-
-        }
-
-        private void imageBox24_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button18_Click(object sender, EventArgs e)
-        {
-            SaveInfo(textBox13, DilateErodeOutputImage);
-        }
-
-        private void textBox13_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        #endregion
-
+        
+        #region facetracking
         private void timer1_Tick(object sender, EventArgs e)
         {
             Mat currentFrame = capture.QueryFrame();
@@ -1615,8 +1560,23 @@ namespace WinFormsApp1
             Rectangle rect = CvInvoke.BoundingRectangle(contour);
             CvInvoke.Rectangle(finalImage, rect, new MCvScalar(255, 0, 0), 5);
             EyeTrackFinalImage.Image = finalImage; 
-
         }
 
+        private void button19_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = !timer1.Enabled; 
+        }
+        #endregion
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            SaveInfo(PerspectiveTextSave, PerspectiveImageOutput); 
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            SaveInfo(DilateErodeSaveText, DilateErodeOutputImage);
+
+        }
     }
 }
