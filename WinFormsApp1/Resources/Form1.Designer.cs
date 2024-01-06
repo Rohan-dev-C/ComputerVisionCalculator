@@ -203,12 +203,17 @@ namespace WinFormsApp1
             this.DilateErodeSaveButton = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.ErodeDilateSelectImage = new System.Windows.Forms.ComboBox();
-            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.FaceTracker = new System.Windows.Forms.TabPage();
             this.button19 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.EyeTrackCameraInput = new Emgu.CV.UI.ImageBox();
             this.EyeTrackMaskImage = new Emgu.CV.UI.ImageBox();
             this.EyeTrackFinalImage = new Emgu.CV.UI.ImageBox();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.LoadImageButton = new System.Windows.Forms.Button();
+            this.NewImageText = new System.Windows.Forms.TextBox();
+            this.LoadingImageBox = new Emgu.CV.UI.ImageBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -292,11 +297,14 @@ namespace WinFormsApp1
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DilateErodeOutputImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DilateErodeInputImage)).BeginInit();
-            this.tabPage12.SuspendLayout();
+            this.FaceTracker.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EyeTrackCameraInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EyeTrackMaskImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EyeTrackFinalImage)).BeginInit();
+            this.tabPage12.SuspendLayout();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LoadingImageBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -306,9 +314,9 @@ namespace WinFormsApp1
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage4.Size = new System.Drawing.Size(1285, 648);
             this.tabPage4.TabIndex = 4;
-            this.tabPage4.Text = "ThresholdModifier";
+            this.tabPage4.Text = "Threshold";
             // 
             // panel5
             // 
@@ -446,7 +454,7 @@ namespace WinFormsApp1
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage3.Size = new System.Drawing.Size(1285, 648);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Color Splitter";
             // 
@@ -583,9 +591,9 @@ namespace WinFormsApp1
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage1.Size = new System.Drawing.Size(1285, 648);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Basic Operation";
+            this.tabPage1.Text = "Bitwise";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // panel1
@@ -782,11 +790,12 @@ namespace WinFormsApp1
             this.tabControl1.Controls.Add(this.AffineTransform);
             this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Controls.Add(this.tabPage11);
+            this.tabControl1.Controls.Add(this.FaceTracker);
             this.tabControl1.Controls.Add(this.tabPage12);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1222, 644);
+            this.tabControl1.Size = new System.Drawing.Size(1293, 676);
             this.tabControl1.TabIndex = 20;
             // 
             // tabPage2
@@ -808,9 +817,9 @@ namespace WinFormsApp1
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage2.Size = new System.Drawing.Size(1285, 648);
             this.tabPage2.TabIndex = 5;
-            this.tabPage2.Text = "InRange Operation";
+            this.tabPage2.Text = "InRange";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // numericUpDown4
@@ -999,9 +1008,9 @@ namespace WinFormsApp1
             this.tabPage5.Location = new System.Drawing.Point(4, 24);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage5.Size = new System.Drawing.Size(1285, 648);
             this.tabPage5.TabIndex = 6;
-            this.tabPage5.Text = "Blurring Operations";
+            this.tabPage5.Text = "Blurring ";
             // 
             // panel6
             // 
@@ -1114,7 +1123,7 @@ namespace WinFormsApp1
             this.tabPage6.Location = new System.Drawing.Point(4, 24);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage6.Size = new System.Drawing.Size(1285, 648);
             this.tabPage6.TabIndex = 7;
             this.tabPage6.Text = "Contours";
             // 
@@ -1332,7 +1341,7 @@ namespace WinFormsApp1
             this.tabPage7.Location = new System.Drawing.Point(4, 24);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage7.Size = new System.Drawing.Size(1285, 648);
             this.tabPage7.TabIndex = 8;
             this.tabPage7.Text = "Color Converter";
             // 
@@ -1348,13 +1357,13 @@ namespace WinFormsApp1
             this.panel8.Controls.Add(this.ColorShiftImageSelect);
             this.panel8.Location = new System.Drawing.Point(6, 6);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(841, 231);
+            this.panel8.Size = new System.Drawing.Size(1234, 487);
             this.panel8.TabIndex = 19;
             // 
             // ColorShiftOperationSelect
             // 
             this.ColorShiftOperationSelect.FormattingEnabled = true;
-            this.ColorShiftOperationSelect.Location = new System.Drawing.Point(219, 58);
+            this.ColorShiftOperationSelect.Location = new System.Drawing.Point(433, 162);
             this.ColorShiftOperationSelect.Name = "ColorShiftOperationSelect";
             this.ColorShiftOperationSelect.Size = new System.Drawing.Size(337, 23);
             this.ColorShiftOperationSelect.TabIndex = 26;
@@ -1362,16 +1371,16 @@ namespace WinFormsApp1
             // 
             // ColorCVTOutput
             // 
-            this.ColorCVTOutput.Location = new System.Drawing.Point(561, 38);
+            this.ColorCVTOutput.Location = new System.Drawing.Point(776, 63);
             this.ColorCVTOutput.Name = "ColorCVTOutput";
-            this.ColorCVTOutput.Size = new System.Drawing.Size(191, 186);
+            this.ColorCVTOutput.Size = new System.Drawing.Size(411, 369);
             this.ColorCVTOutput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ColorCVTOutput.TabIndex = 25;
             this.ColorCVTOutput.TabStop = false;
             // 
             // ColorCVTSaveText
             // 
-            this.ColorCVTSaveText.Location = new System.Drawing.Point(561, 8);
+            this.ColorCVTSaveText.Location = new System.Drawing.Point(872, 36);
             this.ColorCVTSaveText.Name = "ColorCVTSaveText";
             this.ColorCVTSaveText.Size = new System.Drawing.Size(100, 23);
             this.ColorCVTSaveText.TabIndex = 23;
@@ -1380,14 +1389,14 @@ namespace WinFormsApp1
             // 
             this.ColorCVTInput.Location = new System.Drawing.Point(15, 36);
             this.ColorCVTInput.Name = "ColorCVTInput";
-            this.ColorCVTInput.Size = new System.Drawing.Size(198, 188);
+            this.ColorCVTInput.Size = new System.Drawing.Size(412, 396);
             this.ColorCVTInput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ColorCVTInput.TabIndex = 2;
             this.ColorCVTInput.TabStop = false;
             // 
             // ColorCVTSaveButton
             // 
-            this.ColorCVTSaveButton.Location = new System.Drawing.Point(692, 9);
+            this.ColorCVTSaveButton.Location = new System.Drawing.Point(1003, 37);
             this.ColorCVTSaveButton.Name = "ColorCVTSaveButton";
             this.ColorCVTSaveButton.Size = new System.Drawing.Size(19, 23);
             this.ColorCVTSaveButton.TabIndex = 16;
@@ -1398,7 +1407,7 @@ namespace WinFormsApp1
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(784, 171);
+            this.label19.Location = new System.Drawing.Point(1143, 435);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(44, 15);
             this.label19.TabIndex = 3;
@@ -1420,7 +1429,7 @@ namespace WinFormsApp1
             this.tabPage8.Location = new System.Drawing.Point(4, 24);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage8.Size = new System.Drawing.Size(1285, 648);
             this.tabPage8.TabIndex = 9;
             this.tabPage8.Text = "Camera";
             // 
@@ -1433,7 +1442,7 @@ namespace WinFormsApp1
             this.panel9.Controls.Add(this.imageBox15);
             this.panel9.Location = new System.Drawing.Point(6, 6);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1167, 585);
+            this.panel9.Size = new System.Drawing.Size(1167, 636);
             this.panel9.TabIndex = 3;
             // 
             // CameraSaveBox
@@ -1475,7 +1484,7 @@ namespace WinFormsApp1
             // 
             this.imageBox15.Location = new System.Drawing.Point(12, 68);
             this.imageBox15.Name = "imageBox15";
-            this.imageBox15.Size = new System.Drawing.Size(892, 407);
+            this.imageBox15.Size = new System.Drawing.Size(892, 547);
             this.imageBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBox15.TabIndex = 2;
             this.imageBox15.TabStop = false;
@@ -1487,7 +1496,7 @@ namespace WinFormsApp1
             this.tabPage9.Location = new System.Drawing.Point(4, 24);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage9.Size = new System.Drawing.Size(1285, 648);
             this.tabPage9.TabIndex = 10;
             this.tabPage9.Text = "Difference";
             this.tabPage9.Click += new System.EventHandler(this.tabPage9_Click);
@@ -1616,7 +1625,7 @@ namespace WinFormsApp1
             this.AffineTransform.Location = new System.Drawing.Point(4, 24);
             this.AffineTransform.Name = "AffineTransform";
             this.AffineTransform.Padding = new System.Windows.Forms.Padding(3);
-            this.AffineTransform.Size = new System.Drawing.Size(1214, 616);
+            this.AffineTransform.Size = new System.Drawing.Size(1285, 648);
             this.AffineTransform.TabIndex = 11;
             this.AffineTransform.Text = "Affine Transform";
             // 
@@ -1813,7 +1822,7 @@ namespace WinFormsApp1
             this.tabPage10.Location = new System.Drawing.Point(4, 24);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage10.Size = new System.Drawing.Size(1285, 648);
             this.tabPage10.TabIndex = 12;
             this.tabPage10.Text = "Perspective TForm";
             // 
@@ -2010,7 +2019,7 @@ namespace WinFormsApp1
             this.tabPage11.Location = new System.Drawing.Point(4, 24);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(1214, 616);
+            this.tabPage11.Size = new System.Drawing.Size(1285, 648);
             this.tabPage11.TabIndex = 13;
             this.tabPage11.Text = "Erode/Dilate";
             // 
@@ -2047,6 +2056,7 @@ namespace WinFormsApp1
             this.DilateErodeGoButton.TabIndex = 27;
             this.DilateErodeGoButton.Text = "button10";
             this.DilateErodeGoButton.UseVisualStyleBackColor = true;
+            this.DilateErodeGoButton.Click += new System.EventHandler(this.button17_Click);
             // 
             // ErodeDilateSelectOperation
             // 
@@ -2055,6 +2065,7 @@ namespace WinFormsApp1
             this.ErodeDilateSelectOperation.Name = "ErodeDilateSelectOperation";
             this.ErodeDilateSelectOperation.Size = new System.Drawing.Size(281, 23);
             this.ErodeDilateSelectOperation.TabIndex = 26;
+            this.ErodeDilateSelectOperation.SelectedIndexChanged += new System.EventHandler(this.comboBox10_SelectedIndexChanged_1);
             // 
             // DilateErodeOutputImage
             // 
@@ -2107,18 +2118,19 @@ namespace WinFormsApp1
             this.ErodeDilateSelectImage.Name = "ErodeDilateSelectImage";
             this.ErodeDilateSelectImage.Size = new System.Drawing.Size(121, 23);
             this.ErodeDilateSelectImage.TabIndex = 12;
+            this.ErodeDilateSelectImage.SelectedIndexChanged += new System.EventHandler(this.comboBox14_SelectedIndexChanged);
             // 
-            // tabPage12
+            // FaceTracker
             // 
-            this.tabPage12.Controls.Add(this.button19);
-            this.tabPage12.Controls.Add(this.panel3);
-            this.tabPage12.Location = new System.Drawing.Point(4, 24);
-            this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage12.Size = new System.Drawing.Size(1214, 616);
-            this.tabPage12.TabIndex = 14;
-            this.tabPage12.Text = "tabPage12";
-            this.tabPage12.UseVisualStyleBackColor = true;
+            this.FaceTracker.Controls.Add(this.button19);
+            this.FaceTracker.Controls.Add(this.panel3);
+            this.FaceTracker.Location = new System.Drawing.Point(4, 24);
+            this.FaceTracker.Name = "FaceTracker";
+            this.FaceTracker.Padding = new System.Windows.Forms.Padding(3);
+            this.FaceTracker.Size = new System.Drawing.Size(1285, 648);
+            this.FaceTracker.TabIndex = 14;
+            this.FaceTracker.Text = "FaceTracker";
+            this.FaceTracker.UseVisualStyleBackColor = true;
             // 
             // button19
             // 
@@ -2136,9 +2148,9 @@ namespace WinFormsApp1
             this.panel3.Controls.Add(this.EyeTrackCameraInput);
             this.panel3.Controls.Add(this.EyeTrackMaskImage);
             this.panel3.Controls.Add(this.EyeTrackFinalImage);
-            this.panel3.Location = new System.Drawing.Point(26, 20);
+            this.panel3.Location = new System.Drawing.Point(18, 6);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1120, 579);
+            this.panel3.Size = new System.Drawing.Size(1128, 593);
             this.panel3.TabIndex = 0;
             // 
             // EyeTrackCameraInput
@@ -2168,9 +2180,57 @@ namespace WinFormsApp1
             this.EyeTrackFinalImage.TabIndex = 3;
             this.EyeTrackFinalImage.TabStop = false;
             // 
+            // tabPage12
+            // 
+            this.tabPage12.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage12.BackgroundImage = global::EmguCVIntro.Properties.Resources.hqdefault;
+            this.tabPage12.Controls.Add(this.panel14);
+            this.tabPage12.Location = new System.Drawing.Point(4, 24);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage12.Size = new System.Drawing.Size(1285, 648);
+            this.tabPage12.TabIndex = 15;
+            this.tabPage12.Text = "LoadImage";
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.LoadImageButton);
+            this.panel14.Controls.Add(this.NewImageText);
+            this.panel14.Controls.Add(this.LoadingImageBox);
+            this.panel14.Location = new System.Drawing.Point(23, 28);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(1238, 602);
+            this.panel14.TabIndex = 0;
+            // 
+            // LoadImageButton
+            // 
+            this.LoadImageButton.Location = new System.Drawing.Point(825, 226);
+            this.LoadImageButton.Name = "LoadImageButton";
+            this.LoadImageButton.Size = new System.Drawing.Size(155, 63);
+            this.LoadImageButton.TabIndex = 4;
+            this.LoadImageButton.Text = "Load and Save Image";
+            this.LoadImageButton.UseVisualStyleBackColor = true;
+            this.LoadImageButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // NewImageText
+            // 
+            this.NewImageText.Location = new System.Drawing.Point(722, 126);
+            this.NewImageText.Name = "NewImageText";
+            this.NewImageText.Size = new System.Drawing.Size(350, 23);
+            this.NewImageText.TabIndex = 3;
+            // 
+            // LoadingImageBox
+            // 
+            this.LoadingImageBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LoadingImageBox.Location = new System.Drawing.Point(38, 20);
+            this.LoadingImageBox.Name = "LoadingImageBox";
+            this.LoadingImageBox.Size = new System.Drawing.Size(614, 567);
+            this.LoadingImageBox.TabIndex = 2;
+            this.LoadingImageBox.TabStop = false;
+            this.LoadingImageBox.Click += new System.EventHandler(this.imageBox1_Click);
+            // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Interval = 17;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
@@ -2181,7 +2241,7 @@ namespace WinFormsApp1
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImage = global::EmguCVIntro.Properties.Resources.hqdefault;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1258, 676);
+            this.ClientSize = new System.Drawing.Size(1327, 702);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -2282,11 +2342,15 @@ namespace WinFormsApp1
             this.panel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DilateErodeOutputImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DilateErodeInputImage)).EndInit();
-            this.tabPage12.ResumeLayout(false);
+            this.FaceTracker.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EyeTrackCameraInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EyeTrackMaskImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EyeTrackFinalImage)).EndInit();
+            this.tabPage12.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LoadingImageBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2467,12 +2531,17 @@ namespace WinFormsApp1
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox ErodeDilateSelectImage;
         private Emgu.CV.UI.ImageBox CameraSaveBox;
-        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.TabPage FaceTracker;
         private System.Windows.Forms.Panel panel3;
         private Emgu.CV.UI.ImageBox EyeTrackMaskImage;
         private Emgu.CV.UI.ImageBox EyeTrackFinalImage;
         private Emgu.CV.UI.ImageBox EyeTrackCameraInput;
         private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Button LoadImageButton;
+        private System.Windows.Forms.TextBox NewImageText;
+        private Emgu.CV.UI.ImageBox LoadingImageBox;
     }
 }
 

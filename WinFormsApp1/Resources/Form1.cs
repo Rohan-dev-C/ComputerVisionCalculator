@@ -58,6 +58,7 @@ namespace WinFormsApp1
             MinimumArea,
             MinumumCircle,
             ConvexHull, 
+            ApproxPoly
         }
         public enum ChainApproxMethod
         {
@@ -189,6 +190,7 @@ namespace WinFormsApp1
             images.Add("restaurant", CvInvoke.Imread("Images/restaurant.png"));
             images.Add("Affine", CvInvoke.Imread("Images/restaurant.png"));
             images.Add("whiteGuy", CvInvoke.Imread("Images/download.png"));
+            images.Add("gear", CvInvoke.Imread("Images/gears.jpg"));
             bitwiseOperations.Add("Add", BitwiseOperators.Add);
             bitwiseOperations.Add("And", BitwiseOperators.And);
             bitwiseOperations.Add("Or", BitwiseOperators.Or);
@@ -220,6 +222,7 @@ namespace WinFormsApp1
             BoundedTypes.Add("MinumumArea", BoundTypes.MinimumArea);
             BoundedTypes.Add("MinumumCircle", BoundTypes.MinumumCircle);
             BoundedTypes.Add("Rectangle", BoundTypes.Rectangle);
+            BoundedTypes.Add("ApproxPoly", BoundTypes.ApproxPoly);
             BlurType.Add("Simple", BlurTypes.Simple);
             BlurType.Add("Gaussian", BlurTypes.Gaussian);
             BlurType.Add("Median", BlurTypes.Median);
@@ -845,6 +848,16 @@ namespace WinFormsApp1
                             }
                             ContourOutputImage.Image = original; 
                             break;
+                        case BoundTypes.ApproxPoly:
+                            VectorOfPoint contour = FindLargestContour(contours);
+                            CvInvoke.ApproxPolyDP(contour, contour, 10, true);
+                            for (int j = 0; j < contour.Size - 1; j++)
+                            {
+                                CvInvoke.Line(original, contour[j], contour[j+1], new MCvScalar(255, 0, 0), 2);
+                            }
+                            CvInvoke.Line(original, contour[contour.Size - 1], contour[0], new MCvScalar(255, 0, 0), 2);
+                            ContourOutputImage.Image = original;
+                            break; 
                         default:
                             MessageBox.Show("CHOOSE A METHOD");
                             return; 
@@ -1385,7 +1398,7 @@ namespace WinFormsApp1
             }
             VectorOfPoint contour = FindLargestContour(contours);
             CvInvoke.ApproxPolyDP(contour, contour, 10, true);
-
+            if (contours.Size < 4) return; 
             CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[0], contour[1], new MCvScalar(255, 0, 0), 2);
             CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[1], contour[2], new MCvScalar(255, 0, 0), 2);
             CvInvoke.Line(PerspectiveImageInput.Image as Mat, contour[2], contour[3], new MCvScalar(255, 0, 0), 2);
@@ -1535,7 +1548,60 @@ namespace WinFormsApp1
         }
 
         #endregion
-        
+        #region dilate erode
+        private void comboBox14_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DilateErodeInputImage.Image = images[ErodeDilateSelectImage.SelectedItem.ToString()];
+
+        }
+
+        private void comboBox10_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            currentDilateErode = DilateErodeOperations[ErodeDilateSelectOperation.SelectedItem.ToString()];
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            if (IntensityText.Text == "")
+            {
+                MessageBox.Show("input value");
+                return;
+            }
+            var x = int.Parse(IntensityText.Text.ToString());
+            Mat output = new Mat();
+            Mat element = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(x, x), new Point(-1, -1));
+            switch (currentDilateErode)
+            {
+                case DilateErode.Dilate:
+                    CvInvoke.Dilate(DilateErodeInputImage.Image as Mat, output, element, new Point(-1, -1), 1, BorderType.Constant, new MCvScalar(0, 0, 0));
+                    DilateErodeOutputImage.Image = output;
+                    break;
+
+                case DilateErode.Erode:
+                    CvInvoke.Erode(DilateErodeInputImage.Image as Mat, output, element, new Point(-1, -1), 1, BorderType.Constant, new MCvScalar(0, 0, 0));
+                    DilateErodeOutputImage.Image = output;
+                    break;
+            }
+
+        }
+
+        private void imageBox24_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void button18_Click(object sender, EventArgs e)
+        {
+            SaveInfo(DilateErodeSaveText, DilateErodeOutputImage);
+        }
+        private void textBox13_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void button16_Click(object sender, EventArgs e)
+        {
+            SaveInfo(PerspectiveTextSave, PerspectiveImageOutput); 
+        }
+        #endregion 
         #region facetracking
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -1545,7 +1611,8 @@ namespace WinFormsApp1
             Mat finalImage = mask.Clone(); 
             EyeTrackCameraInput.Image = mask;
             CvInvoke.CvtColor(mask, mask, ColorConversion.Bgr2Hsv);
-            CvInvoke.InRange(mask, (ScalarArray) new MCvScalar(10, 66, 32), (ScalarArray) new MCvScalar(33, 170, 101), mask);
+            Mat mask2 = mask.Clone(); 
+            CvInvoke.InRange(mask, (ScalarArray) new MCvScalar(0, 24, 12), (ScalarArray) new MCvScalar(33, 186, 53), mask);
             CvInvoke.MedianBlur(mask, mask, 5);
             Mat element1 = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(5, 5), new Point(-1, -1));
             CvInvoke.Erode(mask, mask, element1, new Point(-1, -1), 1, BorderType.Constant, new MCvScalar(0, 0, 0));
@@ -1556,7 +1623,8 @@ namespace WinFormsApp1
             Mat nextLayer = new Mat();
             CvInvoke.FindContours(mask, contours, nextLayer, RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
             EyeTrackMaskImage.Image = mask;
-            VectorOfPoint contour = FindLargestContour(contours); 
+            VectorOfPoint contour = FindLargestContour(contours);
+            if (contour == null) return; 
             Rectangle rect = CvInvoke.BoundingRectangle(contour);
             CvInvoke.Rectangle(finalImage, rect, new MCvScalar(255, 0, 0), 5);
             EyeTrackFinalImage.Image = finalImage; 
@@ -1566,17 +1634,20 @@ namespace WinFormsApp1
         {
             timer1.Enabled = !timer1.Enabled; 
         }
+
         #endregion
 
-        private void button16_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            SaveInfo(PerspectiveTextSave, PerspectiveImageOutput); 
+            SaveInfo(NewImageText, LoadingImageBox);
         }
 
-        private void button18_Click(object sender, EventArgs e)
+        private void imageBox1_Click(object sender, EventArgs e)
         {
-            SaveInfo(DilateErodeSaveText, DilateErodeOutputImage);
-
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.ShowDialog();
+            string temp = dialog.FileName;
+            LoadingImageBox.Image = CvInvoke.Imread(temp); 
         }
     }
 }
