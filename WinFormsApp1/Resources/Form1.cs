@@ -1636,12 +1636,11 @@ namespace WinFormsApp1
         }
 
         #endregion
-
+        #region loading
         private void button1_Click(object sender, EventArgs e)
         {
             SaveInfo(NewImageText, LoadingImageBox);
         }
-
         private void imageBox1_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
@@ -1649,5 +1648,6 @@ namespace WinFormsApp1
             string temp = dialog.FileName;
             LoadingImageBox.Image = CvInvoke.Imread(temp); 
         }
+        #endregion  
     }
 }
